@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function status_pernikahan(){
+        return $this->hasOne(Status_pernikahan::class, 'status_pernikahan');
+    }
 }

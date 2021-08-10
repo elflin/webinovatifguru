@@ -19,6 +19,16 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('usia')->nullable();
+            $table->char('jenis_kelamin')->nullable();
+            $table->string('status_pernikahan')->nullable();
+            $table->integer('jumlah_anak')->nullable();
+            $table->string('asal_sekolah')->nullable();
+            $table->integer('lama_mengajar')->nullable();
+            $table->String('jenjang_mengajar')->nullable();
+            $table->text('mata_pelajaran')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->boolean('isIlmuPendidikan')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

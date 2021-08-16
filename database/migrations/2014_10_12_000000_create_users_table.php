@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->text('mata_pelajaran')->nullable();
             $table->string('pendidikan')->nullable();
             $table->boolean('isIlmuPendidikan')->nullable();
+            $table->boolean('isAdmin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

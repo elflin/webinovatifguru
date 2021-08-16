@@ -17,12 +17,25 @@ class User extends Authenticatable
      * @var array
      */
 
+    protected $primaryKey = 'id';
     public $incrementing = false;
+    protected $keyType = 'string';
+    
 
     protected $fillable = [
         'name',
         'email',
         'password',
+        'usia',
+        'jenis_kelamin',
+        'status_pernikahan',
+        'jumlah_anak',
+        'asal_sekolah',
+        'lama_mengajar',
+        'jenjang_mengajar',
+        'mata_pelajaran',
+        'pendidikan',
+        'isIlmuPendidikan'
     ];
 
     /**
@@ -45,6 +58,10 @@ class User extends Authenticatable
     ];
 
     public function status_pernikahan(){
-        return $this->hasOne(Status_pernikahan::class, 'status_pernikahan');
+        return $this->hasOne(Status_pernikahan::class);
+    }
+
+    public function history(){
+        return $this->hasMany(history::class, 'uid');
     }
 }

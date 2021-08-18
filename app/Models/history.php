@@ -10,7 +10,7 @@ class history extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'uid','id');
     }
 
     public function soal(){

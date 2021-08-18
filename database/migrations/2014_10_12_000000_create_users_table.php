@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('usia')->nullable();
             $table->char('jenis_kelamin')->nullable();
-            $table->unsignedBigInteger('status_pernikahan')->nullable();
+            $table->string('status_pernikahan')->nullable();
             $table->integer('jumlah_anak')->nullable();
             $table->string('asal_sekolah')->nullable();
             $table->integer('lama_mengajar')->nullable();

@@ -13,11 +13,7 @@ class CreateStatusPernikahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_pernikahans', function (Blueprint $table) {
-            $table->id();
-            $table->string('status');
-            $table->timestamps();
-        });
+        
     }
 
     /**

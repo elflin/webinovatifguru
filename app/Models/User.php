@@ -57,9 +57,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function status_pernikahan(){
-        return $this->hasOne(Status_pernikahan::class);
-    }
 
     public function history(){
         return $this->hasMany(history::class, 'uid', 'id');

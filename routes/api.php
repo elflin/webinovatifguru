@@ -1,19 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\SoalController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('getAllSoal', [SoalController::class, 'getAllSoal']);
+Route::post('getSoalBy', [SoalController::class, 'getSoalBy']);
+Route::post('getUser', [UserController::class, 'getUser']);
+Route::post('createUser', [UserController::class, 'createUser']);
+Route::post('updateUser', [UserController::class, 'updateUser']);

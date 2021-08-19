@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
 
@@ -31,6 +31,7 @@ Route::group([
     'as' => 'admin.'
 ], function() {
     Route::get('/', [DashboardController::class, 'index']);
-    Route::get('user', [AdminController::class, 'index']);
     Route::resource('soal', SoalController::class);
+    Route::resource('user', UserController::class);
+    Route::patch('user/{id}/promote', [UserController::class, 'promote'])->name('user.promote');
 });

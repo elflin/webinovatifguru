@@ -38,7 +38,7 @@
                         <td>{{ $soal->dimensi }}</td>
                         <td>{{ $soal->ukuran }}</td>
                         <td class="text-center">
-                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton-{{ $soal->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link text-black-50" type="button" id="dropdownMenuButton-{{ $soal->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-fw fa-ellipsis-h"></i>
                             </a>
                             <!-- Dropdown - User Information -->

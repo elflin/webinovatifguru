@@ -26,7 +26,7 @@
                         {{ $soal->variabel }}
                     </option>
                     <option value="Perilaku Inovartif Guru">Perilaku Inovartif Guru</option>
-                    <option value="Intensi Berinovasi">Intensi Berinovasi</option>                    <option value="Intensi Berinovasi">Intensi Berinovasi</option>
+                    <option value="Intensi Berinovasi">Intensi Berinovasi</option>
                     <option value="Sikap Terhadap Inovasi">Sikap Terhadap Inovasi</option>
                     <option value="Norma Subyektif terhadap Kreativitas">Norma Subyektif terhadap Kreativitas</option>
                     <option value="Budaya Organisasi Berorientasi Pembelajaran">Budaya Organisasi Berorientasi Pembelajaran</option>

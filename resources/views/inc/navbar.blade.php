@@ -32,7 +32,7 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('admin.user.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span></a>
     </li>

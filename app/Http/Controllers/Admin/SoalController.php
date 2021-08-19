@@ -38,7 +38,14 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        Soal::create($request->all());
+        Soal::create([
+            'no_item' => ucwords(strtolower($request->no_item)),
+            'variabel' => $request->variabel,
+            'soal' => ucfirst(strtolower($request->soal)),
+            'dimensi' => ucwords(strtolower($request->dimensi)),
+            'no_item' => ucwords(strtolower($request->no_item)),
+            'ukuran' => ucwords(strtolower($request->ukuran)),
+        ]);
         return redirect(route('admin.soal.index'));
     }
 
@@ -75,7 +82,14 @@ class SoalController extends Controller
     public function update(Request $request, $id)
     {
         $soal = Soal::findOrFail($id);
-        $soal->update($request->all());
+        $soal->update([
+            'no_item' => ucwords(strtolower($request->no_item)),
+            'variabel' => $request->variabel,
+            'soal' => ucfirst(strtolower($request->soal)),
+            'dimensi' => ucwords(strtolower($request->dimensi)),
+            'no_item' => ucwords(strtolower($request->no_item)),
+            'ukuran' => ucwords(strtolower($request->ukuran)),
+        ]);
         return redirect()->route('admin.soal.index');
     }
 

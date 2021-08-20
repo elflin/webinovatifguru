@@ -41,7 +41,7 @@ class SoalController extends Controller
         Soal::create([
             'no_item' => ucwords(strtolower($request->no_item)),
             'variabel' => $request->variabel,
-            'soal' => ucfirst(strtolower($request->soal)),
+            'soal' => $request->soal,
             'dimensi' => ucwords(strtolower($request->dimensi)),
             'no_item' => ucwords(strtolower($request->no_item)),
             'ukuran' => ucwords(strtolower($request->ukuran)),
@@ -85,7 +85,7 @@ class SoalController extends Controller
         $soal->update([
             'no_item' => ucwords(strtolower($request->no_item)),
             'variabel' => $request->variabel,
-            'soal' => ucfirst(strtolower($request->soal)),
+            'soal' => $request->soal,
             'dimensi' => ucwords(strtolower($request->dimensi)),
             'no_item' => ucwords(strtolower($request->no_item)),
             'ukuran' => ucwords(strtolower($request->ukuran)),

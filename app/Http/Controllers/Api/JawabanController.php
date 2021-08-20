@@ -76,6 +76,15 @@ class JawabanController extends Controller
                 'Budaya Organisasi Berorientasi Pembelajaran'=>0,
                 'Self-Determination'=>0
             );
+            $valueList = array(
+                'Perilaku Inovatif Guru'=>'Rendah',
+                'Intensi Berinovasi'=>'Rendah',
+                'Sikap Terhadap Inovasi'=>'Rendah',
+                'Norma Subyektif terhadap Kreativitas'=>'Rendah',
+                'Efikasi Berinovasi'=>'Rendah',
+                'Budaya Organisasi Berorientasi Pembelajaran'=>'Rendah',
+                'Self-Determination'=>'Rendah'
+            );
             $dimensiList = array(
                 'Idea generation'=>0,
                 'Idea Promotion'=>0,
@@ -112,9 +121,12 @@ class JawabanController extends Controller
                 }
             }
 
+            //Hitung value JANGAN LUPA
+
             $temp =array(
                 'historyId'=> $history->id,
                 'variabel'=> $variabelList,
+                'value'=> $valueList,
                 'dimensi'=>$dimensiList
             );
 

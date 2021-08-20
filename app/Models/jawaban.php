@@ -8,4 +8,6 @@ class Jawaban extends Pivot
 {
     //
     protected $table = 'jawabans';
+
+    
 }

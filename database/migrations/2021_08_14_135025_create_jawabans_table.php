@@ -14,6 +14,7 @@ class CreateJawabansTable extends Migration
     public function up()
     {
         Schema::create('jawabans', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('historyId');
             $table->unsignedBigInteger('soalId');
             $table->integer('nilai');

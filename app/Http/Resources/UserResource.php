@@ -27,7 +27,7 @@ class UserResource extends JsonResource
             'jenjang_mengajar'=>$this->jenjang_mengajar,
             'mata_pelajaran'=>$this->mata_pelajaran,
             'pendidikan'=>$this->pendidikan,
-            'isIlmuPendidikan'=>$this->isIlmuPendidikan
+            'isIlmuPendidikan'=>$this->isIlmuPendidikan,
         ];
     }
 }

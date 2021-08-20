@@ -11,6 +11,7 @@ class Soal extends Model
 
     protected $primaryKey = 'id';
     public $incrementing = false;
+    protected $table = 'soals';
 
     protected $fillable = [
         'no_item',

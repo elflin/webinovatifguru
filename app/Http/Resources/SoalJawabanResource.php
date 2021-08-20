@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Soal;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class JawabanResource extends JsonResource
+class SoalJawabanResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +15,11 @@ class JawabanResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'historyId'=>$this->historyId,
-            'soal'=>new SoalJawabanResource(Soal::find($this->soalId)),
-            'nilai'=>$this->nilai
+            'id' => $this->id,
+            'no_item,' => $this->no_item,
+            'variabel' => $this->variabel,
+            'dimensi' => $this->dimensi,
+            'ukuran' => $this->ukuran,
         ];
     }
 }

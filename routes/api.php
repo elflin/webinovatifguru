@@ -16,5 +16,5 @@ Route::post('updateUser', [UserController::class, 'updateUser']);
 Route::post('createHistory', [HistoryController::class, 'createHistory']);
 Route::post('getHistoryById', [HistoryController::class, 'getHistoryById']);
 Route::post('getJawabanByHistory', [JawabanController::class, 'getJawabanByHistory']);
-Route::post('calculateJawabanByVariabel', [JawabanController::class, 'calculateJawabanByVariabel']);
+Route::post('reportJawaban', [JawabanController::class, 'reportJawaban']);
 Route::post('insertJawabanByHistory', [JawabanController::class, 'insertJawabanByHistory']);

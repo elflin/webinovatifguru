@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Jawaban;
-use Auth;
+use App\Models\history;
 
-class UserController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.userView', compact('users'));
+        //
     }
 
     /**
@@ -50,7 +49,19 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        $historyList = null;
+        $user = User::findOrFail($id);
+
+        // $historyList = Jawaban::whereIn('id', function($query) use ($user){
+        //     $query->select('id')->from('histories')->whereNotIn('uid', $user);
+        // })->get();
+        $historyList = history::where('uid', $id)
+        ->latest()
+        ->get();
+
+        // dd($historyList);
+
+        return view('admin.userShowHistory', compact('user', 'historyList'));
     }
 
     /**
@@ -85,14 +96,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function promote($id){
-        $user = User::findOrFail($id);
-        $user->update([
-            'isAdmin' => 1
-        ]);
-
-        return redirect()->route('admin.user.index');
     }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
+use App\Http\controllers\Admin\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,6 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('soal', SoalController::class);
     Route::resource('user', UserController::class);
+    Route::resource('history', HistoryController::class);
     Route::patch('user/{id}/promote', [UserController::class, 'promote'])->name('user.promote');
 });

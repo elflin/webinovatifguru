@@ -16,51 +16,54 @@
     </div>
 
     <!-- Content Row -->
-    <div class="my-4">
-        
-        <table id="table_id" class="table">
-            <thead>
-                <tr>
-                    <th>No Item</th>
-                    <th>Variabel</th>
-                    <th>Soal</th>
-                    <th>Dimensi</th>
-                    <th>Ukuran</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($soals as $soal)
+    <div class="card shadow my-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-purple">Data Soal</h6>
+        </div>
+        <div class="card-body">
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <thead>
                     <tr>
-                        <td>{{ $soal->no_item }}</td>
-                        <td>{{ $soal->variabel }}</td>
-                        <td>{{ $soal->soal }}</td>
-                        <td>{{ $soal->dimensi }}</td>
-                        <td>{{ $soal->ukuran }}</td>
-                        <td class="text-center">
-                            <a class="nav-link text-black-50" type="button" id="dropdownMenuButton-{{ $soal->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-fw fa-ellipsis-h"></i>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right"
-                                aria-labelledby="dropdownMenuButton-{{ $soal->id }}">
-                                <a class="dropdown-item" href="{{ route('admin.soal.edit', $soal->id) }}">
-                                    <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Edit
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteSoal-{{ $soal->id }}">
-                                    <i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Delete
-                                </a>
-                            </div>
-                            {{-- <i class="fa-solid fa-ellipsis"></i> --}}
-                        </td>
+                        <th>No Item</th>
+                        <th>Variabel</th>
+                        <th>Soal</th>
+                        <th>Dimensi</th>
+                        <th>Ukuran</th>
+                        <th class="text-center">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                    @foreach ($soals as $soal)
+                        <tr>
+                            <td>{{ $soal->no_item }}</td>
+                            <td>{{ $soal->variabel }}</td>
+                            <td>{{ $soal->soal }}</td>
+                            <td>{{ $soal->dimensi }}</td>
+                            <td>{{ $soal->ukuran }}</td>
+                            <td class="text-center">
+                                <a class="nav-link text-black-50" type="button" id="dropdownMenuButton-{{ $soal->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-fw fa-ellipsis-h"></i>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right"
+                                    aria-labelledby="dropdownMenuButton-{{ $soal->id }}">
+                                    <a class="dropdown-item" href="{{ route('admin.soal.edit', $soal->id) }}">
+                                        <i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Edit
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteSoal-{{ $soal->id }}">
+                                        <i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Delete
+                                    </a>
+                                </div>
+                                {{-- <i class="fa-solid fa-ellipsis"></i> --}}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <!-- /.container-fluid -->

@@ -49,19 +49,17 @@ class HistoryController extends Controller
      */
     public function show($id)
     {
-        $historyList = null;
         $user = User::findOrFail($id);
 
-        // $historyList = Jawaban::whereIn('id', function($query) use ($user){
+        // $history = Jawaban::whereIn('id', function($query) use ($user){
         //     $query->select('id')->from('histories')->whereNotIn('uid', $user);
         // })->get();
-        $historyList = history::where('uid', $id)
-        ->latest()
-        ->get();
+        $histories = history::all()->where('uid', $id);
+        $history = $histories->last();
 
-        // dd($historyList);
+        $jawaban = Jawaban::where('historyId', $history->id);
 
-        return view('admin.userShowHistory', compact('user', 'historyList'));
+        return view('admin.userShowHistory', compact('user', 'history', 'jawaban'));
     }
 
     /**

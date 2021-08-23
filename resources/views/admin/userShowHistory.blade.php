@@ -76,7 +76,7 @@
             <h4 class="h4 mb-0 text-gray-800">Riwayat Jawaban</h4>
         </div>
         {{-- dummy --}}
-        <div class="d-flex">
+        {{-- <div class="d-flex">
             <h5 class="h5 mb-0 text-gray-800 mt-0 mr-3 ml-3"><b>1</b></h5>
             <p>
                 Lorem Ipsum adalah contoh teks atau dummy dalam industri 
@@ -116,13 +116,13 @@
                 </label>
             </div>
         </div>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div> --}}
         {{-- end dummy --}}
-        @foreach ($historyList as $history)
+        @foreach ($history->soal as $soal)
         <div class="d-flex">
             <h5 class="h5 mb-0 text-gray-800 mt-0 mr-3 ml-3"><b>{{ $loop->iteration }}</b></h5>
             <p>
-                {{ $history->soal }}
+                {{ $soal->soal }}
             </p>
         </div>
         <div class="ml-5 w-25">
@@ -130,9 +130,6 @@
                 <label class="d-flex flex-column align-items-center">
                     1
                     <input type="radio" name="foo" value="1" disabled
-                    @if ($history->soal)
-                        
-                    @endif
                     >
                 </label>
                 <label class="d-flex flex-column align-items-center">

@@ -3,27 +3,136 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JawabanResource;
 use App\Models\history;
+use App\Models\Jawaban;
 use App\Models\Soal;
 use Illuminate\Http\Request;
 
 class JawabanController extends Controller
 {
     //
+    
     public function getJawabanByHistory(Request $request){
+        $jawaban = Jawaban::where('historyId', $request->historyId)->get();
 
+        return JawabanResource::collection($jawaban);
     }
 
     public function insertJawabanByHistory(Request $request){
-        $history = history::where('id', $request->historyId)->first();
-        $soal = Soal::where('id', $request->soalId)->first();
+        $data = $request->all();
 
-        $history->soal()->attach($soal, ['nilai'=>$request->nilai]);
-
+        foreach($data['data'] as $single){
+            Jawaban::create($single);
+        }
+    
         return ['status'=>'Suksess'];
     }
 
-    public function calculateJawabanByVariabel(Request $request){
+    public function reportJawaban(Request $request){
+        $variabelDict = array(
+            'Perilaku Inovatif Guru',
+            'Intensi Berinovasi',
+            'Sikap Terhadap Inovasi',
+            'Norma Subyektif terhadap Kreativitas',
+            'Efikasi Berinovasi',
+            'Budaya Organisasi Berorientasi Pembelajaran',
+            'Self-Determination'
+        );
 
+        $dimensiDict = array(
+            'Idea generation',
+            'Idea Promotion',
+            'Idea Realization',
+            'Intensi Berinovasi',
+            'Support for',
+            'Risk of Tolerace',
+            'Openness to External Knowledge',
+            'Family expectations for creativity',
+            'Leader expectations for creativity',
+            'Customer expectations for creativity',
+            'Personal assumptions / beliefs about own creativity',
+            'Evidence-based assessment of creative self-efficacy',
+            'Commitment to learning',
+            'Shared vision',
+            'Open-mindedness',
+            'Intraorganizational knowledge sharing',
+            'Intrinsic Motivation',
+            'Identified Regulation'
+        );
+
+        $userId = $request->userId;
+        $histories = history::where('uid', $userId)->get();
+        $historyList = array();
+        
+        foreach($histories as $history){
+            // return $history;
+            $variabelList = array(
+                'Perilaku Inovatif Guru'=>0,
+                'Intensi Berinovasi'=>0,
+                'Sikap Terhadap Inovasi'=>0,
+                'Norma Subyektif terhadap Kreativitas'=>0,
+                'Efikasi Berinovasi'=>0,
+                'Budaya Organisasi Berorientasi Pembelajaran'=>0,
+                'Self-Determination'=>0
+            );
+            $valueList = array(
+                'Perilaku Inovatif Guru'=>'Rendah',
+                'Intensi Berinovasi'=>'Rendah',
+                'Sikap Terhadap Inovasi'=>'Rendah',
+                'Norma Subyektif terhadap Kreativitas'=>'Rendah',
+                'Efikasi Berinovasi'=>'Rendah',
+                'Budaya Organisasi Berorientasi Pembelajaran'=>'Rendah',
+                'Self-Determination'=>'Rendah'
+            );
+            $dimensiList = array(
+                'Idea generation'=>0,
+                'Idea Promotion'=>0,
+                'Idea Realization'=>0,
+                'Intensi Berinovasi'=>0,
+                'Support for'=>0,
+                'Risk of Tolerace'=>0,
+                'Openness to External Knowledge'=>0,
+                'Family expectations for creativity'=>0,
+                'Leader expectations for creativity'=>0,
+                'Customer expectations for creativity'=>0,
+                'Personal assumptions / beliefs about own creativity'=>0,
+                'Evidence-based assessment of creative self-efficacy'=>0,
+                'Commitment to learning'=>0,
+                'Shared vision'=>0,
+                'Open-mindedness'=>0,
+                'Intraorganizational knowledge sharing'=>0,
+                'Intrinsic Motivation'=>0,
+                'Identified Regulation'=>0
+            );
+
+            foreach($history->soal as $jawaban){
+                // return $jawaban;
+                foreach($variabelDict as $var){
+                    if($jawaban->variabel == $var){
+                        $variabelList[$var]+= $jawaban->pivot->nilai;
+                    }
+                }
+
+                foreach($dimensiDict as $dimensi){
+                    if($jawaban->dimensi == $dimensi){
+                        $dimensiList[$dimensi]+= $jawaban->pivot->nilai;
+                    }
+                }
+            }
+
+            //Hitung value JANGAN LUPA
+
+            $temp =array(
+                'historyId'=> $history->id,
+                'variabel'=> $variabelList,
+                'value'=> $valueList,
+                'dimensi'=>$dimensiList
+            );
+
+            array_push($historyList, $temp);
+        }
+
+        return $historyList;
     }
 }

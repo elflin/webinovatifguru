@@ -77,7 +77,7 @@
         </div>
         {{-- dummy --}}
         <div class="d-flex">
-            <h5 class="h5 mb-0 text-gray-800 mt-0 mr-3 ml-3"><b>{{ $loop->iteration }}</b></h5>
+            <h5 class="h5 mb-0 text-gray-800 mt-0 mr-3 ml-3"><b>1</b></h5>
             <p>
                 Lorem Ipsum adalah contoh teks atau dummy dalam industri 
                 percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah 

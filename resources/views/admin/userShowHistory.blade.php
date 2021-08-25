@@ -130,23 +130,62 @@
                 <label class="d-flex flex-column align-items-center">
                     1
                     <input type="radio" name="foo" value="1" disabled
+                    @foreach ($jawabans as $jawaban)
+                        @if ($jawaban->soalId == $soal->id)
+                            @if ($jawaban->nilai == 1)
+                                checked
+                            @endif
+                        @endif
+                    @endforeach
                     >
                 </label>
                 <label class="d-flex flex-column align-items-center">
                     2
-                    <input type="radio" name="foo" value="2" disabled>
+                    <input type="radio" name="foo" value="2" disabled
+                    @foreach ($jawabans as $jawaban)
+                        @if ($jawaban->soalId == $soal->id)
+                            @if ($jawaban->nilai == 2)
+                                checked
+                            @endif
+                        @endif
+                    @endforeach
+                    >
                 </label>
                 <label class="d-flex flex-column align-items-center">
                     3
-                    <input type="radio" name="foo" value="3" disabled>
+                    <input type="radio" name="foo" value="3" disabled
+                    @foreach ($jawabans as $jawaban)
+                        @if ($jawaban->soalId == $soal->id)
+                            @if ($jawaban->nilai == 3)
+                                checked
+                            @endif
+                        @endif
+                    @endforeach
+                    >
                 </label>
                 <label class="d-flex flex-column align-items-center">
                     4
-                    <input type="radio" name="foo" value="4" disabled>
+                    <input type="radio" name="foo" value="4" disabled
+                    @foreach ($jawabans as $jawaban)
+                        @if ($jawaban->soalId == $soal->id)
+                            @if ($jawaban->nilai == 4)
+                                checked
+                            @endif
+                        @endif
+                    @endforeach
+                    >
                 </label>
                 <label class="d-flex flex-column align-items-center">
                     5
-                    <input type="radio" name="foo" value="5" disabled>
+                    <input type="radio" name="foo" value="5" disabled
+                    @foreach ($jawabans as $jawaban)
+                        @if ($jawaban->soalId == $soal->id)
+                            @if ($jawaban->nilai == 5)
+                                checked
+                            @endif
+                        @endif
+                    @endforeach
+                    >
                 </label>
             </div>
         </div>

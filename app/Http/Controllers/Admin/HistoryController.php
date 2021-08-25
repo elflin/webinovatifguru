@@ -57,9 +57,9 @@ class HistoryController extends Controller
         $histories = history::all()->where('uid', $id);
         $history = $histories->last();
 
-        $jawaban = Jawaban::where('historyId', $history->id);
+        $jawabans = Jawaban::where('historyId', $history->id)->get();
 
-        return view('admin.userShowHistory', compact('user', 'history', 'jawaban'));
+        return view('admin.userShowHistory', compact('user', 'history', 'jawabans'));
     }
 
     /**

@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
         $user->jenjang_mengajar = 'SMA';
         $user->pendidikan = 'S2';
         $user->isIlmuPendidikan = 1;
-        $user->isAdmin = 0;
+        $user->isAdmin = 1;
         $user->created_at = \Carbon\Carbon::now();
         $user->updated_at = \Carbon\Carbon::now();
         $user->email_verified_at = \Carbon\Carbon::now();
@@ -68,7 +68,7 @@ class UserSeeder extends Seeder
         $user->jenjang_mengajar = 'SMA';
         $user->pendidikan = 'S1';
         $user->isIlmuPendidikan = 1;
-        $user->isAdmin = 0;
+        $user->isAdmin = 1;
         $user->created_at = \Carbon\Carbon::now();
         $user->updated_at = \Carbon\Carbon::now();
         $user->email_verified_at = \Carbon\Carbon::now();

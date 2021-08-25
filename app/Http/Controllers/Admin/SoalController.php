@@ -39,6 +39,7 @@ class SoalController extends Controller
     public function store(Request $request)
     {
         Soal::create([
+            'id' => ($request->id),
             'no_item' => ucwords(strtolower($request->no_item)),
             'variabel' => $request->variabel,
             'soal' => $request->soal,
@@ -83,6 +84,7 @@ class SoalController extends Controller
     {
         $soal = Soal::findOrFail($id);
         $soal->update([
+            'id' => ($request->id),
             'no_item' => ucwords(strtolower($request->no_item)),
             'variabel' => $request->variabel,
             'soal' => $request->soal,

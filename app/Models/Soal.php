@@ -14,6 +14,7 @@ class Soal extends Model
     protected $table = 'soals';
 
     protected $fillable = [
+        'id',
         'no_item',
         'variabel',
         'soal',

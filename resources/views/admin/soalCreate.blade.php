@@ -15,6 +15,10 @@
         <form action="{{ route('admin.soal.store') }}" method="post">
             {{ csrf_field() }}
             <div class="form-group">
+                <label>Nomor Aplikasi:</label>
+                <input type="number" class="form-control" name="id" required>
+            </div>
+            <div class="form-group">
                 <label>Nomor Item:</label>
                 <input type="text" class="form-control" name="no_item" required>
             </div>

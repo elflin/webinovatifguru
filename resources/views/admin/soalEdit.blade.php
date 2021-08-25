@@ -16,6 +16,10 @@
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="PATCH">
             <div class="form-group">
+                <label>Nomor Aplikasi:</label>
+                <input type="number" class="form-control" name="id" value="{{ $soal->id }}" required>
+            </div>
+            <div class="form-group">
                 <label>Nomor Item:</label>
                 <input type="text" class="form-control" name="no_item" value="{{ $soal->no_item }}" required>
             </div>

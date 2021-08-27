@@ -29,6 +29,7 @@
                     <option value="Intensi Berinovasi">Intensi Berinovasi</option>
                     <option value="Sikap Terhadap Inovasi">Sikap Terhadap Inovasi</option>
                     <option value="Norma Subyektif terhadap Kreativitas">Norma Subyektif terhadap Kreativitas</option>
+                    <option value="Efikasi Berinovasi">Efikasi Berinovasi</option>
                     <option value="Budaya Organisasi Berorientasi Pembelajaran">Budaya Organisasi Berorientasi Pembelajaran</option>
                     <option value="Self-Determination">Self-Determination</option>
 

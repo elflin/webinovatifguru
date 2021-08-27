@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class UserSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class UserSeeder extends Seeder
         $user->id = '08123';
         $user->name = 'Admin';
         $user->email = 'admin@gmail.com';
-        $user->password = Hash::make('admin123');
+        $user->password = FacadesHash::make('admin123');
         $user->usia = 20;
         $user->jenis_kelamin = 'Laki-laki';
         $user->jumlah_anak = 0;

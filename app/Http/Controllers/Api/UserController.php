@@ -33,6 +33,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->lama_mengajar = 0;
+        $user->jumlah_anak = 0;
+        $user->usia= 0;
+        $user->isIlmuPendidikan = true;
 
         $user->save();
 

@@ -16,7 +16,7 @@ class SoalResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'no_item,' => $this->no_item,
+            'no_item' => $this->no_item,
             'variabel' => $this->variabel,
             'soal' => $this->soal,
             'dimensi' => $this->dimensi,

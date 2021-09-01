@@ -18,7 +18,7 @@ class HistoryController extends Controller
         $history->user()->associate($user);
         $history->save();
 
-        return['status'=>'Suksess'];
+        return['status'=>'Suksess', 'historyId'=>$history->id];
         // return $user;
     }
 

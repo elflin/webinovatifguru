@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label>Variabel:</label>
                 <select name="variabel" class="custom-select">
-                    <option value="Perilaku Inovatif Guru">Perilaku Inovartif Guru</option>
+                    <option value="Perilaku Inovatif Guru">Perilaku Inovatif Guru</option>
                     <option value="Intensi Berinovasi">Intensi Berinovasi</option>
                     <option value="Sikap Terhadap Inovasi">Sikap Terhadap Inovasi</option>
                     <option value="Norma Subyektif terhadap Kreativitas">Norma Subyektif terhadap Kreativitas</option>

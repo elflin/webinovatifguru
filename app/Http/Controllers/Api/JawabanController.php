@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\JawabanResource;
 use App\Models\history;
 use App\Models\Jawaban;
+use App\Models\skala;
 use App\Models\Soal;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JawabanController extends Controller
@@ -122,6 +124,26 @@ class JawabanController extends Controller
             }
 
             //Hitung value JANGAN LUPA
+            $user = User::where('id', $userId)->first();
+            $skalas = skala::where('jenjang_mengajar', $user->jenjang_mengajar)->get();
+
+            foreach($skalas as $skala){
+                foreach($variabelDict as $variabelname){
+                    if($skala->variabel == $variabelname){
+                        if($variabelList[$variabelname] < $skala->sangat_rendah){
+                            $valueList[$variabelname] = "Sangat Rendah";
+                        }else if($variabelList[$variabelname] < $skala->rendah){
+                            $valueList[$variabelname] = "Rendah";
+                        }else if($variabelList[$variabelname] < $skala->cukup){
+                            $valueList[$variabelname] = "Cukup";
+                        }else if($variabelList[$variabelname] < $skala->tinggi){
+                            $valueList[$variabelname] = "Tinggi";
+                        }else{
+                            $valueList[$variabelname] = "Sangat Tinggi";
+                        }
+                    }
+                }
+            }
 
             $temp =array(
                 'historyId'=> $history->id,

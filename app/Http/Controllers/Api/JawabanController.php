@@ -64,7 +64,7 @@ class JawabanController extends Controller
         );
 
         $userId = $request->userId;
-        $histories = history::where('uid', $userId)->get();
+        $histories = history::where('uid', $userId)->orderBy('id', 'desc')->get();
         $historyList = array();
         
         foreach($histories as $history){
@@ -108,6 +108,8 @@ class JawabanController extends Controller
                 'Identified Regulation'=>0
             );
 
+            $lastupdated = null;
+
             foreach($history->soal as $jawaban){
                 // return $jawaban;
                 foreach($variabelDict as $var){
@@ -121,6 +123,8 @@ class JawabanController extends Controller
                         $dimensiList[$dimensi]+= $jawaban->pivot->nilai;
                     }
                 }
+
+                $lastupdated = $jawaban->pivot->created_at->format('l, m-d-Y');
             }
 
             //Hitung value JANGAN LUPA
@@ -149,12 +153,13 @@ class JawabanController extends Controller
                 'historyId'=> $history->id,
                 'variabel'=> $variabelList,
                 'value'=> $valueList,
-                'dimensi'=>$dimensiList
+                'dimensi'=>$dimensiList,
+                'updated_at'=>$lastupdated
             );
 
             array_push($historyList, $temp);
         }
 
-        return $historyList;
+        return ["data" => $historyList];
     }
 }

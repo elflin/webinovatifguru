@@ -256,7 +256,7 @@ class SkalaSeeder extends Seeder
         $skala->variabel = "Perilaku Inovatif Guru";
         $skala->sangat_rendah = 23.5;
         $skala->rendah = 29;
-        $skala->cukup = 24.5;
+        $skala->cukup = 34.5;
         $skala->tinggi = 40;
         $skala->save();
 

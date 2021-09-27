@@ -19,7 +19,7 @@ use App\Http\controllers\Admin\HistoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 Auth::routes();

@@ -33,7 +33,7 @@
 
 </head>
 <body>
-    @if(!\Request::is('login'))
+    @if(Auth::user())
     <div id="wrapper">
         @include('inc.navbar')
         @yield('content')

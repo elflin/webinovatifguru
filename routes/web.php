@@ -7,6 +7,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\controllers\Admin\HistoryController;
 
+use App\Http\Controllers\User\DashboardController as UDashboardController;
+use App\Http\Controllers\User\SurveyController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +26,10 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
+Route::get('/contactUs', function () {
+    return view('contactUs');
+})->name('contactUs');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,4 +44,14 @@ Route::group([
     Route::resource('user', UserController::class);
     Route::resource('history', HistoryController::class);
     Route::patch('user/{id}/promote', [UserController::class, 'promote'])->name('user.promote');
+});
+
+Route::group([
+    'middleware' => 'user',
+    'prefix' => 'user',
+    'as' => 'user.'
+], function() {
+    Route::get('/', [UDashboardController::class, 'index']);
+    Route::get('/contactUs', [UDashboardController::class, 'contactUs'])->name('contactUs');
+    Route::resource('survey', SurveyController::class);
 });

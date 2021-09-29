@@ -1,7 +1,63 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div class="row align-items-center">
+    <div class="col-4">
+        <img src="{{ asset('img/dummy/loginpic.PNG') }}" alt="" class="vh-100">
+    </div>
+    <div class="col-8 justify-content-center">
+        <div class="w-50 m-auto">
+            <div class="d-flex justify-content-lg-center">
+                <img src="{{ asset('img/logo/logogram.png') }}" alt="" width="100" class="">
+            </div>
+            <div class="py-4 text-center">
+                <h1 class="font-weight-bold">
+                    Login
+                </h1>
+                <p>
+                    Anda perlu masuk untuk mendapatkan akses lengkap
+                </p>
+            </div>
+            <form action="{{ route('login') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label class="font-weight-bold">Username/Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-bold">Kata Sandi</label>
+                    <input type="password" class="form-control" name="password" required>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="text-right">
+                    <a href="" class="text-info font-weight-bold">
+                        Lupa Kata Sandi?
+                    </a>
+                </div>
+                <div class="text-center py-4">
+                    <button type="submit" class="btn btn-info w-100 font-weight-bold">Masuk</button>
+                </div>
+                <p class="text-center">
+                    Belum memiliki akun?
+                    <a href="" class="text-info font-weight-bold">Register sekarang</a>
+                </p>
+            </form>                
+        </div>
+    </div>
+</div>
+
+{{-- DUMMY LARAVEL LOGIN --}}
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -70,4 +126,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

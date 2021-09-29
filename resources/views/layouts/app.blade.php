@@ -33,7 +33,8 @@
 
 </head>
 <body>
-    @if(Auth::user())
+    @if(Auth::check())
+        @if (Auth::user()->isAdmin == 1)
     <div id="wrapper">
         @include('inc.navbar')
         @yield('content')
@@ -63,6 +64,9 @@
             </div>
         </div>
     </div>
+    @else 
+        @yield('content')
+    @endif
     @else
         @yield('content')
     @endif

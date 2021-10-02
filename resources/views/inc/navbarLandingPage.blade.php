@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="nav-item pt-4">
-                <a class="nav-link text-info px-3 font-weight-bold" href="#">Halo, {{ Auth::user()->name }}!</a>
+                <a class="nav-link text-info px-3 font-weight-bold" href="{{ route('user.profile.index') }}">Halo, {{ Auth::user()->name }}!</a>
             </li>
             @else
             <li class="nav-item pt-4 pl-4 pr-1">

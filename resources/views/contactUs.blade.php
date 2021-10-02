@@ -26,7 +26,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label class="font-weight-bold">Nama</label>
-            <input type="number" class="form-control" name="nama" required>
+            <input type="text" class="form-control" name="nama" required>
         </div>
         <div class="form-group">
             <label class="font-weight-bold">Asal Sekolah</label>
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <label class="font-weight-bold">Email</label>
-            <input type="text" class="form-control" name="email" required>
+            <input type="email" class="form-control" name="email" required>
         </div>
         <div class="form-group">
             <label class="font-weight-bold">Pesan</label>

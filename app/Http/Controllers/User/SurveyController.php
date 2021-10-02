@@ -46,7 +46,7 @@ class SurveyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.surveySoal');
     }
 
     /**

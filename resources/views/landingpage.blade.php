@@ -83,7 +83,7 @@
                         <h3 class="text-info font-weight-bold">Training</h3>
                     </div>
                 </a>
-                <a href="" class="btn btn-light col mx-3 bg-white p-5 rounded">
+                {{-- <a href="" class="btn btn-light col mx-3 bg-white p-5 rounded">
                     <div class="row justify-content-center">
                         <img src="{{ asset('img/assets/survey.png') }}" alt="" class="w-25">
                     </div>
@@ -98,7 +98,7 @@
                     <div class="row justify-content-center">
                         <h3 class="text-info font-weight-bold">Lorem</h3>
                     </div>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

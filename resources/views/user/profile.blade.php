@@ -24,76 +24,75 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-4">
-            <div class="bg-light2 d-flex align-items-center border-bottom py-3">
+            <a data-toggle="collapse" href="#akunSaya" role="button" class=" active d-flex align-items-center border-bottom p-3 text-decoration-none text-dark">
                 <i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>
                 <h5 class="m-0 ml-3 font-weight-bold">Akun Saya</h5>
-            </div>
-            <div class="d-flex align-items-center border-bottom py-3">
+            </a>
+            <a data-toggle="collapse" href="#dataSaya" role="button" class="d-flex align-items-center border-bottom p-3 text-decoration-none text-dark">
                 <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
                 <h5 class="m-0 ml-3 font-weight-bold">Data saya</h5>
-            </div>
-            <div class="d-flex align-items-center text-dark py-3">
+            </a>
+            <a data-toggle="modal" data-target="#logoutModal" role="button" class="d-flex align-items-center text-dark p-3">
                 <i class="fa fa-sign-out-alt fa-lg text-danger" aria-hidden="true"></i>
                 <h5 class="m-0 ml-3 font-weight-bold text-danger">Logout</h5>
-            </div>
+            </a>
         </div>
-        <div class="col-8 justify-content-center">
+        <div class="col-8 justify-content-center" id="cardProfile">
             {{-- AKUN SAYA --}}
-            <div class=" d-none">
-
-            <div class="d-flex">
-                <div class=" pl-2 pr-4 position-relative">
-                    <img class="img-profile rounded-circle" src="{{ asset('img/profilepic.png') }}" width="100">
-                    <i class="fa fa-pencil text-white p-3 rounded-circle bg-info position-absolute" style="right: 0; top: 5;" aria-hidden="true"></i>
-                </div>
-                <div class="w-100">
-                    <h4 class="font-weight-bold">
-                        Akun Saya
-                    </h4>
-                    <div class="py-4">
-                        <form action="" method="post">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <label class="font-weight-bold">Username</label>
-                                <input type="text" class="form-control" name="nama" value="{{ Auth::user()->name }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
-                            </div>
-                            <div class="">
-                                <button type="submit" class="btn btn-info px-4 font-weight-bold">Simpan</button>
-                            </div>
-                        </form>
+            <div class="collapse show" id="akunSaya" data-parent="#cardProfile">
+                <div class="d-flex">
+                    <div class=" pl-2 pr-4 mr-4 position-relative">
+                        <img class="img-profile rounded-circle" src="{{ asset('img/profilepic.png') }}" width="120">
+                        <i class="fas fa-pencil-alt text-white p-3 rounded-circle bg-info position-absolute" style="right: 10%; top: 11%;" aria-hidden="true"></i>
                     </div>
-                    <h4 class="mt-5 font-weight-bold">
-                        Ganti Kata Sandi
-                    </h4>
-                    <div class="py-4">
-                        <form action="" method="post">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <label class="font-weight-bold">Kata Sandi</label>
-                                <input type="password" class="form-control" name="password" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Kata Sandi Baru</label>
-                                <input type="password" class="form-control" name="new-password" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">Konfirmasi Kata Sandi Baru</label>
-                                <input type="password" class="form-control" name="confirm-new-password" required>
-                            </div>
-                            <div class="">
-                                <button type="submit" class="btn btn-info px-4 font-weight-bold">Simpan</button>
-                            </div>
-                        </form>
+                    <div class="w-100">
+                        <h4 class="font-weight-bold">
+                            Akun Saya
+                        </h4>
+                        <div class="py-4">
+                            <form action="" method="post">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Username</label>
+                                    <input type="text" class="form-control" name="nama" value="{{ Auth::user()->name }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Email</label>
+                                    <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="btn btn-info px-4 font-weight-bold">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                        <h4 class="mt-5 font-weight-bold">
+                            Ganti Kata Sandi
+                        </h4>
+                        <div class="py-4">
+                            <form action="" method="post">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Kata Sandi</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Kata Sandi Baru</label>
+                                    <input type="password" class="form-control" name="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Konfirmasi Kata Sandi Baru</label>
+                                    <input type="password" class="form-control" name="confirm-new-password" required>
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="btn btn-info px-4 font-weight-bold">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             {{-- DATA SAYA --}}
-            <div class="">
+            <div class="collapse" id="dataSaya" data-parent="#cardProfile">
                 <h4 class="font-weight-bold">
                     Data Saya
                 </h4>

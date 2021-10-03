@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index() {
         if (Auth::user()) {
-            return view('user.survey');
+            return redirect()->route('user.survey.index');
         }
 
         return redirect()->route('login');

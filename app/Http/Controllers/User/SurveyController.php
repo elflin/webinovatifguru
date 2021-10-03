@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\history;
+use App\Models\Soal;
+use Auth;
 
 class SurveyController extends Controller
 {
@@ -14,7 +17,21 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        return view('user.survey');
+        $variabels = array(
+            'Perilaku Inovatif Guru',
+            'Intensi Berinovasi',
+            'Sikap Terhadap Inovasi',
+            'Norma Subyektif terhadap Kreativitas',
+            'Efikasi Berinovasi',
+            'Budaya Organisasi Berorientasi Pembelajaran',
+            'Self-Determination'
+        );
+
+        $history = history::where('uid', Auth::user()->id)
+            ->latest()
+            ->get();
+
+        return view('user.survey', compact('variabels', 'history'));
     }
 
     /**
@@ -41,12 +58,18 @@ class SurveyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  String  $variabel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($variabel)
     {
-        return view('user.surveySoal');
+        $soals = null;
+
+        $soals = Soal::where('variabel', $variabel)
+        ->orderBy('id')
+        ->get();
+
+        return view('user.surveySoal', compact('soals'));
     }
 
     /**

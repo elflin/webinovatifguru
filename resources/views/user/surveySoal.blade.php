@@ -17,30 +17,32 @@
 
 <div class="container mt-2">
     {{-- LOOP --}}
-        <div class="my-5">
-            <div class="d-flex">
-                <h5 class=" font-weight-bold">
-                    1.
-                </h5>
-                <h5 class=" font-weight-bold ml-3">
-                    Lorem ipsum is a simply and simple text?
-                </h5>
+    @foreach ($soals as $soal)
+    <div class="my-5">
+        <div class="d-flex">
+            <h5 class=" font-weight-bold">
+                1.
+            </h5>
+            <h5 class=" font-weight-bold ml-3">
+                {{ $soal->soal }}
+            </h5>
+        </div>
+        <div class=" mx-4">
+            <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
+                <input type="radio" name="foo" value="1">
+                <span class="mx-2">Sangat Setuju</span>
             </div>
-            <div class=" mx-4">
-                <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
-                    <input type="radio" name="foo" value="1">
-                    <span class="mx-2">Sangat Setuju</span>
-                </div>
-                <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
-                    <input type="radio" name="foo" value="1">
-                    <span class="mx-2">Setuju</span>
-                </div>
-                <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
-                    <input type="radio" name="foo" value="1">
-                    <span class="mx-2">Tidak Setuju</span>
-                </div>
+            <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
+                <input type="radio" name="foo" value="1">
+                <span class="mx-2">Setuju</span>
+            </div>
+            <div class="rounded my-3 p-3 bg-light2 d-flex align-items-center">
+                <input type="radio" name="foo" value="1">
+                <span class="mx-2">Tidak Setuju</span>
             </div>
         </div>
+    </div>
+    @endforeach
         <button type="button" data-toggle="modal" data-target="#nilaiModal" class=" w-100 btn btn-info text-white font-weight-bold py-3">
             Selesai
         </button>

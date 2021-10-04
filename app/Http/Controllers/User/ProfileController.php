@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -69,7 +70,21 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update([
+            'name' => $request->nama,
+            'usia' => $request->usia,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'status_pernikahan' => $request->status_pernikahan,
+            'jumlah_anak' => $request->jumlah_anak,
+            'asal_sekolah' => $request->asal_sekolah,
+            'lama_mengajar' => $request->lama_mengajar,
+            'jenjang_mengajar' => $request->jenjang_mengajar,
+            'mata_pelajaran' => $request->mata_pelajaran,
+            'pendidikan' => $request->pendidikan,
+            'isIlmuPendidikan' => $request->isIlmuPendidikan,
+        ]);
+        return redirect()->route('user.profile.index');
     }
 
     /**

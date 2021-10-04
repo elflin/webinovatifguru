@@ -16,9 +16,9 @@
                 <a class="nav-link font-weight-bold text-dark" href="#">About Us</a>
             </li>
             <li class="p-4">
-                <div class="sidebar-brand-icon">
+                <a href="/" class="sidebar-brand-icon">
                     <img src="{{ asset('img/logo/main-logo.png') }}" alt="" width="75">
-                </div>
+                </a>
             </li>
             <li class="nav-item p-4 d-flex align-items-center">
                 <a class="nav-link font-weight-bold text-dark" href="{{ route('contactUs') }}">Contact Us</a>

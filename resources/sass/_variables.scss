@@ -23,7 +23,12 @@ $cyan: #6cb2eb;
 $theme-colors: ("info": #5a2f70,
     "secondary": #ebebeb,
     "light2": #f5f6f9,
+    "light3": #f7f2f6,
     "success": #25b22f,
     "softPurple": #cacaf9,
     "warning": #fdb400,
 );
+
+.cursor-pointer {
+    cursor: pointer;
+}

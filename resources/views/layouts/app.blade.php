@@ -26,11 +26,17 @@
         rel="stylesheet">
 
     <link href="{{ asset('css/customadmin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- Web icon --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo/logo100.png') }}">
+
+    {{-- Jquery --}}
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 </head>
 <body>
     @if(Auth::check())
@@ -74,7 +80,6 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Table plugins -->

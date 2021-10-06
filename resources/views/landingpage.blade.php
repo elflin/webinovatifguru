@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Guru Inovatif')
 @section('content')
 
 @include('inc.navbarLandingPage')

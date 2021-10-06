@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Survey')
 @section('content')
 
 @include('inc.navbarLandingPage')
@@ -17,162 +17,167 @@
 
 <div class="container mt-2">
     {{-- LOOP --}}
-    @foreach ($soals as $soal)
-    <div class="my-5">
-        <div class="d-flex">
-            <h5 class=" font-weight-bold">
-                {{ $loop->iteration }}.
-            </h5>
-            <h5 class=" font-weight-bold ml-3">
-                {{ $soal->soal }}
-            </h5>
+    <form action="{{ route('user.survey.store') }}" method="post">
+        {{ csrf_field() }}
+        @foreach ($soals as $soal)
+        <div class="my-5">
+            <div class="d-flex">
+                <h5 class=" font-weight-bold">
+                    {{ $loop->iteration }}.
+                </h5>
+                <h5 class=" font-weight-bold ml-3">
+                    {{ $soal->soal }}
+                </h5>
+            </div>
+            @if ($soal->variabel == 'Perilaku Inovatif Guru')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Sangat jarang</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Jarang</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Sering</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <span class="mx-2">Sangat sering</span>
+                </label>
+            </div>
+            @elseif ($soal->variabel == 'Intensi Berinovasi' || $soal->variabel == 'Sikap Terhadap Inovasi' || $soal->variabel == 'Budaya Organisasi Berorientasi Pembelajaran')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Sangat tidak setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Tidak setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <span class="mx-2">Sangat setuju</span>
+                </label>
+            </div>
+            @elseif ($soal->variabel == 'Norma Subyektif terhadap Kreativitas')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Hampir tidak ada</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Beberapa tidak ada</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Beberapa semua</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <span class="mx-2">Hampir semua</span>
+                </label>
+            </div>
+            @elseif ($soal->variabel == 'Efikasi Berinovasi')
+            @if ($soal->ukuran == 'Setuju')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Sangat tidak setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Tidak setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Setuju</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <span class="mx-2">Sangat setuju</span>
+                </label>
+            </div>
+            @elseif ($soal->ukuran == 'Terbukti')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Sangat jarang terbukti</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Jarang terbukti</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Sering terbukti</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <span class="mx-2">Sangat sering terbukti</span>
+                </label>
+            </div>
+            @endif
+            @elseif ($soal->variabel == 'Self-Determination')
+            <div class=" mx-4">
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <span class="mx-2">Sangat tidak sesuai</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <span class="mx-2">Tidak sesuai</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <span class="mx-2">Cukup</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <span class="mx-2">Sesuai</span>
+                </label>
+                <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
+                    <input type="radio" name="foo" value="5">
+                    <span class="mx-2">Sangat sesuai</span>
+                </label>
+            </div>
+            @endif
         </div>
-        @if ($soal->variabel == 'Perilaku Inovatif Guru')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Sangat jarang</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Jarang</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Sering</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="5">
-                <span class="mx-2">Sangat sering</span>
-            </label>
-        </div>
-        @elseif ($soal->variabel == 'Intensi Berinovasi' || $soal->variabel == 'Sikap Terhadap Inovasi' || $soal->variabel == 'Budaya Organisasi Berorientasi Pembelajaran')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Sangat tidak setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Tidak setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="5">
-                <span class="mx-2">Sangat setuju</span>
-            </label>
-        </div>
-        @elseif ($soal->variabel == 'Norma Subyektif terhadap Kreativitas')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Hampir tidak ada</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Beberapa tidak ada</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Beberapa semua</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="5">
-                <span class="mx-2">Hampir semua</span>
-            </label>
-        </div>
-        @elseif ($soal->variabel == 'Efikasi Berinovasi')
-        @if ($soal->ukuran == 'Setuju')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Sangat tidak setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Tidak setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Setuju</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="5">
-                <span class="mx-2">Sangat setuju</span>
-            </label>
-        </div>
-        @elseif ($soal->ukuran == 'Terbukti')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Sangat jarang terbukti</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Jarang terbukti</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Sering terbukti</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="5">
-                <span class="mx-2">Sangat sering terbukti</span>
-            </label>
-        </div>
-        @endif
-        @elseif ($soal->variabel == 'Self-Determination')
-        <div class=" mx-4">
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="1">
-                <span class="mx-2">Sangat tidak sesuai</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="2">
-                <span class="mx-2">Tidak sesuai</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="3">
-                <span class="mx-2">Cukup</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="{{ $soal->no_item }}" value="4">
-                <span class="mx-2">Sesuai</span>
-            </label>
-            <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                <input type="radio" name="foo" value="5">
-                <span class="mx-2">Sangat sesuai</span>
-            </label>
-        </div>
-        @endif
-    </div>
-    @endforeach
-        <button type="button" data-toggle="modal" data-target="#nilaiModal" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+        @endforeach
+        <button type="submit" class=" w-100 btn btn-info text-white font-weight-bold py-3">
             Selesai
         </button>
+        {{-- <button type="button" data-toggle="modal" data-target="#nilaiModal" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+            Selesai
+        </button> --}}
     </form>
 </div>
 

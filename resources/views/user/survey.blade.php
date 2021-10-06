@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Survey')
 @section('content')
 
 @include('inc.navbarLandingPage')
@@ -58,9 +58,9 @@
                                 </div>
                                 <h6 class="text-success font-weight-bold m-0">Sangat Tinggi</h6>
                             </div>
-                            <a class="d-flex text-decoration-none text-gray-700 align-items-center " id="muter-" data-toggle="collapse" href="#detailRiwayat-" role="button">
+                            <a class="d-flex text-decoration-none text-gray-700 align-items-center triggerRotate" id="muter-" data-toggle="collapse" href="#detailRiwayat-" role="button">
                                 <p class=" m-0">Senin, 30-08-2021</p>
-                                <i class="fa fa-chevron-down mx-2" aria-hidden="true"></i>
+                                <i class="fa fa-chevron-down mx-2 rotateIcon triggerRotate" aria-hidden="true"></i>
                             </a>
                         </div>
                         <div id="detailRiwayat-" class="collapse container ml-5">
@@ -98,9 +98,9 @@
 @include('inc.footerLandingPage')
 
 <script>
-$(".fa-chevron-down").click(function(){
-    $(this i).toggleClass("fa-rotate-180down")  ; 
-})
+$(".triggerRotate").click(function(){
+    $(".rotateIcon").toggleClass("flipDown"); 
+});
 </script>
 
 @endsection

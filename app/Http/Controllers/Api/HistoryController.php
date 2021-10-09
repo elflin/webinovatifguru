@@ -36,7 +36,5 @@ class HistoryController extends Controller
             ->first();
             return new HistoryResource($history);
         }
-
-        
     }
 }

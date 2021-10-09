@@ -59,4 +59,5 @@ Route::group([
     Route::get('/contactUs', [UDashboardController::class, 'contactUs'])->name('contactUs');
     Route::resource('survey', SurveyController::class);
     Route::resource('profile', ProfileController::class);
+    Route::patch('survey/{id}/createHistory', [SurveyController::class, 'createHistory'])->name('survey.createHistory');
 });

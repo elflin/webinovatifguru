@@ -9,5 +9,10 @@ class Jawaban extends Pivot
     //
     protected $table = 'jawabans';
 
-    
+    protected $fillable = [
+        'id',
+        'historyId',
+        'soalId',
+        'nilai',
+    ];
 }

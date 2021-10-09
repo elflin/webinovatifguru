@@ -10,7 +10,7 @@
 
 <div class="row justify-content-center py-4">
     <div class=" d-flex align-items-center rounded py-4 px-4 bg-softPurple position-relative">
-        <h4 class="text-info font-weight-bold m-0 ml-5 pl-5 float-right">Perilaku Inovatif Guru</h4>
+        <h4 class="text-info font-weight-bold m-0 ml-5 pl-5 float-right">{{ $soals[0]->variabel }}</h4>
         <img src="{{ asset('img/assets/ilustrasi guru 2.png') }}" alt="" width="100" class=" position-absolute" style="left: 1; bottom: 0">
     </div>
 </div>
@@ -32,69 +32,69 @@
             @if ($soal->variabel == 'Perilaku Inovatif Guru')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Sangat jarang</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Jarang</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Sering</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Sangat sering</span>
                 </label>
             </div>
             @elseif ($soal->variabel == 'Intensi Berinovasi' || $soal->variabel == 'Sikap Terhadap Inovasi' || $soal->variabel == 'Budaya Organisasi Berorientasi Pembelajaran')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Sangat tidak setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Tidak setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Sangat setuju</span>
                 </label>
             </div>
             @elseif ($soal->variabel == 'Norma Subyektif terhadap Kreativitas')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Hampir tidak ada</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Beberapa tidak ada</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Beberapa semua</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Hampir semua</span>
                 </label>
             </div>
@@ -102,46 +102,46 @@
             @if ($soal->ukuran == 'Setuju')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Sangat tidak setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Tidak setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Setuju</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Sangat setuju</span>
                 </label>
             </div>
             @elseif ($soal->ukuran == 'Terbukti')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Sangat jarang terbukti</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Jarang terbukti</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Sering terbukti</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Sangat sering terbukti</span>
                 </label>
             </div>
@@ -149,30 +149,33 @@
             @elseif ($soal->variabel == 'Self-Determination')
             <div class=" mx-4">
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="1">
+                    <input type="radio" name="{{ $loop->iteration }}" value="1" required>
                     <span class="mx-2">Sangat tidak sesuai</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="2">
+                    <input type="radio" name="{{ $loop->iteration }}" value="2" required>
                     <span class="mx-2">Tidak sesuai</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="3">
+                    <input type="radio" name="{{ $loop->iteration }}" value="3" required>
                     <span class="mx-2">Cukup</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="{{ $soal->no_item }}" value="4">
+                    <input type="radio" name="{{ $loop->iteration }}" value="4" required>
                     <span class="mx-2">Sesuai</span>
                 </label>
                 <label class="rounded my-3 p-3 bg-light3 d-flex align-items-center cursor-pointer">
-                    <input type="radio" name="foo" value="5">
+                    <input type="radio" name="{{ $loop->iteration }}" value="5" required>
                     <span class="mx-2">Sangat sesuai</span>
                 </label>
             </div>
             @endif
         </div>
+        <input type="hidden" value="{{ $loop->iteration }}" name="jumlahSoal">
+        <input type="hidden" value="{{ $soal->id }}" name="soalId{{ $loop->iteration }}">
         @endforeach
-        <button type="submit" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+        <input type="hidden" value="{{ $history[0]->id }}" name="historyId">
+        <button type="submit" class=" w-100 btn btn-info text-white font-weight-bold py-3" id="submitSoal" disabled="disabled">
             Selesai
         </button>
         {{-- <button type="button" data-toggle="modal" data-target="#nilaiModal" class=" w-100 btn btn-info text-white font-weight-bold py-3">
@@ -224,5 +227,9 @@
 
 
 @include('inc.footerLandingPage')
+
+<script>
+    $("input:radio").change(function () {$("#submitSoal").prop("disabled", false);});
+</script>
 
 @endsection

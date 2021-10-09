@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Login')
 @section('content')
 
 <div class="row align-items-center">
@@ -125,5 +125,5 @@
             </div>
         </div>
     </div>
-</div>
-@endsection --}}
+</div> --}}
+@endsection 

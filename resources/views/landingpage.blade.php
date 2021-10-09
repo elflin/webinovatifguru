@@ -66,37 +66,21 @@
                     Anda dapat memilih variabel atau aktivitas tersedia
                 </h4>
             </div>
-            <div class="row align-items-center py-3">
-                <a href="{{ route('user.survey.index') }}" class="btn btn-light col mx-3 bg-white p-5 rounded">
-                    <div class="row justify-content-center">
-                        <img src="{{ asset('img/assets/survey.png') }}" alt="" class="w-25">
+            <div class=" d-inline-block py-3">
+                <a href="{{ route('user.survey.index') }}" class="btn btn-light col mx-3 bg-white py-5 rounded w-25">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('img/assets/survey.png') }}" alt="" class="w-50">
                     </div>
-                    <div class="row justify-content-center">
-                        <h3 class="text-info font-weight-bold">Survey</h3>
-                    </div>
-                </a>
-                <a href="" class="btn btn-light col mx-3 bg-white p-5 rounded">
-                    <div class="row justify-content-center">
-                        <img src="{{ asset('img/assets/training.png') }}" alt="" class="w-25">
-                    </div>
-                    <div class="row justify-content-center">
-                        <h3 class="text-info font-weight-bold">Training</h3>
+                    <div class="d-flex justify-content-center">
+                        <h2 class="text-info font-weight-bold">Survey</h2>
                     </div>
                 </a>
-                {{-- <a href="" class="btn btn-light col mx-3 bg-white p-5 rounded">
-                    <div class="row justify-content-center">
-                        <img src="{{ asset('img/assets/survey.png') }}" alt="" class="w-25">
+                {{-- <a href="" class="btn btn-light col mx-3 bg-white py-5 rounded w-25">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('img/assets/training.png') }}" alt="" class="w-50">
                     </div>
-                    <div class="row justify-content-center">
-                        <h3 class="text-info font-weight-bold">Lorem</h3>
-                    </div>
-                </a>
-                <a href="" class="btn btn-light col mx-3 bg-white p-5 rounded">
-                    <div class="row justify-content-center">
-                        <img src="{{ asset('img/assets/survey.png') }}" alt="" class="w-25">
-                    </div>
-                    <div class="row justify-content-center">
-                        <h3 class="text-info font-weight-bold">Lorem</h3>
+                    <div class="d-flex justify-content-center">
+                        <h2 class="text-info font-weight-bold">Training</h2>
                     </div>
                 </a> --}}
             </div>

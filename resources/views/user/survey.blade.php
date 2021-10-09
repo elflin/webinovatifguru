@@ -49,33 +49,83 @@
                     Riwayat
                 </h5>
                 <div>
-
+                    @foreach ($historyList as $history)
+                    @if ( $history['variabel'][$variabel] != 0)
                     <div class="rounded bg-light2 px-3 py-3 my-2">
                         <div class=" d-flex justify-content-lg-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <div class=" mx-2" style="background-image: url({{ asset('img/assets/sangat-tinggi.png') }}); background-size: cover; background-position: center;">
-                                    <h3 class=" font-weight-bold text-white m-0 p-2">90</h3>
+                                @if ($history['value'][$variabel] == "Sangat Tinggi")
+                                <div class=" mx-2 p-1" style="background-image: url({{ asset('img/assets/sangat-tinggi.png') }}); background-size: cover; background-position: center;">
+                                    <h3 class=" font-weight-bold text-white m-0 p-2">{{ $history['variabel'][$variabel] }}</h3>
                                 </div>
-                                <h6 class="text-success font-weight-bold m-0">Sangat Tinggi</h6>
+                                <h6 class="text-success font-weight-bold m-0">{{ $history['value'][$variabel] }}</h6>
+                                @elseif ($history['value'][$variabel] == "Tinggi")
+                                <div class=" mx-2 p-1" style="background-image: url({{ asset('img/assets/tinggi.png') }}); background-size: cover; background-position: center;">
+                                    <h3 class=" font-weight-bold text-white m-0 p-2">{{ $history['variabel'][$variabel] }}</h3>
+                                </div>
+                                <h6 class="text-orangeBadge font-weight-bold m-0">{{ $history['value'][$variabel] }}</h6>
+                                @elseif ($history['value'][$variabel] == "Cukup")
+                                <div class=" mx-2 p-1" style="background-image: url({{ asset('img/assets/sedang.png') }}); background-size: cover; background-position: center;">
+                                    <h3 class=" font-weight-bold text-white m-0 p-2">{{ $history['variabel'][$variabel] }}</h3>
+                                </div>
+                                <h6 class="text-warning font-weight-bold m-0">{{ $history['value'][$variabel] }}</h6>
+                                @elseif ($history['value'][$variabel] == "Rendah")
+                                <div class=" mx-2 p-1" style="background-image: url({{ asset('img/assets/sangat-rendah.png') }}); background-size: cover; background-position: center;">
+                                    <h3 class=" font-weight-bold text-white m-0 p-2">{{ $history['variabel'][$variabel] }}</h3>
+                                </div>
+                                <h6 class="text-grayBadge font-weight-bold m-0">{{ $history['value'][$variabel] }}</h6>
+                                @elseif ($history['value'][$variabel] == "Sangat Rendah")
+                                <div class=" mx-2 px-2 p-1" style="background-image: url({{ asset('img/assets/sangat-rendah.png') }}); background-size: cover; background-position: center;">
+                                    <h3 class=" font-weight-bold text-white m-0 p-2">{{ $history['variabel'][$variabel] }}</h3>
+                                </div>
+                                <h6 class="text-grayBadge font-weight-bold m-0">{{ $history['value'][$variabel] }}</h6>
+                                @endif
                             </div>
-                            <a class="d-flex text-decoration-none text-gray-700 align-items-center triggerRotate" id="muter-" data-toggle="collapse" href="#detailRiwayat-" role="button">
-                                <p class=" m-0">Senin, 30-08-2021</p>
-                                <i class="fa fa-chevron-down mx-2 rotateIcon triggerRotate" aria-hidden="true"></i>
+                            <a class="d-flex text-decoration-none text-gray-700 align-items-center triggerRotate" id="muter-" data-toggle="collapse" href="#detailRiwayat-{{ $loop->iteration }}" role="button">
+                                <p class=" m-0">{{ $history['updated_at'] }}</p>
+                                <i class="fa fa-chevron-down mx-2 rotateIcon" aria-hidden="true"></i>
                             </a>
                         </div>
-                        <div id="detailRiwayat-" class="collapse container ml-5">
+                        <div id="detailRiwayat-{{ $loop->iteration }}" class="collapse container ml-5">
                             <ul class="list-unstyled m-0">
-                                <li>Dimensi 1 : 90</li>
-                                <li>Dimensi 1 : 90</li>
-                                <li>Dimensi 1 : 90</li>    
+                                @if ($variabel == 'Perilaku Inovatif Guru')
+                                <li>Idea generation : {{ $history['dimensi']['Idea Generation'] }}</li>
+                                <li>Idea Promotion : {{ $history['dimensi']['Idea Promotion'] }}</li>
+                                <li>Idea realization : {{ $history['dimensi']['Idea Realization'] }}</li>
+                                @elseif ($variabel == 'Intensi Berinovasi')
+                                <li>Intensi Berinovasi : {{ $history['dimensi']['Intensi Berinovasi'] }}</li>
+                                @elseif ($variabel == 'Sikap Terhadap Inovasi')
+                                <li>Support for Innovation : {{ $history['dimensi']['Support For Innovation'] }}</li>
+                                <li>Risk of Tolerace : {{ $history['dimensi']['Risk Of Tolerance'] }}</li>
+                                <li>Openness to External Knowledge : {{ $history['dimensi']['Openness To External Knowledge'] }}</li>
+                                @elseif ($variabel == 'Norma Subyektif terhadap Kreativitas')
+                                <li>Family expectations for creativity : {{ $history['dimensi']['Family Expectations For Creativity'] }}</li>
+                                <li>Leader expectations for creativity : {{ $history['dimensi']['Leader Expectations For Creativity'] }}</li>
+                                <li>Customer expectations for creativity : {{ $history['dimensi']['Customer Expectations For Creativity'] }}</li>
+                                @elseif ($variabel == 'Efikasi Berinovasi')
+                                <li>Personal assumptions / beliefs about own creativity : {{ $history['dimensi']['Personal Assumptions/beliefs About Own Creativity'] }}</li>
+                                <li>Evidence-based assessment of creative self-efficacy : {{ $history['dimensi']['Evidence-based Assessment Of Creative Self-efficacy'] }}</li>
+                                @elseif ($variabel == 'Budaya Organisasi Berorientasi Pembelajaran')
+                                <li>Commitment to learning : {{ $history['dimensi']['Commitment To Learning'] }}</li>
+                                <li>Shared vision : {{ $history['dimensi']['Shared Vision'] }}</li>
+                                <li>Open-mindedness : {{ $history['dimensi']['Open-mindedness'] }}</li>
+                                <li>Intraorganizational knowledge sharing : {{ $history['dimensi']['Intraorganizational Knowledge Sharing'] }}</li>
+                                @elseif ($variabel == 'Self-Determination')
+                                <li>Intrinsic Motivation : {{ $history['dimensi']['Intrinsic Motivation'] }}</li>
+                                <li>Identified Regulation : {{ $history['dimensi']['Identified Regulation'] }}</li>
+                                @endif
                             </ul>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
                 
                 <h5 class="font-weight-bold mt-3">
                     Jurnal Survey
                 </h5>
+
+                {{-- ini gatau buat apaan --}}
                 <ul class="text-gray-700">
                     <li>
                         Diambil dari jurnal Intensi Berinovasi oleh Jane Rose pada tahun 2018
@@ -86,14 +136,30 @@
                 </ul>
             </div>
             <div class="modal-footer border-0">
+                @if ($historyList[0]['variabel'][$variabel] == 0)
                 <a href="{{ route('user.survey.show', $variabel) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
                     Mulai Mengisi
                 </a>
+                @endif
             </div>
         </div>
     </div>
 </div>
 @endforeach
+
+@if (isset($historyList[0]['updated_at']))
+    <div class="row justify-content-center mb-5">
+        <form action="{{ route('user.survey.createHistory', Auth::id()) }}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="PATCH">
+            <button type="submit" class="btn btn-info px-5 py-2">
+                <h4 class="m-0 font-weight-bold text-white ">
+                    Reset
+                </h4>
+            </button>
+        </form>
+    </div>
+@endif
 
 @include('inc.footerLandingPage')
 

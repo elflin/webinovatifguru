@@ -4,7 +4,7 @@
 
 <div class="row align-items-center">
     <div class="col-4">
-        <img src="{{ asset('img/dummy/loginpic.PNG') }}" alt="" class="vh-100">
+        <img src="{{ asset('img/foto/fototes.jpg') }}" alt="" class="vh-100">
     </div>
     <div class="col-8 justify-content-center">
         <div class="w-50 m-auto">

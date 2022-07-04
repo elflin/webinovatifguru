@@ -63,4 +63,8 @@ class User extends Authenticatable
     public function history(){
         return $this->hasMany(history::class, 'uid', 'id');
     }
+
+    public function progress_history(){
+        return $this->hasMany(progress_history::class, 'uid', 'id');
+    }
 }

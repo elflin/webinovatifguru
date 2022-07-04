@@ -36,7 +36,8 @@ class User extends Authenticatable
         'mata_pelajaran',
         'pendidikan',
         'isIlmuPendidikan',
-        'isAdmin'
+        'isAdmin',
+        'isTrainer'
     ];
 
     /**

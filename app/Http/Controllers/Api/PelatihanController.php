@@ -40,6 +40,22 @@ class PelatihanController extends Controller
     public function store(Request $request)
     {
         //
+        if(!empty($request->link)){
+            pelatihan::create([
+                'judul' => ucwords($request->judul),
+                'deskripsi' => $request->deskripsi,
+                'link' => $request->link,
+                'type' => $request->type
+            ]);
+        }else{
+            pelatihan::create([
+                'judul' => ucwords($request->judul),
+                'deskripsi' => $request->deskripsi,
+                'type' => $request->type
+            ]);
+        }
+
+        return ['status'=>'Suksess'];
     }
 
     /**
@@ -50,7 +66,7 @@ class PelatihanController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -73,7 +89,23 @@ class PelatihanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pelatihan = pelatihan::findOrFail($id);
+        if(!empty($request->link)){
+            $pelatihan->update([
+                'judul' => ucwords($request->judul),
+                'deskripsi' => $request->deskripsi,
+                'link' => $request->link,
+                'type' => $request->type
+            ]);
+        }else{
+            $pelatihan->update([
+                'judul' => ucwords($request->judul),
+                'deskripsi' => $request->deskripsi,
+                'type' => $request->type
+            ]);
+        }
+
+        return ['status'=>'Suksess'];
     }
 
     /**
@@ -84,6 +116,8 @@ class PelatihanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pelatihan = pelatihan::findOrFail($id);
+        $pelatihan->delete();
+        return ['status'=>'Suksess'];
     }
 }

@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\HistoryController;
 use App\Http\Controllers\Api\JawabanController;
 use App\Http\Controllers\Api\PelatihanController;
+use App\Http\Controllers\Api\ProgressHistoryController;
 use App\Http\Controllers\Api\SoalController;
+use App\Http\Controllers\Api\TestSoalController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +24,8 @@ Route::post('reportJawaban', [JawabanController::class, 'reportJawaban']);
 Route::post('insertJawabanByHistory', [JawabanController::class, 'insertJawabanByHistory']);
 
 Route::resource('pelatihans', PelatihanController::class);
+
+Route::post('createProgressHistory', [ProgressHistoryController::class, 'createProgressHistory']);
+Route::post('getLastProgressHistory', [ProgressHistoryController::class, 'lastProgressHistory']);
+
+Route::resource('testSoal', TestSoalController::class);

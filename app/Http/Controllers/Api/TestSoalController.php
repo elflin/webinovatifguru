@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PelatihanResource;
-use App\Models\pelatihan;
+use App\Http\Resources\TestSoalResource;
+use App\Models\test_soal;
 use Illuminate\Http\Request;
 
-class PelatihanController extends Controller
+class TestSoalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class PelatihanController extends Controller
      */
     public function index()
     {
-        $pelatihan = pelatihan::all();
-
-        return PelatihanResource::collection($pelatihan);
+        $testSoal = test_soal::all();
+        return TestSoalResource::collection($testSoal);
     }
 
     /**
@@ -40,20 +39,16 @@ class PelatihanController extends Controller
     public function store(Request $request)
     {
         //
-        if(!empty($request->link)){
-            pelatihan::create([
-                'judul' => ucwords($request->judul),
-                'deskripsi' => $request->deskripsi,
-                'link' => $request->link,
-                'type' => $request->type
-            ]);
-        }else{
-            pelatihan::create([
-                'judul' => ucwords($request->judul),
-                'deskripsi' => $request->deskripsi,
-                'type' => $request->type
-            ]);
-        }
+        test_soal::create([
+            'id_pelatihan' => $this->id_pelatihan,
+            'soal' => $this->soal,
+            'jawabanA' => $this->jawabanA,
+            'jawabanB' => $this->jawabanB,
+            'jawabanC' => $this->jawabanC,
+            'jawabanD' => $this->jawabanD,
+            'jawabanE' => $this->jawabanE,
+            'kunci' => $this->kunci
+        ]);
 
         return ['status'=>'Suksess'];
     }
@@ -66,7 +61,9 @@ class PelatihanController extends Controller
      */
     public function show($id)
     {
-        
+        //
+        $testSoal = test_soal::where('id_pelatihan', $id)->get();
+        return TestSoalResource::collection($testSoal);
     }
 
     /**
@@ -89,35 +86,30 @@ class PelatihanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pelatihan = pelatihan::findOrFail($id);
-        if(!empty($request->link)){
-            $pelatihan->update([
-                'judul' => ucwords($request->judul),
-                'deskripsi' => $request->deskripsi,
-                'link' => $request->link,
-                'type' => $request->type
-            ]);
-        }else{
-            $pelatihan->update([
-                'judul' => ucwords($request->judul),
-                'deskripsi' => $request->deskripsi,
-                'type' => $request->type
-            ]);
-        }
+        //
+        $testSoal = test_soal::findOrFail($id);
+
+        $testSoal->update([
+            'soal' => $this->soal,
+            'jawabanA' => $this->jawabanA,
+            'jawabanB' => $this->jawabanB,
+            'jawabanC' => $this->jawabanC,
+            'jawabanD' => $this->jawabanD,
+            'jawabanE' => $this->jawabanE,
+            'kunci' => $this->kunci
+        ]);
 
         return ['status'=>'Suksess'];
     }
 
     /**
-     * Remove the specified resource from storage
+     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $pelatihan = pelatihan::findOrFail($id);
-        $pelatihan->delete();
-        return ['status'=>'Suksess'];
+        //
     }
 }

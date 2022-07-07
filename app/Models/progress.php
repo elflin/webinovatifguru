@@ -22,7 +22,7 @@ class progress extends Model
     }
 
     public function test_jawaban(){
-        return $this->hasOne(test_jawaban::class, "id_progress", "id");
+        return $this->hasMany(test_jawaban::class, "id_progress", "id");
     }
 
     public function progress_histories(){

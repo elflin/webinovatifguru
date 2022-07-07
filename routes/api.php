@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\HistoryController;
 use App\Http\Controllers\Api\JawabanController;
 use App\Http\Controllers\Api\PelatihanController;
+use App\Http\Controllers\Api\ProgressController;
 use App\Http\Controllers\Api\ProgressHistoryController;
 use App\Http\Controllers\Api\SoalController;
 use App\Http\Controllers\Api\TestSoalController;
@@ -29,3 +30,7 @@ Route::post('createProgressHistory', [ProgressHistoryController::class, 'createP
 Route::post('getLastProgressHistory', [ProgressHistoryController::class, 'lastProgressHistory']);
 
 Route::resource('testSoal', TestSoalController::class);
+
+Route::post('createProgress', [ProgressController::class, 'CreateProgress']);
+Route::post('updateProgress', [ProgressController::class, 'UpdateProgress']);
+Route::post('showProgress', [ProgressController::class, 'ShowProgress']);

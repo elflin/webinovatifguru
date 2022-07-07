@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
-// use App\Http\controllers\Admin\HistoryController;
+use App\Http\controllers\Admin\HistoryController;
 
 // USER
 use App\Http\Controllers\User\DashboardController as UDashboardController;

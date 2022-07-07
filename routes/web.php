@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
+// use App\Http\controllers\Admin\HistoryController;
 
 // USER
 use App\Http\Controllers\User\DashboardController as UDashboardController;
@@ -35,7 +36,7 @@ Route::get('/contactUs', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
     'middleware' => 'admin',

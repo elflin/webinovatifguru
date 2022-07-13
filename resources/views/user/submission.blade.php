@@ -1,0 +1,73 @@
+@extends('layouts.app')
+@section('title', 'Profil')
+@section('content')
+
+@include('inc.navbarLandingPage')
+
+<div class="pt-5"></div>
+<div class="pt-5"></div>
+<div class="pt-5"></div>
+
+
+<div class="bg-white">
+    <div class="container py-4">
+        <h1 class="text-info font-weight-bold">Upload Submission</h1>
+        <h5 class="mt-3 font-weight-bold">
+            Pertemuan 2
+        </h5>
+
+
+    <div class="py-3 w-100 bg-light2 drag-area mt-5" >
+            <div class=" text-center">
+                <h3 class="text-danger m-0">
+                    <i class="fa fa-file-pdf"></i>
+                </h3>
+                <h4 class="headertext m-0">
+                    Drag & Drop
+                </h4>
+                <div class="">
+                    <h4 class="m-0 text-dark">
+                        or <span class="text-purple buttontext cursor-pointer">Click to Upload</span>
+                    </h4>
+                </div>
+                <input type="file" hidden id="inputPdf">
+                
+                <h6>
+                    Support: PDF*
+                </h6>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="mt-4 px-5 btn btn-info">
+                Submit
+            </button>
+        </div>
+        
+
+        {{-- <div class="rounded bg-light2 px-3 py-3 my-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="bg-green px-2 py-1 text-white rounded">
+                    <i class="fa fa-check"></i>
+                    Done
+                </div>
+                <div>
+                    Sunday, 07-10-2022
+                </div>
+            </div>
+            <a href="" class="text-decoration-none mt-3 d-flex align-items-end">
+                <h3 class="text-danger m-0">
+                    <i class="fa fa-file-pdf"></i>
+                </h3>
+                <div class="ml-2 text-dark">
+                    lorem ipsum dolor sit amet.pdf
+                </div>
+            </a>
+        </div> --}}
+    </div>
+</div>
+
+
+@include('inc.footerLandingPage')
+
+@endsection

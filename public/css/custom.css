@@ -10,3 +10,25 @@
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+.image-box {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.bg-green {
+    background-color: #1cc88a;
+}
+
+.text-indigo {
+    color: #6574cd !important
+}
+
+.drag-area {
+    border: 3px dashed #5a2f70;
+}
+
+.drag-area-active {
+    border: 3px solid #9561e2;
+}

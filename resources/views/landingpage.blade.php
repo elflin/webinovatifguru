@@ -75,14 +75,14 @@
                         <h2 class="text-info font-weight-bold">Survey</h2>
                     </div>
                 </a>
-                {{-- <a href="" class="btn btn-light col mx-3 bg-white py-5 rounded w-25">
+                <a href="{{ route('user.training.index') }}" class="btn btn-light col mx-3 bg-white py-5 rounded w-25">
                     <div class="d-flex justify-content-center">
                         <img src="{{ asset('img/assets/training.png') }}" alt="" class="w-50">
                     </div>
                     <div class="d-flex justify-content-center">
                         <h2 class="text-info font-weight-bold">Training</h2>
                     </div>
-                </a> --}}
+                </a>
             </div>
         </div>
     </div>

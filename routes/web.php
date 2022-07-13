@@ -13,7 +13,7 @@ use App\Http\controllers\Admin\HistoryController;
 use App\Http\Controllers\User\DashboardController as UDashboardController;
 use App\Http\Controllers\User\SurveyController;
 use App\Http\Controllers\User\ProfileController;
-
+use App\Http\Controllers\User\TrainingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Route::group([
     'middleware' => 'admin',
     'prefix' => 'admin',
     'as' => 'admin.'
-], function() {
+], function () {
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('soal', SoalController::class);
     Route::resource('user', UserController::class);
@@ -54,10 +54,14 @@ Route::group([
     'middleware' => 'user',
     'prefix' => 'user',
     'as' => 'user.'
-], function() {
+], function () {
     Route::get('/', [UDashboardController::class, 'index']);
     Route::get('/contactUs', [UDashboardController::class, 'contactUs'])->name('contactUs');
     Route::resource('survey', SurveyController::class);
+
+    Route::resource('training', TrainingController::class);
+    Route::get('/training/evaluation_test/{id}', [TrainingController::class, 'evaluation_test'])->name('training.evalutaion_test');
+
     Route::resource('profile', ProfileController::class);
     Route::patch('survey/{id}/createHistory', [SurveyController::class, 'createHistory'])->name('survey.createHistory');
 });

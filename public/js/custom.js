@@ -54,4 +54,74 @@
     });
   
   })(jQuery); // End of use strict
-  
+
+
+  // Drag Area
+  const dragArea = document.querySelector('.drag-area');
+  const dragText = document.querySelector('.headertext');
+
+  let button = document.querySelector('.buttontext');
+  let input = document.querySelector('#inputPdf')
+
+  let file;
+
+  button.onclick = () => {
+    input.click();
+  };
+
+  // when browse
+  input.addEventListener('change', function() {
+    file = this.files[0];
+    dragArea.classList.add('bg-light3');
+    dragArea.classList.add('drag-area-active');
+
+    displayFile();
+  })
+
+  // when file is inside the drag area
+  dragArea.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    dragText.textContent = "Release to Upload";
+    dragArea.classList.add('bg-light3');
+    dragArea.classList.add('drag-area-active');
+    // console.log("File is in the drag area")
+  });
+
+  // Then lfile leaves the area
+  dragArea.addEventListener('dragleave', () => {
+    dragText.textContent = "Drag & Drop";
+    dragArea.classList.remove('bg-light3');
+    dragArea.classList.remove('drag-area-active');
+    // console.log("File leave the drag Area")
+  });
+
+  // when the file is dropped in the drag area
+  dragArea.addEventListener('drop', (event) => {
+    event.preventDefault();
+
+    file = event.dataTransfer.files[0];
+    // console.log(file);
+
+    displayFile();
+  });
+
+  function displayFile() {
+    let fileType = file.type;
+    // console.log(fileType);
+    let validExtensions = ['application/pdf'];
+
+    if (validExtensions.includes(fileType)) {
+      let fileReader = new FileReader();
+
+      fileReader.onload = () => {
+        // let fileURL = fileReader.result;
+        // console.log(fileURL);
+        let pdfTag = `<img src="/img/icons/pdficon.png" width="130" alt=""> <div class="ml-3">${file.name}</div>`;
+        dragArea.innerHTML = pdfTag;
+      };
+      fileReader.readAsDataURL(file);
+    } else {
+      alert('This file is not in pdf format!');
+    }
+    //; console.log('The file is dropped in drag area')
+  };

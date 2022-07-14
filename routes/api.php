@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\EvaluasiJawabanController;
 use App\Http\Controllers\Api\HistoryController;
 use App\Http\Controllers\Api\JawabanController;
 use App\Http\Controllers\Api\PelatihanController;
 use App\Http\Controllers\Api\ProgressController;
 use App\Http\Controllers\Api\ProgressHistoryController;
 use App\Http\Controllers\Api\SoalController;
+use App\Http\Controllers\Api\TestJawabanController;
 use App\Http\Controllers\Api\TestSoalController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +36,8 @@ Route::resource('testSoal', TestSoalController::class);
 Route::post('createProgress', [ProgressController::class, 'CreateProgress']);
 Route::post('updateProgress', [ProgressController::class, 'UpdateProgress']);
 Route::post('showProgress', [ProgressController::class, 'ShowProgress']);
+
+Route::post('insertEvaluasiJawaban', [EvaluasiJawabanController::class, 'InsertEvaluasiJawaban']);
+Route::post('resultEvaluasiJawaban', [EvaluasiJawabanController::class, 'ResultEvaluasiJawaban']);
+
+Route::post('insertTestJawaban', [TestJawabanController::class, 'InsertTestJawaban']);

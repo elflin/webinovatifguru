@@ -22,6 +22,6 @@ class pelatihan extends Model
     }
 
     public function test_soal(){
-        return $this->hasOne(test_soal::class, "id_pelatihan", "id");
+        return $this->hasMany(test_soal::class, "id_pelatihan", "id");
     }
 }

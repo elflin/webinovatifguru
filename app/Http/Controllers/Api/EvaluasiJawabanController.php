@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EvaluationResource;
 use App\Models\evaluasi_jawaban;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -110,7 +111,7 @@ class EvaluasiJawabanController extends Controller
 
         return [
             'status'=> Response::HTTP_OK,
-            'jawaban' => $Evaluasi_Jawaban,
+            'jawaban' => new EvaluationResource($Evaluasi_Jawaban),
             'result' => $nilai
         ];
     }

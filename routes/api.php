@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\TestSoalController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
+// V1
 Route::get('getAllSoal', [SoalController::class, 'getAllSoal']);
 Route::post('getSoalBy', [SoalController::class, 'getSoalBy']);
 
@@ -26,6 +27,7 @@ Route::post('getJawabanByHistory', [JawabanController::class, 'getJawabanByHisto
 Route::post('reportJawaban', [JawabanController::class, 'reportJawaban']);
 Route::post('insertJawabanByHistory', [JawabanController::class, 'insertJawabanByHistory']);
 
+// V2
 Route::resource('pelatihans', PelatihanController::class);
 
 Route::post('createProgressHistory', [ProgressHistoryController::class, 'createProgressHistory']);

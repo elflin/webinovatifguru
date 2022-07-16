@@ -41,6 +41,16 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.evaluasi_jawaban.index') }}">
+            <i class="fas fa-fw fa-poll-h"></i>
+            <span>Evaluasi</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('admin.user.index') }}">
             <i class="fas fa-fw fa-user"></i>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // ADMIN
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EvaluasiJawabanController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\PelatihanController;
@@ -47,6 +48,7 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('test_soal', TestSoalController::class);
+    Route::resource('evaluasi_jawaban', EvaluasiJawabanController::class);
     Route::resource('pelatihan', PelatihanController::class);
     Route::get('pelatihan/{pelatihan}/soal_baru', [PelatihanController::class, 'soal_baru'])->name('pelatihan.soal_baru');
     Route::resource('progress', ProgressController::class);

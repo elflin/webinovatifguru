@@ -14,6 +14,7 @@ class pelatihan extends Model
         'judul',
         'deskripsi',
         'link',
+        'link_ppt',
         'type'
     ];
 

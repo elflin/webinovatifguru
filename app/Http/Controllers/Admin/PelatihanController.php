@@ -41,6 +41,7 @@ class PelatihanController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'link' => $request->link,
+            'link_ppt' => $request->link_ppt,
             'type' => $request->type
         ]);
         return redirect(route('admin.pelatihan.index'));
@@ -92,6 +93,7 @@ class PelatihanController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'link' => $request->link,
+            'link_ppt' => $request->link_ppt,
             'type' => $request->type
         ]);
 

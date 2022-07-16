@@ -28,8 +28,16 @@
                     <input type="text" class="form-control" name="link" required value="{{ $pelatihan->link }}">
                 </div>
                 <div class="form-group">
+                    <label>Link PPT:</label>
+                    <input type="text" class="form-control" name="link_ppt" required>
+                </div>
+                <div class="form-group">
                     <label>Tipe:</label>
-                    <input type="text" class="form-control" name="type" required value="{{ $pelatihan->type }}">
+                    <select name="type" id="type" class="form-control">
+                        <option value="tes" @if ($pelatihan->type == 'tes') selected @endif>Tes</option>
+                        <option value="materi" @if ($pelatihan->type == 'materi') selected @endif>Materi</option>
+                        <option value="consent" @if ($pelatihan->type == 'consent') selected @endif>Consent</option>
+                    </select>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Simpan</button>

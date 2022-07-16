@@ -28,6 +28,7 @@
                             <th>Judul</th>
                             <th>Deskripsi</th>
                             <th>Link</th>
+                            <th>Link PPT</th>
                             <th>Type</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -39,6 +40,7 @@
                                 <td><a href="{{route('admin.pelatihan.show', $pelatihan->id)}}">{{$pelatihan->judul}}</a></td>
                                 <td>{{ $pelatihan->deskripsi }}</td>
                                 <td>{{ $pelatihan->link }}</td>
+                                <td>{{ $pelatihan->link_ppt }}</td>
                                 <td>{{ $pelatihan->type }}</td>
                                 <td class="text-center">
                                     <a class="nav-link text-black-50" type="button"

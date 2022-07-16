@@ -27,6 +27,10 @@
                     <input type="text" class="form-control" name="link" required>
                 </div>
                 <div class="form-group">
+                    <label>Link PPT:</label>
+                    <input type="text" class="form-control" name="link_ppt" required>
+                </div>
+                <div class="form-group">
                     <label>Tipe:</label>
                     <select name="type" id="type" class="form-control">
                         <option value="tes">Tes</option>

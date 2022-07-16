@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Jawaban;
 use App\Models\history;
+use App\Models\pelatihan;
+use App\Models\progress;
+use Illuminate\Database\Eloquent\Builder;
 
 class HistoryController extends Controller
 {
@@ -57,9 +60,14 @@ class HistoryController extends Controller
         $histories = history::all()->where('uid', $id);
         $history = $histories->last();
 
-        $jawabans = Jawaban::where('historyId', $history->id)->get();
+        $pelatihans = pelatihan::whereHas('progress', function (Builder $query) use ($id) {
+            $query->whereHas('progress_histories', function (Builder $query) use ($id) {
+                $query->where('uid', $id);
+            });
+        })->where('type', 'tes')->get();
+        // $jawabans = Jawaban::where('historyId', $history->id)->get();
 
-        return view('admin.userShowHistory', compact('user', 'history', 'jawabans'));
+        return view('admin.userShowHistory', compact('user', 'history', 'pelatihans'));
     }
 
     /**

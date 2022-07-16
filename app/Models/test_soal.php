@@ -22,7 +22,7 @@ class test_soal extends Model
     ];
 
     public function test_jawaban(){
-        return $this->hasOne(test_jawaban::class, "id_test_soal", "id");
+        return $this->hasMany(test_jawaban::class, "id_test_soal", "id");
     }
 
     public function pelatihan(){

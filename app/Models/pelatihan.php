@@ -19,7 +19,7 @@ class pelatihan extends Model
     ];
 
     public function progress(){
-        return $this->hasOne(progress::class, "id_pelatihan", "id");
+        return $this->hasMany(progress::class, "id_pelatihan", "id");
     }
 
     public function test_soal(){

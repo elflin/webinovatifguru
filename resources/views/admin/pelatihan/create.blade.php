@@ -28,7 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label>Tipe:</label>
-                    <input type="text" class="form-control" name="type" required>
+                    <select name="type" id="type" class="form-control">
+                        <option value="tes">Tes</option>
+                        <option value="materi">Materi</option>
+                        <option value="consent">Consent</option>
+                    </select>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Tambah Pelatihan</button>

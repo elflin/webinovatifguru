@@ -20,9 +20,10 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
-    
+
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
@@ -60,11 +61,13 @@ class User extends Authenticatable
     ];
 
 
-    public function history(){
+    public function history()
+    {
         return $this->hasMany(history::class, 'uid', 'id');
     }
 
-    public function progress_history(){
+    public function progress_history()
+    {
         return $this->hasMany(progress_history::class, 'uid', 'id');
     }
 }

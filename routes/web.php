@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\controllers\Admin\HistoryController;
-
+use App\Http\Controllers\Firebase\FirebaseController;
 // USER
 use App\Http\Controllers\User\DashboardController as UDashboardController;
 use App\Http\Controllers\User\SurveyController;

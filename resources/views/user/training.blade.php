@@ -108,6 +108,15 @@
                     </a>
                 </div>
             </div>
+
+            <a href="{{ route('user.training.show', 1) }}" class="mt-3 text-decoration-none d-flex align-items-end">
+                <h1 class="text-info m-0">
+                    <i class="fa fa-file-upload"></i>
+                </h1>
+                <div class="ml-2 text-dark">
+                    Upload Submission
+                </div>
+            </a>
         </div>
 
         {{-- PRE TEST --}}

@@ -34,11 +34,92 @@
                             <th>Jawaban 6</th>
                             <th>Jawaban 7</th>
                             <th>Pesan Kesan</th>
+                            <th>Skor</th>
                             {{-- <th class="text-center">Actions</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($evaluasi_jawabans as $evaluasi_jawaban)
+                            @php
+                                $skor = 0;
+                                if ($evaluasi_jawaban->jawaban1 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban1 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban1 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban1 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban1 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban2 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban2 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban2 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban2 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban2 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban3 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban3 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban3 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban3 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban3 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban4 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban4 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban4 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban4 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban4 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban5 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban5 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban5 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban5 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban5 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban6 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban6 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban6 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban6 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban6 == 'ss') {
+                                    $skor += 5;
+                                }
+                                if ($evaluasi_jawaban->jawaban7 == 'sts') {
+                                    $skor += 1;
+                                } elseif ($evaluasi_jawaban->jawaban7 == 'ts') {
+                                    $skor += 2;
+                                } elseif ($evaluasi_jawaban->jawaban7 == 'r') {
+                                    $skor += 3;
+                                } elseif ($evaluasi_jawaban->jawaban7 == 's') {
+                                    $skor += 4;
+                                } elseif ($evaluasi_jawaban->jawaban7 == 'ss') {
+                                    $skor += 5;
+                                }
+                            @endphp
                             <tr>
                                 <td>{{ $evaluasi_jawaban->id }}</td>
                                 <td>
@@ -53,6 +134,7 @@
                                 <td>{{ $evaluasi_jawaban->jawaban6 }}</td>
                                 <td>{{ $evaluasi_jawaban->jawaban7 }}</td>
                                 <td>{{ $evaluasi_jawaban->pesan_kesan }}</td>
+                                <td>{{ $skor }}</td>
                                 {{-- <td class="text-center">
                                     <a class="nav-link text-black-50" type="button"
                                         id="dropdownMenuButton-{{ $evaluasi_jawaban->id }}" data-toggle="dropdown"

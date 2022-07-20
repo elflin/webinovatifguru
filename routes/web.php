@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\Route;
 // ADMIN
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EvaluasiJawabanController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\controllers\Admin\HistoryController;
-use App\Http\Controllers\Firebase\FirebaseController;
+// use App\Http\Controllers\Firebase\FirebaseController;
+use App\Http\Controllers\Admin\PelatihanController;
+use App\Http\Controllers\Admin\ProgressController;
+use App\Http\Controllers\Admin\TestSoalController;
 // USER
 use App\Http\Controllers\User\DashboardController as UDashboardController;
 use App\Http\Controllers\User\SurveyController;
@@ -44,6 +48,11 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('/', [DashboardController::class, 'index']);
+    Route::resource('test_soal', TestSoalController::class);
+    Route::resource('evaluasi_jawaban', EvaluasiJawabanController::class);
+    Route::resource('pelatihan', PelatihanController::class);
+    Route::get('pelatihan/{pelatihan}/soal_baru', [PelatihanController::class, 'soal_baru'])->name('pelatihan.soal_baru');
+    Route::resource('progress', ProgressController::class);
     Route::resource('soal', SoalController::class);
     Route::resource('user', UserController::class);
     Route::resource('history', HistoryController::class);

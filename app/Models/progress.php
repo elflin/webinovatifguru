@@ -26,7 +26,7 @@ class progress extends Model
     }
 
     public function progress_histories(){
-        return $this->belongsTo(progress_histories::class, "id_progress_histories", "id");
+        return $this->belongsTo(progress_history::class, "id_progress_histories", "id");
     }
 
     public function pelatihan(){

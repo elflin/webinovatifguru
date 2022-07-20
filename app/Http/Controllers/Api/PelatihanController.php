@@ -66,7 +66,9 @@ class PelatihanController extends Controller
      */
     public function show($id)
     {
-        
+        $pelatihan = pelatihan::where('id', $id);
+
+        return new PelatihanResource($pelatihan);
     }
 
     /**

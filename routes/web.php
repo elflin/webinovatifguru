@@ -69,7 +69,16 @@ Route::group([
     Route::resource('survey', SurveyController::class);
 
     Route::resource('training', TrainingController::class);
-    Route::get('/training/evaluation_test/{id}', [TrainingController::class, 'evaluation_test'])->name('training.evalutaion_test');
+    Route::get('/training/evaluation_test/{id}', [TrainingController::class, 'evaluation_test'])->name('training.evaluation_test');
+    Route::get('/training/evaluation_review/{id}', [TrainingController::class, 'evaluation_review'])->name('training.evaluation_review');
+    Route::post('/training/evaluation_test_store', [TrainingController::class, 'evaluation_test_store'])->name('training.evaluation_test_store');
+
+
+    Route::post('/training/submission_store', [TrainingController::class, 'submission_store'])->name('training.submission_store');
+
+
+    Route::get('/training/test/{id}', [TrainingController::class, 'test'])->name('training.test');
+    Route::post('/training/test_store', [TrainingController::class, 'test_store'])->name('training.test_store');
 
     Route::resource('profile', ProfileController::class);
     Route::patch('survey/{id}/createHistory', [SurveyController::class, 'createHistory'])->name('survey.createHistory');

@@ -83,33 +83,40 @@
 
         </div>
 
+        @foreach ($pelatihans as $pelatihan)
+            
         {{-- INFORMED CONSENT --}}
         <div class="mt-4 bg-info w-100 py-4 position-relative">
             <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                 <div class="w-100 h-100 d-flex align-items-center">
                     <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Informed Consent
+                        {{ $pelatihan->judul }}
                     </h2>
                 </div>
             </div>
         </div>
 
         <div class=" mt-lg-3 mb-lg-5">
-            <div class="d-flex align-items-center">
+            <p>
+                {{ $pelatihan->deskripsi }}
+            </p>
+            {{-- consent --}}
+            @if ($pelatihan->type == 'Consent')
+            <div class="d-flex align-items-end">
                 <h1 class="text-primary m-0">
                     <i class="fa fa-file-word"></i>
                 </h1>
                 <div class="ml-2">
-                    <div class="m-0">
+                    {{-- <div class="m-0">
                         Sebuah template word yang bisa di download dan diupload ulang
-                    </div>
-                    <a href="" class="m-0 text-decoration-none text-purple">
+                    </div> --}}
+                    <a href="{{ $pelatihan->link }}" class="m-0 text-decoration-none text-purple">
                         Download template
                     </a>
                 </div>
             </div>
 
-            <a href="{{ route('user.training.show', 1) }}" class="mt-3 text-decoration-none d-flex align-items-end">
+            <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
                 <h1 class="text-info m-0">
                     <i class="fa fa-file-upload"></i>
                 </h1>
@@ -117,58 +124,42 @@
                     Upload Submission
                 </div>
             </a>
-        </div>
-
-        {{-- PRE TEST --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
-            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                <div class="w-100 h-100 d-flex align-items-center">
-                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Pre-test Learning
-                    </h2>
-                </div>
-            </div>
-        </div>
-
-        <div class=" mt-lg-3 mb-lg-5">
+            {{-- test --}}
+            @elseif ($pelatihan->type == 'Tes')
             <div class="d-flex justify-content-between align-items-center">
-                <a href="" data-toggle="modal" data-target="#pretestModal" class="text-decoration-none d-flex align-items-end">
+                <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
                     <h1 class="text-info m-0">
                         <i class="fa fa-file-signature"></i>
                     </h1>
                     <div class="ml-2 text-dark">
-                        Kerjakan pre-test
+                        Kerjakan {{ $pelatihan->judul }}
                     </div>
                 </a>
-
+                {{-- if udah selesai --}}
+                @foreach ($progresss as $progress)
+                @if ($progress->pelatihan->id == $pelatihan->id)
+                @if ($progress->status == 1)
                 <div class="bg-green px-2 py-1 text-white rounded">
                     <i class="fa fa-check"></i>
                     Done
                 </div>
+                @endif
+                @endif
+                @endforeach
+                
             </div>
-        </div>
 
-        {{-- PERTEMUAN 1 --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
-            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                <div class="w-100 h-100 d-flex align-items-center">
-                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Pertemuan 1
-                    </h2>
-                </div>
-            </div>
-        </div>
-
-        <div class=" mt-lg-3 mb-lg-5">
-            <div class="d-flex align-items-center">
+            {{-- materi --}}
+            @else
+            <div class="d-flex align-items-end">
                 <h1 class="text-danger m-0">
                     <i class="fa fa-file-pdf"></i>
                 </h1>
                 <div class="ml-2">
-                    <div class="m-0">
+                    {{-- <div class="m-0">
                         Modul PDF Pelatihan MPIG Pertemuan 1
-                    </div>
-                    <a href="" class="m-0 text-decoration-none text-purple">
+                    </div> --}}
+                    <a href="{{ $pelatihan->link_ppt }}" class="m-0 text-decoration-none text-purple">
                         Download Modul
                     </a>
                 </div>
@@ -180,13 +171,13 @@
                         <i class="fa fa-file-video"></i>
                     </h1>
                     <div class="ml-2 text-dark">
-                        Video Tutorial Pertemuan 1 (dari youtube unlisted)
+                        Video Tutorial {{ $pelatihan->judul }}
                     </div>
                 </div>
                 <div class="d-flex mt-3">
                     <div class="ml-2"></div>
                     <div class="ml-4">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/30MQJIg1R7g"
+                        <iframe width="560" height="315" src="{{ $pelatihan->link }}"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
@@ -194,165 +185,30 @@
                 </div>
                 
             </div>
-        </div>
 
-        {{-- PERTEMUAN 2 --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
-            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                <div class="w-100 h-100 d-flex align-items-center">
-                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Pertemuan 2
-                    </h2>
-                </div>
-            </div>
-        </div>
-
-        <div class=" mt-lg-3 mb-lg-5">
-            <div class="d-flex align-items-center">
-                <h1 class="text-danger m-0">
-                    <i class="fa fa-file-pdf"></i>
+            @if ($pelatihan->judul != 'Pertemuan 1')
+                
+            <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
+                <h1 class="text-info m-0">
+                    <i class="fa fa-file-upload"></i>
                 </h1>
-                <div class="ml-2">
-                    <div class="m-0">
-                        Modul PDF Pelatihan MPIG Pertemuan 2
-                    </div>
-                    <a href="" class="m-0 text-decoration-none text-purple">
-                        Download Modul
-                    </a>
+                <div class="ml-2 text-dark">
+                    Upload Submission
                 </div>
-            </div>
+            </a>
 
-            <div class="mt-3">
-                <div class="d-flex align-items-end">
-                    <h1 class="text-indigo m-0">
-                        <i class="fa fa-file-video"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Video Tutorial Pertemuan 2 (dari youtube unlisted)
-                    </div>
-                </div>
-                <div class="d-flex mt-3">
-                    <div class="ml-2"></div>
-                    <div class="ml-4">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/30MQJIg1R7g"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
+            @endif
 
-            <div class="mt-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('user.training.show', 1) }}" class="text-decoration-none d-flex align-items-end">
-                    <h1 class="text-info m-0">
-                        <i class="fa fa-file-upload"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Upload Submission
-                    </div>
-                </a>
-
-                <div class="bg-green px-2 py-1 text-white rounded">
-                    <i class="fa fa-check"></i>
-                    Done
-                </div>
-            </div>
+            @endif
+            
         </div>
 
-        {{-- PERTEMUAN 3 --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
-            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                <div class="w-100 h-100 d-flex align-items-center">
-                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Pertemuan 3
-                    </h2>
-                </div>
-            </div>
-        </div>
+        @endforeach
 
-        <div class=" mt-lg-3 mb-lg-5">
-            <div class="d-flex align-items-center">
-                <h1 class="text-danger m-0">
-                    <i class="fa fa-file-pdf"></i>
-                </h1>
-                <div class="ml-2">
-                    <div class="m-0">
-                        Modul PDF Pelatihan MPIG Pertemuan 3
-                    </div>
-                    <a href="" class="m-0 text-decoration-none text-purple">
-                        Download Modul
-                    </a>
-                </div>
-            </div>
-
-            <div class="mt-3">
-                <div class="d-flex align-items-end">
-                    <h1 class="text-indigo m-0">
-                        <i class="fa fa-file-video"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Video Tutorial Pertemuan 3 (dari youtube unlisted)
-                    </div>
-                </div>
-                <div class="d-flex mt-3">
-                    <div class="ml-2"></div>
-                    <div class="ml-4">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/30MQJIg1R7g"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-3 d-flex justify-content-between align-items-center">
-                <a href="{{ route('user.training.show', 1) }}" class="text-decoration-none d-flex align-items-end">
-                    <h1 class="text-info m-0">
-                        <i class="fa fa-file-upload"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Upload Submission
-                    </div>
-                </a>
-
-                <div class="bg-green px-2 py-1 text-white rounded">
-                    <i class="fa fa-check"></i>
-                    Done
-                </div>
-            </div>
-        </div>
-
-        {{-- POST TEST --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
-            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                <div class="w-100 h-100 d-flex align-items-center">
-                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                        Post-test Learning
-                    </h2>
-                </div>
-            </div>
-        </div>
-
-        <div class=" mt-lg-3 mb-lg-5">
-            <div class="d-flex justify-content-between align-items-center">
-                <a href="" data-toggle="modal" data-target="#posttestModal" class="text-decoration-none d-flex align-items-end">
-                    <h1 class="text-info m-0">
-                        <i class="fa fa-file-signature"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Kerjakan post-test
-                    </div>
-                </a>
-
-                <div class="bg-green px-2 py-1 text-white rounded">
-                    <i class="fa fa-check"></i>
-                    Done
-                </div>
-            </div>
-        </div>
+        
 
         {{-- EVALUASI PELATIHAN --}}
-        <div class="mt-4 bg-info w-100 py-4 position-relative">
+        {{-- <div class="mt-4 bg-info w-100 py-4 position-relative">
             <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                 <div class="w-100 h-100 d-flex align-items-center">
                     <h2 class="ml-2 mt-2 font-weight-bold text-info">
@@ -378,7 +234,7 @@
                     Done
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
     </div>
@@ -386,60 +242,27 @@
 
 
 {{-- MODAL --}}
-{{-- MODAL PRE TEST --}}
-<div class="modal fade" id="pretestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h4 class="modal-title text-info font-weight-bold" id="exampleModalLabel">Pre-test</h4>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fa fa-times text-dark" aria-hidden="true"></i></span>
-                </button>
-            </div>
-            <div class="modal-body border-0">
-                <h5 class=" font-weight-bold">
-                    Riwayat
-                </h5>
-                <div class="rounded bg-light2 px-3 py-3 my-2">
-                    <div class=" d-flex justify-content-lg-between align-items-center">
-                        <div class="bg-green px-2 py-1 text-white rounded">
-                            <i class="fa fa-check"></i>
-                            Done
-                        </div>
-                        <div>
-                            <div>
-                                Sunday, 07-10-2022
-                            </div>
-                            <a href="" class="text-decoration-none text-purple">
-                                Review
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer border-0">
-                <a href="" class=" w-100 btn btn-info text-white font-weight-bold py-3">
-                    Mulai Mengerjakan Pre-test
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
-{{-- MODAL POST TEST --}}
-<div class="modal fade" id="posttestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- MODAL PRE & POST TEST --}}
+@foreach ($pelatihans as $pelatihan)
+@if ($pelatihan->type == 'Tes')
+<div class="modal fade" id="testModal{{ $pelatihan->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h4 class="modal-title text-info font-weight-bold" id="exampleModalLabel">Post-test</h4>
+                <h4 class="modal-title text-info font-weight-bold" id="exampleModalLabel">{{ $pelatihan->judul }}</h4>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-times text-dark" aria-hidden="true"></i></span>
                 </button>
             </div>
             <div class="modal-body border-0">
+                @foreach ($progresss as $progress)
+                @if ($progress->pelatihan->id == $pelatihan->id)
+                @if ($progress->status == 1)
                 <h5 class=" font-weight-bold">
                     Riwayat
                 </h5>
+                
                 <div class="rounded bg-light2 px-3 py-3 my-2">
                     <div class=" d-flex justify-content-lg-between align-items-center">
                         <div class="bg-green px-2 py-1 text-white rounded">
@@ -448,26 +271,48 @@
                         </div>
                         <div>
                             <div>
-                                Sunday, 07-10-2022
+                                {{ $progress->updated_at }}
+                                {{-- Sunday, 07-10-2022 --}}
                             </div>
-                            <a href="" class="text-decoration-none text-purple">
+                            @if (str_contains($pelatihan->judul, 'Evaluasi'))
+                            <div>
+                                Nilai: {{ $nilai }}
+                            </div>
+                            <a href="{{ route('user.training.evaluation_review', $pelatihan->id) }}" class="text-decoration-none text-purple">
                                 Review
                             </a>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>
+                @endif
+                @endif
+                @endforeach
             </div>
             <div class="modal-footer border-0">
-                <a href="" class=" w-100 btn btn-info text-white font-weight-bold py-3">
-                    Mulai Mengerjakan Post-test
+                @foreach ($progresss as $progress)
+                @if ($progress->pelatihan->id == $pelatihan->id)
+                @if ($progress->status == 0)
+                <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                    Mulai Mengerjakan {{ $pelatihan->judul }}
                 </a>
+                @endif
+                @elseif($loop->iteration == count($progresss))
+                <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                    Mulai Mengerjakan {{ $pelatihan->judul }}
+                </a>
+                @endif
+                @endforeach
             </div>
         </div>
     </div>
 </div>
+@endif
+@endforeach
 
 {{-- MODAL EVALUASI PELATIHAN --}}
-<div class="modal fade" id="evaluasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="evaluasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
@@ -498,13 +343,13 @@
                 </div>
             </div>
             <div class="modal-footer border-0">
-                <a href="{{ route('user.training.evalutaion_test', 1) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                <a href="{{ route('user.training.evaluation_test') }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
                     Mulai Mengerjakan Evaluasi Pelatihan
                 </a>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @include('inc.footerLandingPage')

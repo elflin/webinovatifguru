@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\evaluasi_jawaban;
+use App\Models\pelatihan;
+use App\Models\progress;
+use App\Models\progress_history;
+use App\Models\test_jawaban;
+use App\Models\test_soal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TrainingController extends Controller
 {
@@ -14,7 +21,113 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        return view('user.training');
+        $history_user = progress_history::where('uid', Auth::id())->get()->last();
+        $pelatihans = pelatihan::all();
+
+        if (empty($history_user)) {
+            $history_user = progress_history::create([
+                'uid' => Auth::id(),
+            ]);
+        }
+
+        $progresss = progress::where('id_progress_histories', $history_user->id)->get();
+
+        // get nilai evaluasi
+        $nilai = 0;
+        foreach ($progresss as $progress) {
+            if (str_contains($progress->pelatihan->judul, 'Evaluasi')) {
+                $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $progress->id)->get()->last();
+                if (!empty($Evaluasi_Jawaban)) {
+                    if (strtoupper($Evaluasi_Jawaban->jawaban1) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban2) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban3) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban4) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban5) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban6) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    if (strtoupper($Evaluasi_Jawaban->jawaban7) == "STS") {
+                        $nilai += 1;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "TS") {
+                        $nilai += 2;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "R") {
+                        $nilai += 3;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "S") {
+                        $nilai += 4;
+                    } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "SS") {
+                        $nilai += 5;
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        return view('user.training', compact('progresss', 'pelatihans', 'nilai'));
     }
 
     /**
@@ -46,12 +159,250 @@ class TrainingController extends Controller
      */
     public function show($id)
     {
-        return view('user.submission');
+        // create progress
+        $progress = progress::where('id_pelatihan', $id)->get()->last();
+
+        if (empty($progress)) {
+            $history_user = progress_history::where('uid', Auth::id())->get()->last();
+            $progress = progress::create([
+                'id_progress_histories' => $history_user->id,
+                'id_pelatihan' => $id,
+                'status' => 0,
+            ]);
+        }
+        return view('user.submission', compact('progress'));
     }
 
     public function evaluation_test($id)
     {
-        return view('user.evaluationSoal');
+        $pelatihan = pelatihan::findOrFail($id);
+        $soal_eval = array(
+            "Pelatihan ini bermanfaat bagi profesi saya sebagai guru.",
+            "Materi pelatihan ini disampaikan dengan jelas.",
+            "Aplikasi komputer dalam pelatihan ini mudah digunakan.",
+            "Tugas atau aktivitas dalam pelatihan ini menarik untuk dilakukan.",
+            "Waktu yang diberikan dalam pelatihan ini sesuai dengan jadwal saya.",
+            "Secara keseluruhan saya puas dengan penyelenggaraan pelatihan ini.",
+            "Saya berharap pelatihan semacam ini akan diselenggarakan lagi.",
+        );
+
+        // create progress
+        $progress = progress::where('id_pelatihan', $id)->get()->last();
+
+        if (empty($progress)) {
+            $history_user = progress_history::where('uid', Auth::id())->get()->last();
+            $progress = progress::create([
+                'id_progress_histories' => $history_user->id,
+                'id_pelatihan' => $id,
+                'status' => 0,
+            ]);
+        }
+
+        return view('user.evaluationSoal', compact('soal_eval', 'pelatihan', 'progress'));
+    }
+
+    public function evaluation_review($id)
+    {
+        $pelatihan = pelatihan::findOrFail($id);
+        $soal_eval = array(
+            "Pelatihan ini bermanfaat bagi profesi saya sebagai guru.",
+            "Materi pelatihan ini disampaikan dengan jelas.",
+            "Aplikasi komputer dalam pelatihan ini mudah digunakan.",
+            "Tugas atau aktivitas dalam pelatihan ini menarik untuk dilakukan.",
+            "Waktu yang diberikan dalam pelatihan ini sesuai dengan jadwal saya.",
+            "Secara keseluruhan saya puas dengan penyelenggaraan pelatihan ini.",
+            "Saya berharap pelatihan semacam ini akan diselenggarakan lagi.",
+        );
+
+        // create progress
+        $progress = progress::where('id_pelatihan', $id)->get()->last();
+
+        // get nilai
+        $nilai = 0;
+        $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $progress->id)->get()->last();
+        if (!empty($Evaluasi_Jawaban)) {
+            if (strtoupper($Evaluasi_Jawaban->jawaban1) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban1) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban2) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban2) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban3) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban3) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban4) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban4) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban5) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban5) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban6) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban6) == "SS") {
+                $nilai += 5;
+            }
+
+            if (strtoupper($Evaluasi_Jawaban->jawaban7) == "STS") {
+                $nilai += 1;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "TS") {
+                $nilai += 2;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "R") {
+                $nilai += 3;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "S") {
+                $nilai += 4;
+            } else if (strtoupper($Evaluasi_Jawaban->jawaban7) == "SS") {
+                $nilai += 5;
+            }
+        }
+
+        return view('user.evaluationSoalReview', compact('soal_eval', 'pelatihan', 'progress', 'Evaluasi_Jawaban', 'nilai'));
+    }
+
+    public function test($id)
+    {
+        $pelatihan = pelatihan::findOrFail($id);
+        $soal_tes = test_soal::where('id_pelatihan', 2)->get();
+
+        // randomize choices
+        $choices = [[]];
+        foreach ($soal_tes as $soal) {
+            $choice = [];
+            array_push($choice, $soal->jawabanA);
+            array_push($choice, $soal->jawabanB);
+            array_push($choice, $soal->jawabanC);
+            array_push($choice, $soal->jawabanD);
+            array_push($choice, $soal->jawabanE);
+            shuffle($choice);
+            array_push($choices, $choice);
+        }
+
+        // create progress
+        $progress = progress::where('id_pelatihan', $id)->get()->last();
+
+        if (empty($progress)) {
+            $history_user = progress_history::where('uid', Auth::id())->get()->last();
+            $progress = progress::create([
+                'id_progress_histories' => $history_user->id,
+                'id_pelatihan' => $id,
+                'status' => 0,
+            ]);
+        }
+        return view('user.trainingSoal', compact('pelatihan', 'soal_tes', 'choices', 'progress'));
+    }
+
+    public function evaluation_test_store(Request $request)
+    {
+        evaluasi_jawaban::create([
+            'id_progress' => $request->progressId,
+            'jawaban1' => $request['1'],
+            'jawaban2' => $request['2'],
+            'jawaban3' => $request['3'],
+            'jawaban4' => $request['4'],
+            'jawaban5' => $request['5'],
+            'jawaban6' => $request['6'],
+            'jawaban7' => $request['7'],
+            'pesan_kesan' => $request->pesan_kesan
+        ]);
+
+        //update progress
+        $progress = progress::findOrFail($request->progressId);
+        $progress->update([
+            'status' => 1,
+        ]);
+
+        return redirect()->route('user.training.index');
+    }
+
+    public function test_store(Request $request)
+    {
+        $soal_tes = test_soal::where('id_pelatihan', 2)->get();
+        $progress = progress::findOrFail($request->progressId);
+
+        foreach ($soal_tes as $soal) {
+            test_jawaban::create([
+                'id_progress' => $progress->id,
+                'id_test_soal' => $soal->id,
+                'jawaban' => $request[$soal->id]
+            ]);
+        }
+
+        // update progress
+        $progress->update([
+            'status' => 1,
+        ]);
+
+        return redirect()->route('user.training.index');
+    }
+
+    public function submission_store(Request $request)
+    {
+        $progress = progress::findOrFail($request->progressId);
+
+        $data = $request->validate([
+            'pdf' => 'application/pdf'
+        ]);
+
+        $pdfName = $data['pdf']->getClientOriginalName() . '-' . time() . '.' . $data['pdf']->extension();
+        $data['pdf']->move(public_path('/pdf/submission'), $pdfName);
+
+        // update progress
+        $progress->update([
+            'status' => 1,
+            'path_submission' => '/pdf/submission' . $pdfName
+        ]);
+
+        return redirect()->route('user.training.index');
     }
 
     /**

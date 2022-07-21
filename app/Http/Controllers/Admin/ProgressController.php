@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Jawaban;
-use App\Models\history;
-use App\Models\pelatihan;
 use App\Models\progress;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
-class HistoryController extends Controller
+class ProgressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,36 +42,21 @@ class HistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\progress  $progress
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(progress $progress)
     {
-        $user = User::findOrFail($id);
-
-        // $history = Jawaban::whereIn('id', function($query) use ($user){
-        //     $query->select('id')->from('histories')->whereNotIn('uid', $user);
-        // })->get();
-        $histories = history::all()->where('uid', $id);
-        $history = $histories->last();
-
-        $pelatihans = pelatihan::whereHas('progress', function (Builder $query) use ($id) {
-            $query->whereHas('progress_histories', function (Builder $query) use ($id) {
-                $query->where('uid', $id);
-            });
-        })->where('type', 'tes')->get();
-        // $jawabans = Jawaban::where('historyId', $history->id)->get();
-
-        return view('admin.userShowHistory', compact('user', 'history', 'pelatihans'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\progress  $progress
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(progress $progress)
     {
         //
     }
@@ -85,10 +65,10 @@ class HistoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\progress  $progress
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, progress $progress)
     {
         //
     }
@@ -96,10 +76,10 @@ class HistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\progress  $progress
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(progress $progress)
     {
         //
     }

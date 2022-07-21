@@ -9,6 +9,11 @@ class progress_history extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'uid',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class, 'uid', 'id');
     }
@@ -16,5 +21,5 @@ class progress_history extends Model
     public function progress(){
         return $this->hasMany(progress::class, "id_progress_histories", "id");
     }
-    
+
 }

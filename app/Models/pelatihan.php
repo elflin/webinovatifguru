@@ -14,14 +14,15 @@ class pelatihan extends Model
         'judul',
         'deskripsi',
         'link',
+        'link_ppt',
         'type'
     ];
 
     public function progress(){
-        return $this->hasOne(progress::class, "id_pelatihan", "id");
+        return $this->hasMany(progress::class, "id_pelatihan", "id");
     }
 
     public function test_soal(){
-        return $this->hasOne(test_soal::class, "id_pelatihan", "id");
+        return $this->hasMany(test_soal::class, "id_pelatihan", "id");
     }
 }

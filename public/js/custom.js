@@ -108,7 +108,7 @@
   function displayFile() {
     let fileType = file.type;
     // console.log(fileType);
-    let validExtensions = ['application/pdf'];
+    let validExtensions = ['application/pdf', 'application/doc'];
 
     if (validExtensions.includes(fileType)) {
       let fileReader = new FileReader();

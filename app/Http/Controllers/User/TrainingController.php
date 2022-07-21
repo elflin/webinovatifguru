@@ -160,10 +160,11 @@ class TrainingController extends Controller
     public function show($id)
     {
         // create progress
-        $progress = progress::where('id_pelatihan', $id)->get()->last();
+
+        $history_user = progress_history::where('uid', Auth::id())->get()->last();
+        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
 
         if (empty($progress)) {
-            $history_user = progress_history::where('uid', Auth::id())->get()->last();
             $progress = progress::create([
                 'id_progress_histories' => $history_user->id,
                 'id_pelatihan' => $id,
@@ -186,11 +187,11 @@ class TrainingController extends Controller
             "Saya berharap pelatihan semacam ini akan diselenggarakan lagi.",
         );
 
-        // create progress
-        $progress = progress::where('id_pelatihan', $id)->get()->last();
+        // create progres
+        $history_user = progress_history::where('uid', Auth::id())->get()->last();
+        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
 
         if (empty($progress)) {
-            $history_user = progress_history::where('uid', Auth::id())->get()->last();
             $progress = progress::create([
                 'id_progress_histories' => $history_user->id,
                 'id_pelatihan' => $id,
@@ -215,7 +216,8 @@ class TrainingController extends Controller
         );
 
         // create progress
-        $progress = progress::where('id_pelatihan', $id)->get()->last();
+        $history_user = progress_history::where('uid', Auth::id())->get()->last();
+        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
 
         // get nilai
         $nilai = 0;
@@ -328,10 +330,10 @@ class TrainingController extends Controller
         }
 
         // create progress
-        $progress = progress::where('id_pelatihan', $id)->get()->last();
+        $history_user = progress_history::where('uid', Auth::id())->get()->last();
+        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
 
         if (empty($progress)) {
-            $history_user = progress_history::where('uid', Auth::id())->get()->last();
             $progress = progress::create([
                 'id_progress_histories' => $history_user->id,
                 'id_pelatihan' => $id,

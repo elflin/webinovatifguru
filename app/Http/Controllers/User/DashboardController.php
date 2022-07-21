@@ -8,15 +8,17 @@ use Auth;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         if (Auth::user()) {
-            return redirect()->route('user.survey.index');
+            return view('landingpage');
         }
 
         return redirect()->route('login');
     }
 
-    public function contactUs() {
+    public function contactUs()
+    {
         if (Auth::user()) {
             return view('user.contactUs');
         }

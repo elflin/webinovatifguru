@@ -49,12 +49,24 @@
                 </div>
                 <p class="text-center">
                     Belum memiliki akun?
-                    <a href="" class="text-info font-weight-bold">Register sekarang</a>
+                    <a href="{{ route('register') }}" class="text-info font-weight-bold">Register sekarang</a>
                 </p>
             </form>                
         </div>
     </div>
 </div>
+
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyCb-NMtQxV9KQ-jJaHqwPUTW9tD1YHWVCA",
+    authDomain: "inovatif-guru.firebaseapp.com",
+    projectId: "inovatif-guru",
+    storageBucket: "inovatif-guru.appspot.com",
+    messagingSenderId: "504283108606",
+    appId: "1:504283108606:web:94195aac661ad2463bc1af",
+    measurementId: "G-VF4R7MR80N"
+};
+</script>
 
 {{-- DUMMY LARAVEL LOGIN --}}
 {{-- <div class="container">

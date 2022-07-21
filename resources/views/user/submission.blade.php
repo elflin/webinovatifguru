@@ -13,37 +13,42 @@
     <div class="container py-4">
         <h1 class="text-info font-weight-bold">Upload Submission</h1>
         <h5 class="mt-3 font-weight-bold">
-            Pertemuan 2
+            {{ $progress->pelatihan->judul }}
         </h5>
 
 
-    <div class="py-3 w-100 bg-light2 drag-area mt-5" >
-            <div class=" text-center">
-                <h3 class="text-danger m-0">
-                    <i class="fa fa-file-pdf"></i>
-                </h3>
-                <h4 class="headertext m-0">
-                    Drag & Drop
-                </h4>
-                <div class="">
-                    <h4 class="m-0 text-dark">
-                        or <span class="text-purple buttontext cursor-pointer">Click to Upload</span>
+        <form action="{{ route('user.training.submission_store') }}" enctype="multipart/form-data">
+            @csrf
+            <div class="py-3 w-100 bg-light2 drag-area mt-5">
+                <div class=" text-center">
+                    <h3 class="text-danger m-0">
+                        <i class="fa fa-file-pdf"></i>
+                    </h3>
+                    <h4 class="headertext m-0">
+                        Drag & Drop
                     </h4>
-                </div>
-                <input type="file" hidden id="inputPdf">
-                
-                <h6>
-                    Support: PDF*
-                </h6>
-            </div>
-        </div>
+                    <div class="">
+                        <h4 class="m-0 text-dark">
+                            or <span class="text-purple buttontext cursor-pointer">Click to Upload</span>
+                        </h4>
+                    </div>
+                    <input type="file" hidden id="inputPdf" name="pdf">
 
-        <div class="text-center">
-            <button class="mt-4 px-5 btn btn-info">
-                Submit
-            </button>
-        </div>
-        
+                    <h6>
+                        Support: PDF*
+                    </h6>
+                </div>
+            </div>
+
+            <input type="hidden" value="{{ $progress->id }}" name="progressId">
+
+            <div class="text-center">
+                <button class="mt-4 px-5 btn btn-info">
+                    Submit
+                </button>
+            </div>
+        </form>
+
 
         {{-- <div class="rounded bg-light2 px-3 py-3 my-2">
             <div class="d-flex justify-content-between align-items-center">

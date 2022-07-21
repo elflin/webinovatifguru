@@ -38,7 +38,7 @@
                 <a class="nav-link btn btn-info px-3 text-white font-weight-bold" href="{{ route('login') }}">Masuk</a>
             </li>
             <li class="nav-item pt-4 pb-4 d-flex align-items-center">
-                <a class="nav-link btn btn-outline-info text-info px-3 font-weight-bold" href="#">Daftar</a>
+                <a class="nav-link btn btn-outline-info text-info px-3 font-weight-bold" href="{{ route('register') }}">Daftar</a>
             </li>
             @endif
         </ul>

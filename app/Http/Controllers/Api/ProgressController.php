@@ -23,7 +23,7 @@ class ProgressController extends Controller
 
         $progress->save();
 
-        return ['status' => Response::HTTP_OK];
+        return ['status' => Response::HTTP_OK, 'id' => $progress->id];
     }
 
     public function UpdateProgress(Request $request){
@@ -56,7 +56,7 @@ class ProgressController extends Controller
         $validatedData = $request->validate([
             'file' => 'required|doc,docx,pdf|max:4096',
         ]);
-    
+
         $file = 'submission_' . time() . '_' . $request['file']->getClientOriginalName();
         $request->file->move(public_path('submission'), $file);
 
@@ -64,6 +64,6 @@ class ProgressController extends Controller
             'status' => Response::HTTP_OK,
             'link_path' => 'submission/'.$file
         ];
-   
+
     }
 }

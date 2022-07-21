@@ -306,7 +306,7 @@
                             </div>
                             @if (str_contains($pelatihan->judul, 'Evaluasi'))
                             <div>
-                                Nilai: {{ $nilais[$tesAttempt] }}
+                                Nilai: {{ $nilais[$tesAttempt-1] }}
                             </div>
                             <a href="{{ route('user.training.evaluation_review', $progress->id) }}" class="text-decoration-none text-purple">
                                 Review

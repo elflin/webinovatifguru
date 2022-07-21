@@ -39,6 +39,7 @@
                         @foreach ($pelatihan->test_soal as $test_soal)
                             <tr>
                                 <td>{{ $test_soal->id }}</td>
+                                <td>{{ $test_soal->soal }}</td>
                                 <td>{{ $test_soal->jawabanA }}</td>
                                 <td>{{ $test_soal->jawabanB }}</td>
                                 <td>{{ $test_soal->jawabanC }}</td>

@@ -12,7 +12,7 @@
 
         <!-- Content Row -->
         <div class="">
-            <form action="{{ route('admin.pelatihan.store') }}" method="post">
+            <form action="{{ route('admin.pelatihan.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Judul:</label>
@@ -27,8 +27,8 @@
                     <input type="text" class="form-control" name="link" required>
                 </div>
                 <div class="form-group">
-                    <label>Link PPT:</label>
-                    <input type="text" class="form-control" name="link_ppt" required>
+                    <label>File PPT:</label><br>
+                    <input type="file" name="link_ppt">
                 </div>
                 <div class="form-group">
                     <label>Tipe:</label>

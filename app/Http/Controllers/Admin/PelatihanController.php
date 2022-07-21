@@ -37,11 +37,17 @@ class PelatihanController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->link_ppt) {
+            $link_ppt = time() . '-' . $request['link_ppt']->getClientOriginalName();
+            $request->link_ppt->move(public_path('modul'), $link_ppt);
+        }else{
+            $link_ppt = null;
+        }
         pelatihan::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'link' => $request->link,
-            'link_ppt' => $request->link_ppt,
+            'link_ppt' => $link_ppt,
             'type' => $request->type
         ]);
         return redirect(route('admin.pelatihan.index'));
@@ -89,11 +95,17 @@ class PelatihanController extends Controller
      */
     public function update(Request $request, pelatihan $pelatihan)
     {
+        if ($request->link_ppt) {
+            $link_ppt = time() . '-' . $request['link_ppt']->getClientOriginalName();
+            $request->link_ppt->move(public_path('modul'), $link_ppt);
+        }else{
+            $link_ppt = $pelatihan->link_ppt;
+        }
         $pelatihan->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'link' => $request->link,
-            'link_ppt' => $request->link_ppt,
+            'link_ppt' => $link_ppt,
             'type' => $request->type
         ]);
 

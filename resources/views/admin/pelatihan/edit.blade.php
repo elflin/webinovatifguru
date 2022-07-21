@@ -12,7 +12,7 @@
 
         <!-- Content Row -->
         <div class="">
-            <form action="{{ route('admin.pelatihan.update', $pelatihan->id) }}" method="post">
+            <form action="{{ route('admin.pelatihan.update', $pelatihan->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -29,7 +29,8 @@
                 </div>
                 <div class="form-group">
                     <label>Link PPT:</label>
-                    <input type="text" class="form-control" name="link_ppt" required>
+                    <a href="{{ asset('modul') .'/'. $pelatihan->link_ppt }}">PPT</a><br>
+                    <input type="file" name="link_ppt">
                 </div>
                 <div class="form-group">
                     <label>Tipe:</label>

@@ -15,7 +15,7 @@ class TestSoalSeeder extends Seeder
     public function run()
     {
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Tiga cara membangun sikap dan efikasi berinovasi adalah:';
         $soal->jawabanA = 'Stop paradigma lama, thinking out of the box, self-talk';
         $soal->jawabanB = 'Positive thinking, goal setting, empati';
@@ -26,7 +26,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Paradigma kita dibentuk dari:';
         $soal->jawabanA = 'Pengalaman dan kebiasaan';
         $soal->jawabanB = 'Cita-cita dan harapan';
@@ -37,7 +37,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Berikut ini yang merupakan contoh berpikir divergen:';
         $soal->jawabanA = 'Merangkai asesoris dari botol-botol plastik bekas.';
         $soal->jawabanB = 'Memanfaatkan gelas plastik untuk minum boba.';
@@ -48,7 +48,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Berikut ini yang bukan sumber efikasi berinovasi adalah:';
         $soal->jawabanA = 'Innovation goal';
         $soal->jawabanB = 'Mastery experience';
@@ -59,7 +59,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Pengalaman keberhasilan orang lain yang menjadi role model untuk meningkatkan keyakinan atau efikasi diri disebut:';
         $soal->jawabanA = 'Vicarious experience';
         $soal->jawabanB = 'Innovation goal';
@@ -70,7 +70,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Cara praktis untuk meningkatkan keyakinan atau efikasi diri adalah:';
         $soal->jawabanA = 'Self talk';
         $soal->jawabanB = 'Self defence';
@@ -81,7 +81,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Tiga cara memperkuat intensi berinovasi:';
         $soal->jawabanA = 'Planning with risk awareness, antisipasi risiko & action control';
         $soal->jawabanB = 'Problem identification, hypothesis making, data gathering, analisis.';
@@ -92,7 +92,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Intensi berinovasi memerlukan perencanaan yang diikuti dengan kesadaran:';
         $soal->jawabanA = 'Risiko';
         $soal->jawabanB = 'Masa lampau';
@@ -103,7 +103,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Risiko perlu diantisipasi dengan tindakan-tindakan:';
         $soal->jawabanA = 'Proaktif';
         $soal->jawabanB = 'Reaktif';
@@ -114,7 +114,7 @@ class TestSoalSeeder extends Seeder
         $soal->save();
 
         $soal = new test_soal();
-        $soal->id_pelatihan = 2;
+        $soal->id_pelatihan = 4;
         $soal->soal = 'Salah satu wujud action control adalah:';
         $soal->jawabanA = 'Timeline';
         $soal->jawabanB = 'Guideline';

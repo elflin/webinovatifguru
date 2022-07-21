@@ -74,7 +74,7 @@ Route::group([
     Route::post('/training/evaluation_test_store', [TrainingController::class, 'evaluation_test_store'])->name('training.evaluation_test_store');
 
 
-    Route::post('/training/submission_store', [TrainingController::class, 'submission_store'])->name('training.submission_store');
+    Route::patch('/training/submission_store/{id}', [TrainingController::class, 'submission_store'])->name('training.submission_store');
 
 
     Route::get('/training/test/{id}', [TrainingController::class, 'test'])->name('training.test');

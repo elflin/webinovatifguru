@@ -23,6 +23,7 @@ class TrainingController extends Controller
     {
         $history_user = progress_history::where('uid', Auth::id())->get()->last();
         $pelatihans = pelatihan::all();
+        $pelatihan_tes = pelatihan::where("type", "tes")->get();
 
         if (empty($history_user)) {
             $history_user = progress_history::create([
@@ -33,9 +34,10 @@ class TrainingController extends Controller
         $progresss = progress::where('id_progress_histories', $history_user->id)->get();
 
         // get nilai evaluasi
-        $nilai = 0;
+        $nilais = [];
         foreach ($progresss as $progress) {
             if (str_contains($progress->pelatihan->judul, 'Evaluasi')) {
+                $nilai = 0;
                 $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $progress->id)->get()->last();
                 if (!empty($Evaluasi_Jawaban)) {
                     if (strtoupper($Evaluasi_Jawaban->jawaban1) == "STS") {
@@ -122,12 +124,13 @@ class TrainingController extends Controller
                         $nilai += 5;
                     }
 
-                    break;
+                    array_push($nilais, $nilai);
                 }
             }
         }
 
-        return view('user.training', compact('progresss', 'pelatihans', 'nilai'));
+
+        return view('user.training', compact('progresss', 'pelatihans', 'nilais'));
     }
 
     /**
@@ -189,9 +192,15 @@ class TrainingController extends Controller
 
         // create progres
         $history_user = progress_history::where('uid', Auth::id())->get()->last();
-        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
+        $progresss = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get();
+        $progress = $progresss->last();
 
-        if (empty($progress)) {
+        $tesAttempt = 0;
+        foreach ($progresss as $s) {
+            $tesAttempt += 1;
+        }
+
+        if ($tesAttempt < 2) {
             $progress = progress::create([
                 'id_progress_histories' => $history_user->id,
                 'id_pelatihan' => $id,
@@ -204,7 +213,8 @@ class TrainingController extends Controller
 
     public function evaluation_review($id)
     {
-        $pelatihan = pelatihan::findOrFail($id);
+        $progress = progress::findOrFail($id);
+        $pelatihan = $progress->pelatihan;
         $soal_eval = array(
             "Pelatihan ini bermanfaat bagi profesi saya sebagai guru.",
             "Materi pelatihan ini disampaikan dengan jelas.",
@@ -215,11 +225,8 @@ class TrainingController extends Controller
             "Saya berharap pelatihan semacam ini akan diselenggarakan lagi.",
         );
 
-        // create progress
-        $history_user = progress_history::where('uid', Auth::id())->get()->last();
-        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
-
         // get nilai
+
         $nilai = 0;
         $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $progress->id)->get()->last();
         if (!empty($Evaluasi_Jawaban)) {
@@ -314,7 +321,7 @@ class TrainingController extends Controller
     public function test($id)
     {
         $pelatihan = pelatihan::findOrFail($id);
-        $soal_tes = test_soal::where('id_pelatihan', 2)->get();
+        $soal_tes = test_soal::where('id_pelatihan', 4)->get();
 
         // randomize choices
         $choices = [[]];
@@ -331,9 +338,15 @@ class TrainingController extends Controller
 
         // create progress
         $history_user = progress_history::where('uid', Auth::id())->get()->last();
-        $progress = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get()->last();
+        $progresss = progress::where('id_progress_histories', $history_user->id)->where('id_pelatihan', $id)->get();
+        $progress = $progresss->last();
 
-        if (empty($progress)) {
+        $tesAttempt = 0;
+        foreach ($progresss as $s) {
+            $tesAttempt += 1;
+        }
+
+        if ($tesAttempt < 2) {
             $progress = progress::create([
                 'id_progress_histories' => $history_user->id,
                 'id_pelatihan' => $id,
@@ -368,7 +381,7 @@ class TrainingController extends Controller
 
     public function test_store(Request $request)
     {
-        $soal_tes = test_soal::where('id_pelatihan', 2)->get();
+        $soal_tes = test_soal::where('id_pelatihan', 4)->get();
         $progress = progress::findOrFail($request->progressId);
 
         foreach ($soal_tes as $soal) {
@@ -387,21 +400,23 @@ class TrainingController extends Controller
         return redirect()->route('user.training.index');
     }
 
-    public function submission_store(Request $request)
+    public function submission_store(Request $request, $id)
     {
-        $progress = progress::findOrFail($request->progressId);
+        // dd($request->uploaded_file);
+        $progress = progress::findOrFail($id);
 
-        $data = $request->validate([
-            'pdf' => 'application/pdf'
-        ]);
+        // $data = $request->validate([
+        //     'pdf' => 'required|mimes:zip,pdf|max:2048'
+        // ]);
+        // $data = $request;
 
-        $pdfName = $data['pdf']->getClientOriginalName() . '-' . time() . '.' . $data['pdf']->extension();
-        $data['pdf']->move(public_path('/pdf/submission'), $pdfName);
+        $pdfName = $request['uploaded_file']->getClientOriginalName() . '-' . time() . '.' . $request['uploaded_file']->extension();
+        $request['uploaded_file']->move(public_path('/submission'), $pdfName);
 
         // update progress
         $progress->update([
             'status' => 1,
-            'path_submission' => '/pdf/submission' . $pdfName
+            'path_submission' => $pdfName
         ]);
 
         return redirect()->route('user.training.index');

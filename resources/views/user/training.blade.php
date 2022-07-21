@@ -83,9 +83,38 @@
 
         </div>
 
+        {{-- INFORMED CONSENT --}}
+        <div class="mt-4 bg-info w-100 py-4 position-relative">
+            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
+                <div class="w-100 h-100 d-flex align-items-center">
+                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                        Informed Consent
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class=" mt-lg-3 mb-lg-5">
+            <p>
+                Ini adalah deskripsi dari informed consent.
+            </p>
+            {{-- consent --}}
+            <div class="d-flex align-items-end">
+                <h1 class="text-primary m-0">
+                    <i class="fa fa-file-word"></i>
+                </h1>
+                <div class="ml-2">
+                    {{-- <div class="m-0">
+                        Sebuah template word yang bisa di download dan diupload ulang
+                    </div> --}}
+                    <a href="http://docs.google.com/" class="m-0 text-decoration-none text-purple">
+                        Download template
+                    </a>
+                </div>
+            </div>
+
         @foreach ($pelatihans as $pelatihan)
             
-        {{-- INFORMED CONSENT --}}
         <div class="mt-4 bg-info w-100 py-4 position-relative">
             <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                 <div class="w-100 h-100 d-flex align-items-center">
@@ -100,32 +129,8 @@
             <p>
                 {{ $pelatihan->deskripsi }}
             </p>
-            {{-- consent --}}
-            @if ($pelatihan->type == 'Consent')
-            <div class="d-flex align-items-end">
-                <h1 class="text-primary m-0">
-                    <i class="fa fa-file-word"></i>
-                </h1>
-                <div class="ml-2">
-                    {{-- <div class="m-0">
-                        Sebuah template word yang bisa di download dan diupload ulang
-                    </div> --}}
-                    <a href="{{ $pelatihan->link }}" class="m-0 text-decoration-none text-purple">
-                        Download template
-                    </a>
-                </div>
-            </div>
-
-            <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
-                <h1 class="text-info m-0">
-                    <i class="fa fa-file-upload"></i>
-                </h1>
-                <div class="ml-2 text-dark">
-                    Upload Submission
-                </div>
-            </a>
             {{-- test --}}
-            @elseif ($pelatihan->type == 'Tes')
+            @if ($pelatihan->type == 'tes')
             <div class="d-flex justify-content-between align-items-center">
                 <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
                     <h1 class="text-info m-0">
@@ -143,6 +148,7 @@
                     <i class="fa fa-check"></i>
                     Done
                 </div>
+                @break
                 @endif
                 @endif
                 @endforeach
@@ -171,7 +177,7 @@
                         <i class="fa fa-file-video"></i>
                     </h1>
                     <div class="ml-2 text-dark">
-                        Video Tutorial {{ $pelatihan->judul }}
+                        Video {{ $pelatihan->judul }}
                     </div>
                 </div>
                 <div class="d-flex mt-3">
@@ -186,8 +192,9 @@
                 
             </div>
 
-            @if ($pelatihan->judul != 'Pertemuan 1')
-                
+            @if ($pelatihan->judul != 'Pertemuan 1: Pengantar')
+            
+            <div class="d-flex justify-content-between align-items-center"> 
             <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
                 <h1 class="text-info m-0">
                     <i class="fa fa-file-upload"></i>
@@ -196,6 +203,19 @@
                     Upload Submission
                 </div>
             </a>
+
+            @foreach ($progresss as $progress)
+                @if ($progress->pelatihan->id == $pelatihan->id)
+                @if ($progress->status == 1)
+                <div class="bg-green px-2 py-1 text-white rounded">
+                    <i class="fa fa-check"></i>
+                    Done
+                </div>
+                @break
+                @endif
+                @endif
+                @endforeach
+            </div>
 
             @endif
 
@@ -245,7 +265,10 @@
 
 {{-- MODAL PRE & POST TEST --}}
 @foreach ($pelatihans as $pelatihan)
-@if ($pelatihan->type == 'Tes')
+@if ($pelatihan->type == 'tes')
+@php
+    $tesAttempt = 0;
+@endphp
 <div class="modal fade" id="testModal{{ $pelatihan->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -259,9 +282,16 @@
                 @foreach ($progresss as $progress)
                 @if ($progress->pelatihan->id == $pelatihan->id)
                 @if ($progress->status == 1)
+
+
+                @if ($tesAttempt == 0)
                 <h5 class=" font-weight-bold">
                     Riwayat
                 </h5>
+                @endif
+                @php
+                    $tesAttempt += 1;
+                @endphp
                 
                 <div class="rounded bg-light2 px-3 py-3 my-2">
                     <div class=" d-flex justify-content-lg-between align-items-center">
@@ -276,9 +306,9 @@
                             </div>
                             @if (str_contains($pelatihan->judul, 'Evaluasi'))
                             <div>
-                                Nilai: {{ $nilai }}
+                                Nilai: {{ $nilais[$tesAttempt] }}
                             </div>
-                            <a href="{{ route('user.training.evaluation_review', $pelatihan->id) }}" class="text-decoration-none text-purple">
+                            <a href="{{ route('user.training.evaluation_review', $progress->id) }}" class="text-decoration-none text-purple">
                                 Review
                             </a>
                             @endif
@@ -293,24 +323,44 @@
             <div class="modal-footer border-0">
                 @foreach ($progresss as $progress)
                 @if ($progress->pelatihan->id == $pelatihan->id)
-                @if ($progress->status == 0)
-                <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
-                    Mulai Mengerjakan {{ $pelatihan->judul }}
-                </a>
-                @endif
+
+                    @if ($progress->status == 0)
+                    <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                        Mulai Mengerjakan {{ $pelatihan->judul }}
+                    </a>
+                    @break
+
+                    @elseif($progress->status == 1)
+
+                    @if ($tesAttempt == 2)
+                    @break  
+                    @elseif($tesAttempt == 1)
+                    <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                        Mulai Mengerjakan {{ $pelatihan->judul }}
+                    </a>
+                    @break
+                    @endif
+                    
+
+                    @endif
                 @elseif($loop->iteration == count($progresss))
                 <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
                     Mulai Mengerjakan {{ $pelatihan->judul }}
                 </a>
                 @endif
                 @endforeach
+
+                @if (empty($progresss[0]->id))
+                <a href="{{ str_contains($pelatihan->judul, 'Evaluasi') ? route('user.training.evaluation_test', $pelatihan->id) : route('user.training.test', $pelatihan->id) }}" class=" w-100 btn btn-info text-white font-weight-bold py-3">
+                    Mulai Mengerjakan {{ $pelatihan->judul }}
+                </a>
+                @endif
             </div>
         </div>
     </div>
 </div>
 @endif
 @endforeach
-
 {{-- MODAL EVALUASI PELATIHAN --}}
 {{-- <div class="modal fade" id="evaluasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

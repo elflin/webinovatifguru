@@ -38,6 +38,7 @@ Route::resource('testSoal', TestSoalController::class);
 Route::post('createProgress', [ProgressController::class, 'CreateProgress']);
 Route::post('updateProgress', [ProgressController::class, 'UpdateProgress']);
 Route::post('showProgress', [ProgressController::class, 'ShowProgress']);
+Route::post('uploadFile', [ProgressController::class, 'UploadFile']);
 
 Route::post('insertEvaluasiJawaban', [EvaluasiJawabanController::class, 'InsertEvaluasiJawaban']);
 Route::post('resultEvaluasiJawaban', [EvaluasiJawabanController::class, 'ResultEvaluasiJawaban']);

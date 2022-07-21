@@ -195,6 +195,33 @@
                 </table>
             </div>
         </div>
+        <div class="card shadow my-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-purple">Data Submission</h6>
+            </div>
+            <div class="card-body">
+                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nama Pelatihan</th>
+                            <th>Submission</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($user->progress_history->first()->progress as $progress)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $progress->pelatihan->judul }}</td>
+                                <td>
+                                    <a href="{{ asset('submission') . '/' . $progress->path_submission }}">File</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <!-- /.container-fluid -->
 

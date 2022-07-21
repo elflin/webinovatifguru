@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EvaluasiJawabanController;
 use App\Http\Controllers\Admin\SoalController;
-use App\Http\controllers\Admin\HistoryController;
+use App\Http\Controllers\Admin\HistoryController;
 // use App\Http\Controllers\Firebase\FirebaseController;
 use App\Http\Controllers\Admin\PelatihanController;
 use App\Http\Controllers\Admin\ProgressController;

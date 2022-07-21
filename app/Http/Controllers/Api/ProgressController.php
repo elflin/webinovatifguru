@@ -57,7 +57,7 @@ class ProgressController extends Controller
             'file' => 'required|doc,docx,pdf|max:4096',
         ]);
     
-        $file = 'submission-' . time() . '-' . $request['file']->getClientOriginalName();
+        $file = 'submission_' . time() . '_' . $request['file']->getClientOriginalName();
         $request->file->move(public_path('submission'), $file);
 
         return [

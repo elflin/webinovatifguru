@@ -201,11 +201,14 @@ class TrainingController extends Controller
         }
 
         if ($tesAttempt < 2) {
-            $progress = progress::create([
-                'id_progress_histories' => $history_user->id,
-                'id_pelatihan' => $id,
-                'status' => 0,
-            ]);
+            if (!empty($progress->id) && $progress->status == 0) {
+            } else {
+                $progress = progress::create([
+                    'id_progress_histories' => $history_user->id,
+                    'id_pelatihan' => $id,
+                    'status' => 0,
+                ]);
+            }
         }
 
         return view('user.evaluationSoal', compact('soal_eval', 'pelatihan', 'progress'));
@@ -321,7 +324,7 @@ class TrainingController extends Controller
     public function test($id)
     {
         $pelatihan = pelatihan::findOrFail($id);
-        $soal_tes = test_soal::where('id_pelatihan', 1)->get();
+        $soal_tes = test_soal::where('id_pelatihan', $id)->get();
 
         // randomize choices
         $choices = [[]];
@@ -347,11 +350,14 @@ class TrainingController extends Controller
         }
 
         if ($tesAttempt < 2) {
-            $progress = progress::create([
-                'id_progress_histories' => $history_user->id,
-                'id_pelatihan' => $id,
-                'status' => 0,
-            ]);
+            if (!empty($progress->id) && $progress->status == 0) {
+            } else {
+                $progress = progress::create([
+                    'id_progress_histories' => $history_user->id,
+                    'id_pelatihan' => $id,
+                    'status' => 0,
+                ]);
+            }
         }
         return view('user.trainingSoal', compact('pelatihan', 'soal_tes', 'choices', 'progress'));
     }
@@ -381,8 +387,8 @@ class TrainingController extends Controller
 
     public function test_store(Request $request)
     {
-        $soal_tes = test_soal::where('id_pelatihan', 1)->get();
         $progress = progress::findOrFail($request->progressId);
+        $soal_tes = test_soal::where('id_pelatihan', $progress->pelatihan->id)->get();
 
         foreach ($soal_tes as $soal) {
             test_jawaban::create([

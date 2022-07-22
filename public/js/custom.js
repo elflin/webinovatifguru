@@ -113,16 +113,22 @@
     let validExtensions = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
     if (validExtensions.includes(fileType)) {
-      let fileReader = new FileReader();
+      let fileSize = file.size / 1024 / 1024;
+      if (fileSize > 5) {
+        alert('file must have a maximum size of 5 mb!');
+      } else {
+        let fileReader = new FileReader();
 
-      fileReader.onload = () => {
-        // let fileURL = fileReader.result;
-        // console.log(fileURL);
-        // let pdfTag = `<img src="/img/icons/fileicon.png" width="130" alt=""> <div class="ml-3">${file.name}</div>`;
-        let pdfTag = `<div class="ml-3">${file.name}</div>`
-        tempText.innerHTML = pdfTag;
-      };
-      fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          // let fileURL = fileReader.result;
+          // console.log(fileURL);
+          // let pdfTag = `<img src="/img/icons/fileicon.png" width="130" alt=""> <div class="ml-3">${file.name}</div>`;
+          let pdfTag = `<div class="ml-3">${file.name}</div>`
+          tempText.innerHTML = pdfTag;
+        };
+        fileReader.readAsDataURL(file);
+      }
+      
     } else {
       alert('This file is not in pdf or doc format!');
     }

@@ -35,32 +35,32 @@
                     <div class="d-flex justify-content-between px-5 w-100">
                         <div class="text-center">
                             <div>
-                                <input type="radio" name="{{ $loop->iteration }}" value="STS" id="soalE{{ $loop->iteration }}1">
+                                <input type="radio" required name="{{ $loop->iteration }}" value="STS" id="soalE{{ $loop->iteration }}1">
                             </div>
                             <label for="soalE{{ $loop->iteration }}1">STS</label>
                         </div>
                         <div class="text-center">
                             <div>
-                                <input type="radio" name="{{ $loop->iteration }}" value="TS" id="soalE{{ $loop->iteration }}2">
+                                <input type="radio" required name="{{ $loop->iteration }}" value="TS" id="soalE{{ $loop->iteration }}2">
                             </div>
                             <label for="soalE{{ $loop->iteration }}2">TS</label>
                         </div>
                         <div class="text-center">
                             <div>
-                                <input type="radio" name="{{ $loop->iteration }}" value="R" id="soalE{{ $loop->iteration }}3">
+                                <input type="radio" required name="{{ $loop->iteration }}" value="R" id="soalE{{ $loop->iteration }}3">
                             </div>
                             <label for="soalE{{ $loop->iteration }}3">
                                 R</label>
                         </div>
                         <div class="text-center">
                             <div>
-                                <input type="radio" name="{{ $loop->iteration }}" value="S" id="soalE{{ $loop->iteration }}4">
+                                <input type="radio" required name="{{ $loop->iteration }}" value="S" id="soalE{{ $loop->iteration }}4">
                             </div>
                             <label for="soalE{{ $loop->iteration }}4">S</label>
                         </div>
                         <div class="text-center">
                             <div>
-                                <input type="radio" name="{{ $loop->iteration }}" value="SS" id="soalE{{ $loop->iteration }}5">
+                                <input type="radio" required name="{{ $loop->iteration }}" value="SS" id="soalE{{ $loop->iteration }}5">
                             </div>
                             <label for="soalE{{ $loop->iteration }}5">SS</label>
                         </div>

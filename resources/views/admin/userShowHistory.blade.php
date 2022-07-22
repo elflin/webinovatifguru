@@ -208,17 +208,19 @@
                             <th>Submission</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($user->progress_history->first()->progress as $progress)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $progress->pelatihan->judul }}</td>
-                                <td>
-                                    <a href="{{ asset('submission') . '/' . $progress->path_submission }}">File</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                    @if ($user->progress_history->count() > 0)
+                        <tbody>
+                            @foreach ($user->progress_history->first()->progress as $progress)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $progress->pelatihan->judul }}</td>
+                                    <td>
+                                        <a href="{{ asset('submission') . '/' . $progress->path_submission }}">File</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    @endif
                 </table>
             </div>
         </div>

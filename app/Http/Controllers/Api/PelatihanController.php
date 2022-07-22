@@ -16,7 +16,7 @@ class PelatihanController extends Controller
      */
     public function index()
     {
-        $pelatihan = pelatihan::all();
+        $pelatihan = pelatihan::orderBy('id')->get();
 
         return PelatihanResource::collection($pelatihan);
     }

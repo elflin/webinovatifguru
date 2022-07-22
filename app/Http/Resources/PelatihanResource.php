@@ -21,6 +21,7 @@ class PelatihanResource extends JsonResource
             'deskripsi' => $this->deskripsi,
             'link' => $this->link,
             'type' => $this->type,
+            'link_ppt' => $this->link_ppt,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

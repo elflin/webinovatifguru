@@ -46,7 +46,7 @@
         @yield('content')
         @include('inc.footer')
     </div>
-    @else 
+    @else
         @yield('content')
     @endif
     @else

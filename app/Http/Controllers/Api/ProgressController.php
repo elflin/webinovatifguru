@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProgressResource;
 use App\Models\progress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProgressController extends Controller
@@ -53,16 +54,19 @@ class ProgressController extends Controller
     }
 
     public function UploadFile(Request $request){
-        $validatedData = $request->validate([
-            'file' => 'required|doc,docx,pdf|max:4096',
-        ]);
+//        $validatedData = $request->validate([
+//            'file' => 'required|doc,docx,pdf|max:4096',
+//        ]);
 
-        $file = 'submission_' . time() . '_' . $request['file']->getClientOriginalName();
-        $request->file->move(public_path('submission'), $file);
+        $file = $request['file'];
+
+        $fileName = 'submission_' . time() . '.pdf';
+        $destinationPath = public_path() . "/submission/" . $fileName;
+        file_put_contents($destinationPath, base64_decode($file));
 
         return [
             'status' => Response::HTTP_OK,
-            'link_path' => 'submission/'.$file
+            'link_path' => 'submission/'.$fileName
         ];
 
     }

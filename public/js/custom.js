@@ -60,6 +60,8 @@
   const dragArea = document.querySelector('.drag-area');
   const dragText = document.querySelector('.headertext');
 
+  const tempText = document.querySelector('.textReplace')
+
   let button = document.querySelector('.buttontext');
   let input = document.querySelector('#inputPdf')
 
@@ -72,8 +74,8 @@
   // when browse
   input.addEventListener('change', function() {
     file = this.files[0];
-    dragArea.classList.add('bg-light3');
-    dragArea.classList.add('drag-area-active');
+    // dragArea.classList.add('bg-light3');
+    // dragArea.classList.add('drag-area-active');
 
     displayFile();
   })
@@ -107,8 +109,8 @@
 
   function displayFile() {
     let fileType = file.type;
-    // console.log(fileType);
-    let validExtensions = ['application/pdf'];
+    console.log(fileType);
+    let validExtensions = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
     if (validExtensions.includes(fileType)) {
       let fileReader = new FileReader();
@@ -116,12 +118,13 @@
       fileReader.onload = () => {
         // let fileURL = fileReader.result;
         // console.log(fileURL);
-        let pdfTag = `<img src="/img/icons/pdficon.png" width="130" alt=""> <div class="ml-3">${file.name}</div>`;
-        dragArea.innerHTML = pdfTag;
+        // let pdfTag = `<img src="/img/icons/fileicon.png" width="130" alt=""> <div class="ml-3">${file.name}</div>`;
+        let pdfTag = `<div class="ml-3">${file.name}</div>`
+        tempText.innerHTML = pdfTag;
       };
       fileReader.readAsDataURL(file);
     } else {
-      alert('This file is not in pdf format!');
+      alert('This file is not in pdf or doc cok format!');
     }
-    //; console.log('The file is dropped in drag area')
+    ; console.log('The file is dropped in drag area')
   };

@@ -124,7 +124,7 @@
       };
       fileReader.readAsDataURL(file);
     } else {
-      alert('This file is not in pdf or doc cok format!');
+      alert('This file is not in pdf or doc format!');
     }
     ; console.log('The file is dropped in drag area')
   };

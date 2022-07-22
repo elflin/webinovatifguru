@@ -101,14 +101,14 @@
             {{-- consent --}}
             <div class="d-flex align-items-end">
                 <h1 class="text-primary m-0">
-                    <i class="fa fa-file-word"></i>
+                    <i class="fa fa-file"></i>
                 </h1>
                 <div class="ml-2">
                     {{-- <div class="m-0">
                         Sebuah template word yang bisa di download dan diupload ulang
                     </div> --}}
                     <a href="http://docs.google.com/" class="m-0 text-decoration-none text-purple">
-                        Download template
+                        Form
                     </a>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                     {{-- <div class="m-0">
                         Modul PDF Pelatihan MPIG Pertemuan 1
                     </div> --}}
-                    <a href="{{ $pelatihan->link_ppt }}" class="m-0 text-decoration-none text-purple">
+                    <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}" class="m-0 text-decoration-none text-purple">
                         Download Modul
                     </a>
                 </div>

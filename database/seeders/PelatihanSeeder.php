@@ -29,6 +29,13 @@ class PelatihanSeeder extends Seeder
         // // $pelatihan->link_ppt = '';
         // $pelatihan->type = 'Consent';
         // $pelatihan->save();
+        $pelatihan = new pelatihan();
+        $pelatihan->judul = 'Pre-test Learning';
+        $pelatihan->deskripsi = 'Perilaku inovatif guru dalam pembelajaran yang ditunjukkan dengan menghasilkan ide-ide baru berdasarkan permasalahan pembelajaran yang dijumpai, berupaya meyakinkan pihak-pihak berkepentingan untuk mendukung ide-idenya tersebut, serta menerapkannya.';
+        // $pelatihan->link = 'http://docs.google.com/';
+        // $pelatihan->link_ppt = '';
+        $pelatihan->type = 'tes';
+        $pelatihan->save();
 
         $pelatihan = new pelatihan();
         $pelatihan->judul = 'Pertemuan 1: Pengantar';
@@ -52,14 +59,6 @@ class PelatihanSeeder extends Seeder
         $pelatihan->link = 'https://www.youtube.com/embed/wQeou8UaLV4';
         $pelatihan->link_ppt = '1658390733-Modul Pelatihan MPIG Pertemuan 3.pdf';
         $pelatihan->type = 'materi';
-        $pelatihan->save();
-
-        $pelatihan = new pelatihan();
-        $pelatihan->judul = 'Pre-test Learning';
-        $pelatihan->deskripsi = 'Perilaku inovatif guru dalam pembelajaran yang ditunjukkan dengan menghasilkan ide-ide baru berdasarkan permasalahan pembelajaran yang dijumpai, berupaya meyakinkan pihak-pihak berkepentingan untuk mendukung ide-idenya tersebut, serta menerapkannya.';
-        // $pelatihan->link = 'http://docs.google.com/';
-        // $pelatihan->link_ppt = '';
-        $pelatihan->type = 'tes';
         $pelatihan->save();
 
         $pelatihan = new pelatihan();

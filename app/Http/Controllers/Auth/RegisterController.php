@@ -53,8 +53,8 @@ class RegisterController extends Controller
 
         // firebase
         $factory = (new Factory)
-            ->withServiceAccount(__DIR__ . '/credentials/firebase_credentials.json')
-            ->withDatabaseUri('https://inovatif-guru-default-rtdb.firebaseio.com');
+            ->withServiceAccount(__DIR__ . '/credentials/firebase_credentials.json');
+        // ->withDatabaseUri('https://inovatif-guru-default-rtdb.firebaseio.com');
 
         $this->auth = $factory->createAuth();
         $this->database = $factory->createDatabase();

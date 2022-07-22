@@ -321,7 +321,7 @@ class TrainingController extends Controller
     public function test($id)
     {
         $pelatihan = pelatihan::findOrFail($id);
-        $soal_tes = test_soal::where('id_pelatihan', 4)->get();
+        $soal_tes = test_soal::where('id_pelatihan', 1)->get();
 
         // randomize choices
         $choices = [[]];
@@ -381,7 +381,7 @@ class TrainingController extends Controller
 
     public function test_store(Request $request)
     {
-        $soal_tes = test_soal::where('id_pelatihan', 4)->get();
+        $soal_tes = test_soal::where('id_pelatihan', 1)->get();
         $progress = progress::findOrFail($request->progressId);
 
         foreach ($soal_tes as $soal) {

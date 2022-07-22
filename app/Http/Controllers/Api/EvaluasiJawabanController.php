@@ -14,14 +14,14 @@ class EvaluasiJawabanController extends Controller
 
     public function InsertEvaluasiJawaban(Request $request){
         $data = $request->all();
-        
+
         evaluasi_jawaban::create($data);
 
         return ['status' => Response::HTTP_OK];
     }
 
     public function ResultEvaluasiJawaban(Request $request){
-        $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $request->id_progress);
+        $Evaluasi_Jawaban = evaluasi_jawaban::where('id_progress', $request->id_progress)->first();
 
         $nilai = 0;
 

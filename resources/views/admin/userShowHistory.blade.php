@@ -215,7 +215,11 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $progress->pelatihan->judul }}</td>
                                     <td>
-                                        <a href="{{ asset('submission') . '/' . $progress->path_submission }}">File</a>
+                                        @if ($progress->path_submission)
+                                            <a target="_blank" href="{{ asset('submission') . '/' . $progress->path_submission }}">File</a>
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -18,6 +18,7 @@
             <span>Dashboard</span></a>
     </li>
 
+    @if (Auth::user()->isTrainer == 0)
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
@@ -47,6 +48,8 @@
             <i class="fas fa-fw fa-poll-h"></i>
             <span>Evaluasi</span></a>
     </li>
+
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">

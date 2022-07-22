@@ -62,7 +62,7 @@
                                 <td>{{ $user->jenjang_mengajar }}</td>
                                 <td>{{ $user->mata_pelajaran }}</td>
                                 <td>{{ $user->pendidikan }}</td>
-        
+
                                 <td class="text-center">
                                     <a class="nav-link text-black-50" type="button" id="dropdownUser-{{ $user->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-fw fa-ellipsis-h"></i>
@@ -90,6 +90,24 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Usia</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Status Pernikahan</th>
+                            <th>Jumlah Anak</th>
+                            <th>Asal Sekolah</th>
+                            <th>Lama Mengajar</th>
+                            <th>Jenjang Mengajar</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Pendidikan</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

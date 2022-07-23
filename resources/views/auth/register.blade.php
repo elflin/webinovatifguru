@@ -68,7 +68,16 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Asal Sekolah</label>
-                    <input type="text" class="form-control" name="asal_sekolah" required>
+                    <select name="asal_sekolah" class="form-control" id="" required>
+                        <option value="Sekolah Tritunggal Semarang">Sekolah Tritunggal Semarang</option>
+                        <option value="Sekolah Kristen Tri Tunggal Semarang">Sekolah Kristen Tri Tunggal Semarang</option>
+                        <option value="Sekolah Kristen Kalam Kudus Surakarta">Sekolah Kristen Kalam Kudus Surakarta</option>
+                        <option value="Sekolah BOPKRI Yogyakarta">Sekolah BOPKRI Yogyakarta</option>
+                        <option value="Sekolah Kristen Kalam Kudus Malang">Sekolah Kristen Kalam Kudus Malang</option>
+                        <option value="Sekolah Citra Berkat Surabaya">Sekolah Citra Berkat Surabaya</option>
+                        <option value="Sekolah Kristen Kalam Kudus Surabaya">Sekolah Kristen Kalam Kudus Surabaya</option>
+                    </select>
+                    {{-- <input type="text" class="form-control" name="asal_sekolah" required> --}}
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Lama Mengajar (Tahun)</label>
@@ -98,17 +107,29 @@
     </div>
 </div>
 
-<script>
-var firebaseConfig = {
-    apiKey: "AIzaSyCb-NMtQxV9KQ-jJaHqwPUTW9tD1YHWVCA",
-    authDomain: "inovatif-guru.firebaseapp.com",
-    projectId: "inovatif-guru",
-    storageBucket: "inovatif-guru.appspot.com",
-    messagingSenderId: "504283108606",
-    appId: "1:504283108606:web:94195aac661ad2463bc1af",
-    measurementId: "G-VF4R7MR80N"
-};
-</script>
+{{-- <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDW-P7NdTGIWru2bGqOYX_tPz0Le28Ze2I",
+      authDomain: "appsinovatifguru.firebaseapp.com",
+      projectId: "appsinovatifguru",
+      storageBucket: "appsinovatifguru.appspot.com",
+      messagingSenderId: "1081127062316",
+      appId: "1:1081127062316:web:3e919d93f977cd9e3d7a89",
+      measurementId: "G-MCLN76KBEB"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script> --}}
 
 @endsection 
 

@@ -31,6 +31,9 @@ use App\Http\Controllers\User\TrainingController;
 */
 
 Route::get('/', function () {
+    if (!empty(Auth::user()) && Auth::user()->isAdmin == 1) {
+        return view('admin.dashboard');
+    }
     return view('landingpage');
 });
 

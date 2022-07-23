@@ -57,7 +57,7 @@ class ProgressController extends Controller
         $file = $request['file'];
         $type = $request['type'];
 
-        $fileName = 'submission_' . time() . '.' + $type;
+        $fileName = 'submission_' . time() . '.' . $type;
         $destinationPath = public_path() . "/submission/" . $fileName;
         file_put_contents($destinationPath, base64_decode($file));
 

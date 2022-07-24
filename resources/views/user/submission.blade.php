@@ -17,7 +17,7 @@
         </h5>
 
 
-        @if ($progress->status == 0)
+        {{-- @if ($progress->status == 0) --}}
         <form action="{{ route('user.training.submission_store', $progress->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -80,7 +80,7 @@
             </div>
 
         </form>
-        @else
+        @if ($progress->status == 1)
         <div class="rounded bg-light2 px-3 py-3 my-2">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="bg-green px-2 py-1 text-white rounded">

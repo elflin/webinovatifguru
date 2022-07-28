@@ -239,9 +239,11 @@
                                 $skor = 0;
                                 foreach ($progress->pelatihan->test_soal as $key => $test_soal) {
                                     foreach ($test_soal->test_jawaban as $test_jawaban) {
-                                        if ($test_jawaban->progress->progress_histories->uid == $user->id) {
-                                            if ($test_jawaban->jawaban == $test_soal->kunci) {
-                                                $skor += 1;
+                                        if ($test_jawaban->progress) {
+                                            if ($test_jawaban->progress->progress_histories->uid == $user->id) {
+                                                if ($test_jawaban->jawaban == $test_soal->kunci) {
+                                                    $skor += 1;
+                                                }
                                             }
                                         }
                                     }
@@ -309,7 +311,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Jawaban Pelatihan {{ $progress->pelatihan->no_item }}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Jawaban Pelatihan
+                            {{ $progress->pelatihan->no_item }}</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -317,7 +320,7 @@
                     <div class="modal-body">
                         @foreach ($progress->test_jawaban->sortBy('id_test_soal') as $test_jawaban)
                             <h5>{{ $loop->iteration }}. {{ $test_jawaban->test_soal->soal }}</h5>
-                                    Jawaban: {{ $test_jawaban->jawaban }}
+                            Jawaban: {{ $test_jawaban->jawaban }}
                             @if (!$loop->last)
                                 <hr>
                             @endif
@@ -488,7 +491,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">History ID: {{ $hl['historyId'] }} - Budaya Organisasi Berorientasi Pembelajaran</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">History ID: {{ $hl['historyId'] }} - Budaya
+                            Organisasi Berorientasi Pembelajaran</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -521,7 +525,8 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">History ID: {{ $hl['historyId'] }} - Self-Determination</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">History ID: {{ $hl['historyId'] }} -
+                            Self-Determination</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

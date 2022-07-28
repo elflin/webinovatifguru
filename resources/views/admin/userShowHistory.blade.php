@@ -241,7 +241,7 @@
                                     if ($test_jawaban->progress) {
                                         if ($test_jawaban->progress->progress_histories->uid == $user->id) {
                                             if ($test_jawaban->jawaban == $test_jawaban->test_soal->kunci) {
-                                                $skor += 1;
+                                                $skor += 100 / $progress->pelatihan->test_soal->count();
                                             }
                                         }
                                     }
@@ -258,7 +258,7 @@
                                         Cek Jawaban
                                     </a>
                                 </td>
-                                <td>{{ $skor * 10 }}/{{ $progress->pelatihan->test_soal->count() * 10 }}</td>
+                                <td>{{ $skor }}/100</td>
                             </tr>
                         @endforeach
                     </tbody>

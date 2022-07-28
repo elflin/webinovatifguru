@@ -95,9 +95,9 @@
         </div>
 
         <div class=" mt-lg-3 mb-lg-5">
-            <p>
+            {{-- <p>
                 Ini adalah deskripsi dari informed consent.
-            </p>
+            </p> --}}
             {{-- consent --}}
             <div class="d-flex align-items-end">
                 <h1 class="text-info m-0">
@@ -107,8 +107,8 @@
                     {{-- <div class="m-0">
                         Sebuah template word yang bisa di download dan diupload ulang
                     </div> --}}
-                    <a href="http://docs.google.com/" class="m-0 text-decoration-none text-purple">
-                        Form
+                    <a href="https://zfrmz.com/g29AUq970kdTjiQHBdzu" target="_blank" class="m-0 text-decoration-none text-purple">
+                        Informed Consent Peserta Training Inovatif Guru
                     </a>
                 </div>
             </div>

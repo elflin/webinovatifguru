@@ -10,7 +10,7 @@
                 <a class="nav-link font-weight-bold" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item p-4 d-flex align-items-center">
-                <a class="nav-link font-weight-bold text-dark" href="#assessment">Assessment</a>
+                <a class="nav-link font-weight-bold text-dark" href="#assessment">Feature</a>
             </li>
             <li class="nav-item p-4 d-flex align-items-center">
                 <a class="nav-link font-weight-bold text-dark" href="#">About Us</a>

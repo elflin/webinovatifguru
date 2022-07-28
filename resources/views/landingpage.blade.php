@@ -43,7 +43,7 @@
                 Yuk, Lengkapi Variabel <br>
                 Perilaku Inovatif Guru!
             </h1>
-            <h4 class="w-75 text-gray-900">
+            {{-- <h4 class="w-75 text-gray-900">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry’s standard dummy text
                 ever since the 1500s.
@@ -51,7 +51,7 @@
                 when an unknown printer took a galley of type and scrambled it to
                 make a type specimen book. It has survived not only five centuries,
                 but also the leap into electronic typesetting.
-            </h4>
+            </h4> --}}
         </div>
     </div>
 
@@ -60,7 +60,7 @@
         <div class=" col-10">
             <div class="">
                 <h1 class="text-info font-weight-bold">
-                    Assessment
+                    Features
                 </h1>
                 <h4 class="w-75 text-gray-900">
                     Anda dapat memilih variabel atau aktivitas tersedia

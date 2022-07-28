@@ -40,44 +40,27 @@
 
         <div class=" mt-lg-3 mb-lg-5">
             <div class="d-flex mt-3">
-                <img src="{{ asset('img/assets/ilustrasi guru 2.png') }}" alt="" style="" class="bg-gray-400 image-box">
+                <img src="{{ asset('img/assets/photo_jimmy.jpg') }}" alt="" style="" class="bg-gray-400 image-box">
                 <p class="ml-3 mt-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum asperiores explicabo minus.
-                    Eius vel, vero ea velit laudantium odit earum harum itaque qui repudiandae minus ab. Magnam harum
-                    aspernatur eius ullam officiis, non accusantium voluptate, vel similique labore dolores. Quibusdam
-                    modi earum magni ipsum quos vero tempore. Doloremque accusamus corrupti inventore, laboriosam
-                    reiciendis veritatis modi dolore doloribus in explicabo nisi quis possimus perferendis fuga eaque
-                    repellat iusto culpa expedita dolorem, sequi quia ut, rem quae! Voluptatum, eum aliquid non minus
-                    excepturi debitis adipisci, quis facilis, soluta numquam incidunt? Explicabo recusandae quis neque
-                    atque! Repellendus officia laudantium minus cupiditate provident.
+                    Dr. Jimmy Ellya Kurniawan, S.Psi., M.Si., Psikolog 
+adalah Ketua Peneliti Hibah "Model Perilaku Inovatif Guru" & Dosen Fakultas Psikologi Universitas Ciputra Surabaya. Pengalamannya menjadi dosen sejak 1999 sampai dengan sekarang dengan jabatan fungsional akademik Lektor Kepala. Bidang utama pengajaran dan penelitiannya adalah Psikologi Kerja dan Entrepreneurship.
+Email: jimmy.ellya@ciputra.ac.id
                 </p>
             </div>
 
             <div class="d-flex mt-3">
-                <img src="{{ asset('img/assets/ilustrasi guru 2.png') }}" alt="" style="" class="bg-gray-400 image-box">
+                <img src="{{ asset('img/assets/photo_fang.jpg') }}" alt="" style="" class="bg-gray-400 image-box">
                 <p class="ml-3 mt-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum asperiores explicabo minus.
-                    Eius vel, vero ea velit laudantium odit earum harum itaque qui repudiandae minus ab. Magnam harum
-                    aspernatur eius ullam officiis, non accusantium voluptate, vel similique labore dolores. Quibusdam
-                    modi earum magni ipsum quos vero tempore. Doloremque accusamus corrupti inventore, laboriosam
-                    reiciendis veritatis modi dolore doloribus in explicabo nisi quis possimus perferendis fuga eaque
-                    repellat iusto culpa expedita dolorem, sequi quia ut, rem quae! Voluptatum, eum aliquid non minus
-                    excepturi debitis adipisci, quis facilis, soluta numquam incidunt? Explicabo recusandae quis neque
-                    atque! Repellendus officia laudantium minus cupiditate provident.
+                    Kuncoro Dewi Rahmawati, S.Psi., M.Psi., Psikolog 
+adalah Anggota Peneliti Hibah "Model Perilaku Inovatif Guru" & Dosen Fakultas Psikologi Universitas Ciputra Surabaya. Selain menjadi dosen, ia merupakan praktisi psikolog yang banyak berkecimpung dalam dunia industri dan organisasi. 
+Email: kuncoro.dewi@ciputra.ac.id
                 </p>
             </div>
 
             <div class="d-flex mt-3">
-                <img src="{{ asset('img/assets/ilustrasi guru 2.png') }}" alt="" style="" class="bg-gray-400 image-box">
+                <img src="{{ asset('img/assets/photo_evan.jpg') }}" alt="" style="" class="bg-gray-400 image-box">
                 <p class="ml-3 mt-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nostrum asperiores explicabo minus.
-                    Eius vel, vero ea velit laudantium odit earum harum itaque qui repudiandae minus ab. Magnam harum
-                    aspernatur eius ullam officiis, non accusantium voluptate, vel similique labore dolores. Quibusdam
-                    modi earum magni ipsum quos vero tempore. Doloremque accusamus corrupti inventore, laboriosam
-                    reiciendis veritatis modi dolore doloribus in explicabo nisi quis possimus perferendis fuga eaque
-                    repellat iusto culpa expedita dolorem, sequi quia ut, rem quae! Voluptatum, eum aliquid non minus
-                    excepturi debitis adipisci, quis facilis, soluta numquam incidunt? Explicabo recusandae quis neque
-                    atque! Repellendus officia laudantium minus cupiditate provident.
+                    Evan Tanuwijaya,S.Kom., M.Kom. adalah anggota Peneliti Hibah &quot;Model Perilaku Inovatif Guru&quot; dan Dosen Fakultas Teknologi Informasi Universitas Ciputra Surabaya. Saya menjadi dosen sejak tahun 2020 dan sebelum nya telah membantu dosen di Informatika UC sejak tahun 2015. Bidan pengajaran dan penelitian saya adalah pembuatan aplikasi Android dan pemrosesan citra digital menggunakan Deep Learning Email: evan.tanuwijaya@ciputra.ac.id
                 </p>
             </div>
 

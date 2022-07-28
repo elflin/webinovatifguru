@@ -24,11 +24,11 @@ class JawabanController extends Controller
     public function insertJawabanByHistory(Request $request){
         $data = $request->all();
 
-        // foreach($data['data'] as $single){
-        //     Jawaban::create($single);
-        // }
+        foreach($data['data'] as $single){
+            Jawaban::create($single);
+        }
     
-        return  $data;
+        return ['status'=>'Suksess'];
     }
 
     public function reportJawaban(Request $request){

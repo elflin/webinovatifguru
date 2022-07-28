@@ -25,8 +25,12 @@ class JawabanController extends Controller
         $data = $request->all();
 
         foreach($data['data'] as $single){
-            return $single;
+            $jawaban = new Jawaban;
+            $jawaban->historyId = $single->historyId;
+            $jawaban->soalId = $single->soalId;
+            $jawaban->nilai = $single->nilai;
             // Jawaban::create($single);
+            $jawaban->save();
         }
     
         return ['status'=>'Suksess'];

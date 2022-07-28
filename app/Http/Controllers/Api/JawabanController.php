@@ -29,7 +29,7 @@ class JawabanController extends Controller
             // $jawaban->historyId = $single->historyId;
             // $jawaban->soalId = $single->soalId;
             // $jawaban->nilai = $single->nilai;
-            // Jawaban::create($single);
+            Jawaban::create($single);
             // $jawaban->save();
         }
     

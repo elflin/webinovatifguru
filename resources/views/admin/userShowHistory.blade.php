@@ -237,30 +237,28 @@
                         @foreach ($progresses as $progress)
                             @php
                                 $skor = 0;
-                                foreach ($progress->pelatihan->test_soal as $key => $test_soal) {
-                                    foreach ($test_soal->test_jawaban as $test_jawaban) {
-                                        if ($test_jawaban->progress) {
-                                            if ($test_jawaban->progress->progress_histories->uid == $user->id) {
-                                                if ($test_jawaban->jawaban == $test_soal->kunci) {
-                                                    $skor += 1;
-                                                }
+                                foreach ($progress->test_jawaban->sortBy('id_test_soal') as $key => $test_jawaban) {
+                                    if ($test_jawaban->progress) {
+                                        if ($test_jawaban->progress->progress_histories->uid == $user->id) {
+                                            if ($test_jawaban->jawaban == $test_jawaban->test_soal->kunci) {
+                                                $skor += 1;
                                             }
                                         }
                                     }
                                 }
                             @endphp
                             <tr>
-                                <td>{{ $progress->pelatihan->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td><a
                                         href="{{ route('admin.pelatihan.show', $progress->pelatihan->id) }}">{{ $progress->pelatihan->judul }}</a>
                                 </td>
                                 <td>
                                     <a href="#" data-toggle="modal"
-                                        data-target="#jawabanPelatihan-{{ $progress->pelatihan->id }}">
+                                        data-target="#jawabanPelatihan-{{ $progress->id }}">
                                         Cek Jawaban
                                     </a>
                                 </td>
-                                <td>{{ $skor }}/{{ $progress->pelatihan->test_soal->count() }}</td>
+                                <td>{{ $skor * 10 }}/{{ $progress->pelatihan->test_soal->count() * 10 }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -306,7 +304,7 @@
 
 
     @foreach ($progresses as $progress)
-        <div class="modal fade" id="jawabanPelatihan-{{ $progress->pelatihan->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade" id="jawabanPelatihan-{{ $progress->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">

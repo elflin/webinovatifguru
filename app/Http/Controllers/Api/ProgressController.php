@@ -54,11 +54,6 @@ class ProgressController extends Controller
     }
 
     public function UploadFile(Request $request){
-        $validatedData = $request->validate([
-            'file' => 'required|doc,docx,pdf|max:4096',
-        ]);
-
-
         $file = 'submission_' . time() . '_' . $request['file']->getClientOriginalName();
         $request->file->move(public_path('submission'), $file);
 

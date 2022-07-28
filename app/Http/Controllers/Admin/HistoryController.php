@@ -188,13 +188,19 @@ class HistoryController extends Controller
         $histories = history::all()->where('uid', $id);
         $history = $histories->last();
 
-        $pelatihans = pelatihan::whereHas('progress', function (Builder $query) use ($id) {
-            $query->whereHas('progress_histories', function (Builder $query) use ($id) {
-                $query->where('uid', $id);
-            });
-        })->where('type', 'tes')->get();
+        // $pelatihans = pelatihan::whereHas('progress', function (Builder $query) use ($id) {
+        //     $query->whereHas('progress_histories', function (Builder $query) use ($id) {
+        //         $query->where('uid', $id);
+        //     });
+        // })->where('type', 'tes')->get();
+
+        $progresses = progress::whereHas('progress_histories', function (Builder $query) use ($id) {
+            $query->where('uid', $id);
+        })->whereHas('pelatihan', function (Builder $query) use ($id) {
+            $query->where('type', 'tes');
+        })->get();
         // $jawabans = Jawaban::where('historyId', $history->id)->get();
-        return view('admin.userShowHistory', compact('user', 'history', 'pelatihans', 'historyList'));
+        return view('admin.userShowHistory', compact('user', 'history', 'progresses', 'historyList'));
     }
 
     /**

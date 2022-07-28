@@ -122,10 +122,12 @@
                             @endphp
                             <tr>
                                 <td>{{ $evaluasi_jawaban->id }}</td>
+                                @if ($evaluasi_jawaban->progress)
                                 <td>
                                     <a
                                         href="{{ route('admin.history.show', $evaluasi_jawaban->progress->progress_histories->user->id) }}">{{ $evaluasi_jawaban->progress->progress_histories->user->name }}</a>
                                 </td>
+                                @endif
                                 <td>{{ $evaluasi_jawaban->jawaban1 }}</td>
                                 <td>{{ $evaluasi_jawaban->jawaban2 }}</td>
                                 <td>{{ $evaluasi_jawaban->jawaban3 }}</td>

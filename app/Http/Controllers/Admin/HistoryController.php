@@ -198,7 +198,7 @@ class HistoryController extends Controller
             $query->where('uid', $id);
         })->whereHas('pelatihan', function (Builder $query) use ($id) {
             $query->where('type', 'tes');
-        })->get();
+        })->orderBy('id')->get();
         // $jawabans = Jawaban::where('historyId', $history->id)->get();
         return view('admin.userShowHistory', compact('user', 'history', 'progresses', 'historyList'));
     }

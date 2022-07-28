@@ -100,7 +100,7 @@
             </p>
             {{-- consent --}}
             <div class="d-flex align-items-end">
-                <h1 class="text-primary m-0">
+                <h1 class="text-info m-0">
                     <i class="fa fa-file"></i>
                 </h1>
                 <div class="ml-2">
@@ -112,6 +112,45 @@
                     </a>
                 </div>
             </div>
+        </div>
+
+        {{-- YEL-YEL --}}
+        <div class="mt-4 bg-info w-100 py-4 position-relative">
+            <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
+                <div class="w-100 h-100 d-flex align-items-center">
+                    <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                        Yel
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class=" mt-lg-3 mb-lg-5">
+            <p>
+                Ini adalah deskripsi dari yel.
+            </p>
+            {{-- consent --}}
+            <div class="">
+                <div class="d-flex align-items-end">
+                    <h1 class="text-indigo m-0">
+                        <i class="fa fa-file-video"></i>
+                    </h1>
+                    <div class="ml-2 text-dark">
+                        Video Yel Pelatihan Model Perilaku Inovatif Guru (versi awal)
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <div class="ml-2"></div>
+                    <div class="ml-4">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/fS6EW1v314Q"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
 
         @foreach ($pelatihans as $pelatihan)
             

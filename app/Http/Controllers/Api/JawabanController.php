@@ -25,7 +25,8 @@ class JawabanController extends Controller
         $data = $request->all();
 
         foreach($data['data'] as $single){
-            Jawaban::create($single);
+            return $single;
+            // Jawaban::create($single);
         }
     
         return ['status'=>'Suksess'];

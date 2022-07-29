@@ -59,7 +59,7 @@ class ProgressController extends Controller
 
         return [
             'status' => Response::HTTP_OK,
-            'link_path' => 'submission/'.$file
+            'link_path' => $file
         ];
     }
 }

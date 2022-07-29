@@ -14,10 +14,10 @@
             <h1 class=" text-white font-weight-bold">
                 Survey
             </h1>
-            <h4 class="text-white align-items-center my-3">
+            {{-- <h4 class="text-white align-items-center my-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem <br> 
                 Ipsum has been the industry’s standard dummy text ever since the 1500s
-            </h4>
+            </h4> --}}
         </div>
     </div>
 </div>

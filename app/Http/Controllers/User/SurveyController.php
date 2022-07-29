@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\history;
-use App\Models\jawaban;
+use App\Models\Jawaban;
 use App\Models\Soal;
 use App\Models\User;
 use App\Models\skala;

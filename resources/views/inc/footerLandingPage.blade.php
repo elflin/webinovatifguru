@@ -10,7 +10,7 @@
                 when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>
                 It has survived not only five centuries, but also the leap into electronic typesetting.
             </h4>
-            <a href="" class="btn btn-info py-3 px-5">
+            <a href="{{ route('register') }}" class="btn btn-info py-3 px-5">
                 <h4 class=" font-weight-bold m-0">
                     Daftar
                 </h4>
@@ -63,10 +63,10 @@
                     Assessment
                 </h4>
                 <p>
-                    <a href="#!" class="text-reset">Survey</a>
+                    <a href="{{ route('user.survey.index') }}" class="text-reset">Survey</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Training</a>
+                    <a href="{{ route('user.training.index') }}" class="text-reset">Training</a>
                 </p>
             </div>
             <!-- Grid column -->
@@ -75,7 +75,7 @@
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <!-- Links -->
                 <h4 class="font-weight-bold text-info mb-4">
-                    Contact Us
+                    Download Apps
                 </h4>
                 {{-- <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
                 <p>
@@ -85,6 +85,9 @@
                 <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
                 <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p> --}}
                 <p>
+                    <a href="https://drive.google.com/file/d/1MdKT2yt_2cDvqISkHEXEYVDOW4a63nf-/view?usp=sharing" target="_blank" class="btn btn-info font-weight-bold"> <i class="fa fa-download mr-2"></i> Download Inovatif Guru</a>
+                </p>
+                {{-- <p>
                     <a href="#!" class="text-reset">Lorem</a>
                 </p>
                 <p>
@@ -92,10 +95,7 @@
                 </p>
                 <p>
                     <a href="#!" class="text-reset">Lorem</a>
-                </p>
-                <p>
-                    <a href="#!" class="text-reset">Lorem</a>
-                </p>
+                </p> --}}
             </div>
             <!-- Grid column -->
         </div>

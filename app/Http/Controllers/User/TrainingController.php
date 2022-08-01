@@ -22,7 +22,7 @@ class TrainingController extends Controller
     public function index()
     {
         $history_user = progress_history::where('uid', Auth::id())->get()->last();
-        $pelatihans = pelatihan::all();
+        $pelatihans = pelatihan::orderBy('id', 'asc')->get();
         $pelatihan_tes = pelatihan::where("type", "tes")->get();
 
         if (empty($history_user)) {

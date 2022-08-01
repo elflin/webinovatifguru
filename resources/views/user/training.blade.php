@@ -125,7 +125,7 @@ Email: kuncoro.dewi@ciputra.ac.id
                 <div class="d-flex mt-3">
                     <div class="ml-2"></div>
                     <div class="ml-4">
-                        <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Rjya0Sp3d9U"
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Rjya0Sp3d9U"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>

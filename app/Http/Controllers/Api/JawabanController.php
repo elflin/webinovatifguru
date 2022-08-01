@@ -113,7 +113,29 @@ class JawabanController extends Controller
                 'Identified Regulation'=>0
             );
 
+            $dimensiValue = array(
+                'Idea Generation'=>"",
+                'Idea Promotion'=>"",
+                'Idea Realization'=>"",
+                'Intensi Berinovasi'=>"",
+                'Support For Innovation'=>"",
+                'Risk Of Tolerance'=>"",
+                'Openness To External Knowledge'=>"",
+                'Family Expectations For Creativity'=>"",
+                'Leader Expectations For Creativity'=>"",
+                'Customer Expectations For Creativity'=>"",
+                'Personal Assumptions/beliefs About Own Creativity'=>"",
+                'Evidence-based Assessment Of Creative Self-efficacy'=>"",
+                'Commitment To Learning'=>"",
+                'Shared Vision'=>"",
+                'Open-mindedness'=>"",
+                'Intraorganizational Knowledge Sharing'=>"",
+                'Intrinsic Motivation'=>"",
+                'Identified Regulation'=>""
+            );
+
             $lastupdated = null;
+            $user = User::where('id', $userId)->first();
 
             foreach($history->soal as $jawaban){
                 // return $jawaban;
@@ -126,6 +148,241 @@ class JawabanController extends Controller
                 foreach($dimensiDict as $dimensi){
                     if($jawaban->dimensi == $dimensi){
                         $dimensiList[$dimensi]+= $jawaban->pivot->nilai;
+
+                        if($user->jenjang_mengajar == "PG/TK"){
+                            if($dimensi == "Idea Generation"){
+                                if($dimensiList[$dimensi] < 7.1){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 9.2){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 11.3){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 13.4){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Idea Promotion"){
+                                if($dimensiList[$dimensi] < 6.3){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 8.6){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 10.9){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 13.2){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Idea Realization"){
+                                if($dimensiList[$dimensi] < 7.1){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 9.2){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 11.3){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 13.4){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Intensi Berinovasi"){
+                                if($dimensiList[$dimensi] < 20.5){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 25.5){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 28){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Support For Innovation"){
+                                if($dimensiList[$dimensi] < 10.3){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 11.6){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 12.9){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 14.2){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Risk Of Tolerance"){
+                                if($dimensiList[$dimensi] < 16){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 20){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Openness To External Knowledge"){
+                                if($dimensiList[$dimensi] < 13){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 15){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 17){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Family Expectations For Creativity"){
+                                if($dimensiList[$dimensi] < 13){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 14){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 16){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Leader Expectations For Creativity"){
+                                if($dimensiList[$dimensi] < 17){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 19){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 21){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Customer Expectations For Creativity"){
+                                if($dimensiList[$dimensi] < 13){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 14){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 16){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Personal Assumptions/beliefs About Own Creativity"){
+                                if($dimensiList[$dimensi] < 16){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 20){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Evidence-based Assessment Of Creative Self-efficacy"){
+                                if($dimensiList[$dimensi] < 25){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 29){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 33){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 36){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Commitment To Learning"){
+                                if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 24){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 26){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 28){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                            else if($dimensi == "Shared Vision"){
+                                if($dimensiList[$dimensi] < 15){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 16){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 17){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 19){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Open-mindedness"){
+                                if($dimensiList[$dimensi] < 17){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 18){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 21){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Intraorganizational Knowledge Sharing"){
+                                if($dimensiList[$dimensi] < 17){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 19){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 21){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 23){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Intrinsic Motivation"){
+                                if($dimensiList[$dimensi] < 11){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 12){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 13){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 14){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }else if($dimensi == "Identified Regulation"){
+                                if($dimensiList[$dimensi] < 12){
+                                    $dimensiValue[$dimensi] = "Sangat Rendah";
+                                }else if($dimensiList[$dimensi] < 13){
+                                    $dimensiValue[$dimensi] = "Rendah";
+                                }else if($dimensiList[$dimensi] < 14){
+                                    $dimensiValue[$dimensi] = "Cukup";
+                                }else if($dimensiList[$dimensi] < 15){
+                                    $dimensiValue[$dimensi] = "Tinggi";
+                                }else{
+                                    $dimensiValue[$dimensi] = "Sangat Tinggi";
+                                }
+                            }
+                        }else if($user->jenjang_mengajar == "SD"){
+            
+                        }else if($user->jenjang_mengajar == "SMP"){
+            
+                        }else if($user->jenjang_mengajar == "SMA"){
+            
+                        }
+
                     }
                 }
 
@@ -133,7 +390,6 @@ class JawabanController extends Controller
             }
 
             //Hitung value JANGAN LUPA
-            $user = User::where('id', $userId)->first();
             $skalas = skala::where('jenjang_mengajar', $user->jenjang_mengajar)->get();
 
             foreach($skalas as $skala){
@@ -153,6 +409,9 @@ class JawabanController extends Controller
                     }
                 }
             }
+
+            
+
 
             $temp =array(
                 'historyId'=> $history->id,

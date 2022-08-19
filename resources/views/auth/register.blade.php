@@ -69,13 +69,20 @@
                 <div class="form-group">
                     <label class="font-weight-bold">Asal Sekolah</label>
                     <select name="asal_sekolah" class="form-control" id="" required>
-                        <option value="Sekolah Tritunggal Semarang">Sekolah Tritunggal Semarang</option>
+                        {{-- <option value="Sekolah Tritunggal Semarang">Sekolah Tritunggal Semarang</option>
                         <option value="Sekolah Kristen Tri Tunggal Semarang">Sekolah Kristen Tri Tunggal Semarang</option>
                         <option value="Sekolah Kristen Kalam Kudus Surakarta">Sekolah Kristen Kalam Kudus Surakarta</option>
                         <option value="Sekolah BOPKRI Yogyakarta">Sekolah BOPKRI Yogyakarta</option>
                         <option value="Sekolah Kristen Kalam Kudus Malang">Sekolah Kristen Kalam Kudus Malang</option>
                         <option value="Sekolah Citra Berkat Surabaya">Sekolah Citra Berkat Surabaya</option>
+                        <option value="Sekolah Kristen Kalam Kudus Surabaya">Sekolah Kristen Kalam Kudus Surabaya</option> --}}
+                        <option value="Sekolah Kristen Kalam Kudus Solo">Sekolah Kristen Kalam Kudus Solo</option>
+                        <option value="Sekolah Bopkri Yogyakarta">Sekolah Bopkri Yogyakarta</option>
+                        <option value="Sekolah Citra Berkat Surabaya">Sekolah Citra Berkat Surabaya</option>
+                        <option value="Sekolah Kristen Tri Tunggal Semarang">Sekolah Kristen Tri Tunggal Semarang</option>
+                        <option value="Sekolah Kristen Kalam Kudus Malang">Sekolah Kristen Kalam Kudus Malang</option>
                         <option value="Sekolah Kristen Kalam Kudus Surabaya">Sekolah Kristen Kalam Kudus Surabaya</option>
+                        <option value="Sekolah Lab Kristen Satya Wacana Salatiga">Sekolah Lab Kristen Satya Wacana Salatiga</option>
                     </select>
                     {{-- <input type="text" class="form-control" name="asal_sekolah" required> --}}
                 </div>

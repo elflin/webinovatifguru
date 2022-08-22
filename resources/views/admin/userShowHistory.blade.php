@@ -318,7 +318,11 @@
                     <div class="modal-body">
                         @foreach ($progress->test_jawaban->sortBy('id_test_soal') as $test_jawaban)
                             <h5>{{ $loop->iteration }}. {{ $test_jawaban->test_soal->soal }}</h5>
-                            Jawaban: {{ $test_jawaban->jawaban }}
+                            @if ($test_jawaban->jawaban == $test_jawaban->test_soal->kunci)
+                                Jawaban: <span style="color: green">{{ $test_jawaban->jawaban }}</span>
+                            @else
+                                Jawaban: <span style="color: red">{{ $test_jawaban->jawaban }}</span>
+                            @endif
                             @if (!$loop->last)
                                 <hr>
                             @endif

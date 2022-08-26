@@ -40,7 +40,7 @@
                     @enderror
                 </div>
                 <div class="text-right">
-                    <a href="" class="text-info font-weight-bold">
+                    <a href="{{ route('password.request') }}" class="text-info font-weight-bold">
                         Lupa Kata Sandi?
                     </a>
                 </div>

@@ -22,7 +22,7 @@ class TrainingController extends Controller
     public function index()
     {
         $history_user = progress_history::where('uid', Auth::id())->get()->last();
-        $pelatihans = pelatihan::all();
+        $pelatihans = pelatihan::orderBy('id', 'asc')->get();
         $pelatihan_tes = pelatihan::where("type", "tes")->get();
 
         if (empty($history_user)) {
@@ -417,7 +417,7 @@ class TrainingController extends Controller
         // $data = $request;
 
         $pdfName = $request['uploaded_file']->getClientOriginalName() . '-' . time() . '.' . $request['uploaded_file']->extension();
-        $request['uploaded_file']->move(public_path('/submission'), $pdfName);
+        $request['uploaded_file']->storeAs(public_path('/submission'), $pdfName);
 
         // update progress
         $progress->update([

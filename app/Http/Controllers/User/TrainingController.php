@@ -416,8 +416,8 @@ class TrainingController extends Controller
         // ]);
         // $data = $request;
 
-        $pdfName = $request['uploaded_file']->getClientOriginalName() . '-' . time() . '.' . $request['uploaded_file']->extension();
-        $request['uploaded_file']->storeAs(public_path('/submission'), $pdfName);
+        $pdfName = pathinfo($request['uploaded_file']->getClientOriginalName(), PATHINFO_FILENAME) . '-' . time() . '.' . $request['uploaded_file']->extension();
+        $request->uploaded_file->move(public_path('submission'), $pdfName);
 
         // update progress
         $progress->update([

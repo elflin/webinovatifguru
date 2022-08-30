@@ -19,6 +19,7 @@
     <div class="card shadow my-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-purple">Data Soal</h6>
+            <a href="{{route('admin.soal.export')}}">Download Tabel</a>
         </div>
         <div class="card-body">
             <table class="table" id="dataTable" width="100%" cellspacing="0">

@@ -165,6 +165,7 @@
                             <th>Efikasi</th>
                             <th>Budaya</th>
                             <th>Determinasi</th>
+                            <th>Waktu</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -213,6 +214,7 @@
                                         Cek Detail
                                     </a>
                                 </td>
+                                <td>{{ $hl['updated_at'] }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -51,6 +51,7 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('soal/export', [SoalController::class, 'export'])->name('soal.export');
+    Route::get('user/export', [UserController::class, 'export'])->name('user.export');
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('test_soal', TestSoalController::class);
     Route::resource('evaluasi_jawaban', EvaluasiJawabanController::class);

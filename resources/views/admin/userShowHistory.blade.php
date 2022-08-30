@@ -150,8 +150,9 @@
         @endforeach
     </div> --}}
         <div class="card shadow my-4">
-            <div class="card-header py-3">
+            <div class="card-header py-3 d-flex">
                 <h6 class="m-0 font-weight-bold text-purple">Data Survey</h6>
+                <a class="ml-auto font-weight-bold text-purple" href="{{route('admin.survey.export', $user->id)}}">Download Tabel</a>
             </div>
             <div class="card-body">
                 <table class="table" id="dataTable1" width="100%" cellspacing="0">

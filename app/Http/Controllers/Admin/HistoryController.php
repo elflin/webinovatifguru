@@ -148,9 +148,8 @@ class HistoryController extends Controller
                         $dimensiList[$dimensi]+= $jawaban->pivot->nilai;
                     }
                 }
-
-                $lastupdated = $jawaban->pivot->created_at->format('l, m-d-Y');
             }
+            $lastupdated = $history->created_at->format('l, m-d-Y');
 
             //Hitung value JANGAN LUPA
             $user = User::where('id', $userId)->first();

@@ -17,8 +17,9 @@
 
         <!-- Content Row -->
         <div class="card shadow my-4">
-            <div class="card-header py-3">
+            <div class="card-header py-3 d-flex">
                 <h6 class="m-0 font-weight-bold text-purple">Data Evaluasi</h6>
+                <a class="ml-auto font-weight-bold text-purple" href="{{route('admin.evaluasi_jawaban.export')}}">Download Tabel</a>
             </div>
             <div class="card-body">
                 <table class="table" id="dataTable" width="100%" cellspacing="0">

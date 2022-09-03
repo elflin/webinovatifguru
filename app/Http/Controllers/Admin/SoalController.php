@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\DataSoalExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soal;
+use Maatwebsite\Excel\Facades\Excel;
 use Auth;
 
 class SoalController extends Controller
@@ -18,6 +20,9 @@ class SoalController extends Controller
     {
         $soals = Soal::all();
         return view('admin.soalView', compact('soals'));
+    }
+    public function export(){
+        return Excel::download(new DataSoalExport, 'export.xlsx');
     }
 
     /**

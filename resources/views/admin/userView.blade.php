@@ -12,8 +12,9 @@
 
     <!-- Content Row -->
     <div class="card shadow">
-        <div class="card-header py-3">
+        <div class="card-header py-3 d-flex">
             <h6 class="m-0 font-weight-bold text-purple">Data User</h6>
+            <a class="ml-auto font-weight-bold text-purple" href="{{route('admin.user.export')}}">Download Tabel</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

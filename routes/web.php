@@ -50,6 +50,10 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.'
 ], function () {
+    Route::get('soal/export', [SoalController::class, 'export'])->name('soal.export');
+    Route::get('user/export', [UserController::class, 'export'])->name('user.export');
+    Route::get('survey/{id}/export', [HistoryController::class, 'export'])->name('survey.export');
+    Route::get('survey/{id}/exporte', [HistoryController::class, 'exporte'])->name('survey.exporte');
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('test_soal', TestSoalController::class);
     Route::resource('evaluasi_jawaban', EvaluasiJawabanController::class);

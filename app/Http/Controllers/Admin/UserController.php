@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UserExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Jawaban;
 use Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -19,6 +21,9 @@ class UserController extends Controller
     {
         $users = User::all();
         return view('admin.userView', compact('users'));
+    }
+    public function export(){
+        return Excel::download(new UserExport, 'export.xlsx');
     }
 
     /**
@@ -50,7 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**

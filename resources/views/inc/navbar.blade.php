@@ -65,7 +65,16 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('admin.user.exportall') }}">
             <i class="fas fa-fw fa-file-download"></i>
-            <span>Download Tabel Survey</span></a>
+            <span>Download Data Survey</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.user.exporteall') }}">
+            <i class="fas fa-fw fa-file-download"></i>
+            <span>Download Data Pelatihan</span></a>
     </li>
 
     <!-- Divider -->

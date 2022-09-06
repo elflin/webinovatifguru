@@ -19,36 +19,35 @@
     </li>
 
     @if (Auth::user()->isTrainer == 0)
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.soal.index') }}">
-            <i class="fas fa-fw fa-paper-plane"></i>
-            <span>Soal</span></a>
-    </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('admin.soal.index') }}">
+                <i class="fas fa-fw fa-paper-plane"></i>
+                <span>Soal</span></a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.pelatihan.index') }}">
-            <i class="fas fa-fw fa-clipboard-list"></i>
-            <span>Pelatihan</span></a>
-    </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('admin.pelatihan.index') }}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Pelatihan</span></a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.evaluasi_jawaban.index') }}">
-            <i class="fas fa-fw fa-poll-h"></i>
-            <span>Evaluasi</span></a>
-    </li>
-
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('admin.evaluasi_jawaban.index') }}">
+                <i class="fas fa-fw fa-poll-h"></i>
+                <span>Evaluasi</span></a>
+        </li>
     @endif
 
     <!-- Divider -->
@@ -58,6 +57,15 @@
         <a class="nav-link" href="{{ route('admin.user.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('admin.user.exportall') }}">
+            <i class="fas fa-fw fa-file-download"></i>
+            <span>Download Tabel Survey</span></a>
     </li>
 
     <!-- Divider -->
@@ -91,10 +99,10 @@
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                        <img class="img-profile rounded-circle"
-                            src="{{ asset('img/profilepic.png') }}">
+                        <img class="img-profile rounded-circle" src="{{ asset('img/profilepic.png') }}">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

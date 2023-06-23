@@ -150,24 +150,24 @@
             </div>
 
             @foreach ($pelatihans as $pelatihan)
-            @if ($pelatihan->type != "tes" && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
-                <div class="mt-4 bg-info w-100 py-4 position-relative">
-                    <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                        <div class="w-100 h-100 d-flex align-items-center">
-                            <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                                {{ $pelatihan->judul }}
-                            </h2>
+                @if ($pelatihan->type != 'tes' && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
+                    <div class="mt-4 bg-info w-100 py-4 position-relative">
+                        <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
+                            <div class="w-100 h-100 d-flex align-items-center">
+                                <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                                    {{ $pelatihan->judul }}
+                                </h2>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class=" mt-lg-3 mb-lg-5">
-                    <p>
-                        {{ $pelatihan->deskripsi }}
-                    </p>
-                    {{-- test --}}
-                    {{-- @if ($pelatihan->type == 'tes') --}}
-                    {{-- <div class="d-flex justify-content-between align-items-center">
+                    <div class=" mt-lg-3 mb-lg-5">
+                        <p>
+                            {{ $pelatihan->deskripsi }}
+                        </p>
+                        {{-- test --}}
+                        {{-- @if ($pelatihan->type == 'tes') --}}
+                        {{-- <div class="d-flex justify-content-between align-items-center">
                     <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
                         <h1 class="text-info m-0">
                             <i class="fa fa-file-signature"></i>
@@ -176,8 +176,8 @@
                             Kerjakan {{ $pelatihan->judul }}
                         </div>
                     </a> --}}
-                    {{-- if udah selesai --}}
-                    {{-- @foreach ($progresss as $progress)
+                        {{-- if udah selesai --}}
+                        {{-- @foreach ($progresss as $progress)
                     @if ($progress->pelatihan->id == $pelatihan->id)
                     @if ($progress->status == 1)
                     <div class="bg-green px-2 py-1 text-white rounded">
@@ -191,8 +191,8 @@
                     
                 </div> --}}
 
-                    {{-- materi --}}
-                    
+                        {{-- materi --}}
+
                         <div class="d-flex align-items-end">
                             <h1 class="text-danger m-0">
                                 <i class="fa fa-file-pdf"></i>
@@ -230,42 +230,40 @@
 
                         </div>
 
-                        {{-- @if ($pelatihan->judul != 'Pertemuan 1: Pengantar')
-                
-                    <div class="d-flex justify-content-between align-items-center"> 
-                    <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
-                        <h1 class="text-info m-0">
-                            <i class="fa fa-file-upload"></i>
-                        </h1>
-                        <div class="ml-2 text-dark">
-                            Upload Submission
-                        </div>
-                    </a>
 
-                    @foreach ($progresss as $progress)
-                        @if ($progress->pelatihan->id == $pelatihan->id)
-                        @if ($progress->status == 1)
-                        <div class="bg-green px-2 py-1 text-white rounded">
-                            <i class="fa fa-check"></i>
-                            Done
-                        </div>
-                        @break
-                        @endif
-                        @endif
-                    @endforeach
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ route('user.training.show', $pelatihan->id) }}"
+                                class="mt-3 text-decoration-none d-flex align-items-end">
+                                <h1 class="text-info m-0">
+                                    <i class="fa fa-file-upload"></i>
+                                </h1>
+                                <div class="ml-2 text-dark">
+                                    Upload Submission
+                                </div>
+                            </a>
+
+                            @foreach ($progresss as $progress)
+                                @if ($progress->pelatihan->id == $pelatihan->id)
+                                    @if ($progress->status == 1)
+                                        <div class="bg-green px-2 py-1 text-white rounded">
+                                            <i class="fa fa-check"></i>
+                                            Done
+                                        </div>
+                                    @break
+                                @endif
+                            @endif
+                        @endforeach
                     </div>
 
-                @endif --}}
-                    
-
                 </div>
-                @endif
-            @endforeach
+            @endif
+        @endforeach
 
 
 
-            {{-- EVALUASI PELATIHAN --}}
-            {{-- <div class="mt-4 bg-info w-100 py-4 position-relative">
+        {{-- EVALUASI PELATIHAN --}}
+        {{-- <div class="mt-4 bg-info w-100 py-4 position-relative">
             <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                 <div class="w-100 h-100 d-flex align-items-center">
                     <h2 class="ml-2 mt-2 font-weight-bold text-info">
@@ -294,15 +292,15 @@
         </div> --}}
 
 
-        </div>
     </div>
+</div>
 
 
-    {{-- MODAL --}}
+{{-- MODAL --}}
 
-    {{-- MODAL PRE & POST TEST --}}
-    @foreach ($pelatihans as $pelatihan)
-        {{-- @if ($pelatihan->type == 'tes')
+{{-- MODAL PRE & POST TEST --}}
+@foreach ($pelatihans as $pelatihan)
+    {{-- @if ($pelatihan->type == 'tes')
             @php
                 $tesAttempt = 0;
             @endphp
@@ -339,8 +337,8 @@
                                                 <div>
                                                     <div>
                                                         {{ $progress->updated_at }} --}}
-                                                        {{-- Sunday, 07-10-2022 --}}
-                                                    {{-- </div>
+    {{-- Sunday, 07-10-2022 --}}
+    {{-- </div>
                                                     @if (str_contains($pelatihan->judul, 'Evaluasi'))
                                                         <div>
                                                             Nilai: {{ $nilais[$tesAttempt - 1] }}

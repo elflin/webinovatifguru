@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\AllPelatihanExport;
+use App\Exports\AllSurveyExport;
 use App\Exports\PelatihanExport;
 use App\Exports\SurveyExport;
 use App\Http\Controllers\Controller;
@@ -213,6 +215,14 @@ class HistoryController extends Controller
     {
         $user = User::findOrFail($id);
         return Excel::download(new PelatihanExport($id), 'pelatihan-' . $user->name .  '-export.xlsx');
+    }
+    public function exportall()
+    {
+        return Excel::download(new AllSurveyExport(), 'survey-export.xlsx');
+    }
+    public function exporteall()
+    {
+        return Excel::download(new AllPelatihanExport(), 'pelatihan-export.xlsx');
     }
     /**
      * Show the form for editing the specified resource.

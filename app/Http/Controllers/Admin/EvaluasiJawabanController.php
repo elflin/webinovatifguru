@@ -21,7 +21,7 @@ class EvaluasiJawabanController extends Controller
         return view('admin.evaluasi.index', compact('evaluasi_jawabans'));
     }
     public function export(){
-        return Excel::download(new EvaluasiExport, 'export.xlsx');
+        return Excel::download(new EvaluasiExport, 'evaluasi-export.xlsx');
     }
 
     /**

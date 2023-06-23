@@ -3,6 +3,8 @@
         <tr>
             <th>#</th>
             <th>User</th>
+            <th>Jenjang</th>
+            <th>Asal Sekolah</th>
             <th>Jawaban 1</th>
             <th>Jawaban 2</th>
             <th>Jawaban 3</th>
@@ -100,11 +102,11 @@
             <tr>
                 <td>{{ $evaluasi_jawaban->id }}</td>
                 @if ($evaluasi_jawaban->progress)
-                    <td>
-                        <a
-                            href="{{ route('admin.history.show', $evaluasi_jawaban->progress->progress_histories->user->id) }}">{{ $evaluasi_jawaban->progress->progress_histories->user->name }}</a>
+                    <td>{{ $evaluasi_jawaban->progress->progress_histories->user->name }}
                     </td>
                 @endif
+                <td>{{ $evaluasi_jawaban->progress->progress_histories->user->jenjang_mengajar }}</td>
+                <td>{{ $evaluasi_jawaban->progress->progress_histories->user->asal_sekolah }}</td>
                 <td>{{ $evaluasi_jawaban->jawaban1 }}</td>
                 <td>{{ $evaluasi_jawaban->jawaban2 }}</td>
                 <td>{{ $evaluasi_jawaban->jawaban3 }}</td>

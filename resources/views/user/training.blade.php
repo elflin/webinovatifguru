@@ -191,7 +191,7 @@
                 </div> --}}
 
                     {{-- materi --}}
-                    @if ($pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
+                    @if ($pelatihan->type != "tes" && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
                         <div class="d-flex align-items-end">
                             <h1 class="text-danger m-0">
                                 <i class="fa fa-file-pdf"></i>

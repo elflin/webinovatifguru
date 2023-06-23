@@ -80,7 +80,7 @@
             </div>
 
             {{-- INFORMED CONSENT --}}
-            <div class="mt-4 bg-info w-100 py-4 position-relative">
+            {{-- <div class="mt-4 bg-info w-100 py-4 position-relative">
                 <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                     <div class="w-100 h-100 d-flex align-items-center">
                         <h2 class="ml-2 mt-2 font-weight-bold text-info">
@@ -90,26 +90,26 @@
                 </div>
             </div>
 
-            <div class=" mt-lg-3 mb-lg-5">
+            <div class=" mt-lg-3 mb-lg-5"> --}}
                 {{-- <p>
                 Ini adalah deskripsi dari informed consent.
             </p> --}}
                 {{-- consent --}}
-                <div class="d-flex align-items-end">
+                {{-- <div class="d-flex align-items-end">
                     <h1 class="text-info m-0">
                         <i class="fa fa-file"></i>
                     </h1>
-                    <div class="ml-2">
+                    <div class="ml-2"> --}}
                         {{-- <div class="m-0">
                         Sebuah template word yang bisa di download dan diupload ulang
                     </div> --}}
-                        <a href="https://zfrmz.com/g29AUq970kdTjiQHBdzu" target="_blank"
+                        {{-- <a href="https://zfrmz.com/g29AUq970kdTjiQHBdzu" target="_blank"
                             class="m-0 text-decoration-none text-purple">
                             Informed Consent Peserta Training Inovatif Guru
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- YEL-YEL --}}
             <div class="mt-4 bg-info w-100 py-4 position-relative">

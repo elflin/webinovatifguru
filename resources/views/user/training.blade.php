@@ -150,6 +150,7 @@
             </div>
 
             @foreach ($pelatihans as $pelatihan)
+            @if ($pelatihan->type != "tes" && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
                 <div class="mt-4 bg-info w-100 py-4 position-relative">
                     <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                         <div class="w-100 h-100 d-flex align-items-center">
@@ -191,7 +192,7 @@
                 </div> --}}
 
                     {{-- materi --}}
-                    @if ($pelatihan->type != "tes" && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
+                    
                         <div class="d-flex align-items-end">
                             <h1 class="text-danger m-0">
                                 <i class="fa fa-file-pdf"></i>
@@ -255,9 +256,10 @@
                     </div>
 
                 @endif --}}
-                    @endif
+                    
 
                 </div>
+                @endif
             @endforeach
 
 

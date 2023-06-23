@@ -300,7 +300,7 @@
 
     {{-- MODAL PRE & POST TEST --}}
     @foreach ($pelatihans as $pelatihan)
-        @if ($pelatihan->type == 'tes')
+        {{-- @if ($pelatihan->type == 'tes')
             @php
                 $tesAttempt = 0;
             @endphp
@@ -336,9 +336,9 @@
                                                 </div>
                                                 <div>
                                                     <div>
-                                                        {{ $progress->updated_at }}
+                                                        {{ $progress->updated_at }} --}}
                                                         {{-- Sunday, 07-10-2022 --}}
-                                                    </div>
+                                                    {{-- </div>
                                                     @if (str_contains($pelatihan->judul, 'Evaluasi'))
                                                         <div>
                                                             Nilai: {{ $nilais[$tesAttempt - 1] }}
@@ -399,7 +399,7 @@
         </div>
     </div>
 </div>
-@endif
+@endif --}}
 @endforeach
 {{-- MODAL EVALUASI PELATIHAN --}}
 {{-- <div class="modal fade" id="evaluasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

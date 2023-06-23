@@ -50,6 +50,7 @@ Route::group([
     'prefix' => 'admin',
     'as' => 'admin.'
 ], function () {
+    Route::get('evaluasi_jawaban/export', [EvaluasiJawabanController::class, 'export'])->name('evaluasi_jawaban.export');
     Route::get('soal/export', [SoalController::class, 'export'])->name('soal.export');
     Route::get('user/export', [UserController::class, 'export'])->name('user.export');
     Route::get('survey/{id}/export', [HistoryController::class, 'export'])->name('survey.export');

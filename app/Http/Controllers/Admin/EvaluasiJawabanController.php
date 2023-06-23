@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\EvaluasiExport;
 use App\Http\Controllers\Controller;
 use App\Models\evaluasi_jawaban;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EvaluasiJawabanController extends Controller
 {
@@ -17,6 +19,9 @@ class EvaluasiJawabanController extends Controller
     {
         $evaluasi_jawabans = evaluasi_jawaban::all();
         return view('admin.evaluasi.index', compact('evaluasi_jawabans'));
+    }
+    public function export(){
+        return Excel::download(new EvaluasiExport, 'export.xlsx');
     }
 
     /**

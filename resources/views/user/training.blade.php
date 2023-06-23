@@ -153,93 +153,93 @@ Email: kuncoro.dewi@ciputra.ac.id
             </p>
             {{-- test --}}
             @if ($pelatihan->type == 'tes')
-            <div class="d-flex justify-content-between align-items-center">
-                <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
-                    <h1 class="text-info m-0">
-                        <i class="fa fa-file-signature"></i>
-                    </h1>
-                    <div class="ml-2 text-dark">
-                        Kerjakan {{ $pelatihan->judul }}
+                {{-- <div class="d-flex justify-content-between align-items-center">
+                    <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
+                        <h1 class="text-info m-0">
+                            <i class="fa fa-file-signature"></i>
+                        </h1>
+                        <div class="ml-2 text-dark">
+                            Kerjakan {{ $pelatihan->judul }}
+                        </div>
+                    </a> --}}
+                    {{-- if udah selesai --}}
+                    {{-- @foreach ($progresss as $progress)
+                    @if ($progress->pelatihan->id == $pelatihan->id)
+                    @if ($progress->status == 1)
+                    <div class="bg-green px-2 py-1 text-white rounded">
+                        <i class="fa fa-check"></i>
+                        Done
                     </div>
-                </a>
-                {{-- if udah selesai --}}
-                @foreach ($progresss as $progress)
-                @if ($progress->pelatihan->id == $pelatihan->id)
-                @if ($progress->status == 1)
-                <div class="bg-green px-2 py-1 text-white rounded">
-                    <i class="fa fa-check"></i>
-                    Done
-                </div>
-                @break
-                @endif
-                @endif
-                @endforeach
-                
-            </div>
+                    @break
+                    @endif
+                    @endif
+                    @endforeach
+                    
+                </div> --}}
 
-            {{-- materi --}}
-            @else
-            <div class="d-flex align-items-end">
-                <h1 class="text-danger m-0">
-                    <i class="fa fa-file-pdf"></i>
-                </h1>
-                <div class="ml-2">
-                    {{-- <div class="m-0">
-                        Modul PDF Pelatihan MPIG Pertemuan 1
-                    </div> --}}
-                    <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}" class="m-0 text-decoration-none text-purple">
-                        Download Modul
-                    </a>
-                </div>
-            </div>
-
-            <div class="mt-3">
+                {{-- materi --}}
+            @if ($pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
                 <div class="d-flex align-items-end">
-                    <h1 class="text-indigo m-0">
-                        <i class="fa fa-file-video"></i>
+                    <h1 class="text-danger m-0">
+                        <i class="fa fa-file-pdf"></i>
                     </h1>
-                    <div class="ml-2 text-dark">
-                        Video {{ $pelatihan->judul }}
+                    <div class="ml-2">
+                        {{-- <div class="m-0">
+                            Modul PDF Pelatihan MPIG Pertemuan 1
+                        </div> --}}
+                        <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}" class="m-0 text-decoration-none text-purple">
+                            Download Modul
+                        </a>
                     </div>
                 </div>
-                <div class="d-flex mt-3">
-                    <div class="ml-2"></div>
-                    <div class="ml-4">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ substr($pelatihan->link, - 11) }}"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+
+                <div class="mt-3">
+                    <div class="d-flex align-items-end">
+                        <h1 class="text-indigo m-0">
+                            <i class="fa fa-file-video"></i>
+                        </h1>
+                        <div class="ml-2 text-dark">
+                            Video {{ $pelatihan->judul }}
+                        </div>
                     </div>
+                    <div class="d-flex mt-3">
+                        <div class="ml-2"></div>
+                        <div class="ml-4">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ substr($pelatihan->link, - 11) }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
                 </div>
+
+                {{-- @if ($pelatihan->judul != 'Pertemuan 1: Pengantar')
                 
-            </div>
+                    <div class="d-flex justify-content-between align-items-center"> 
+                    <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
+                        <h1 class="text-info m-0">
+                            <i class="fa fa-file-upload"></i>
+                        </h1>
+                        <div class="ml-2 text-dark">
+                            Upload Submission
+                        </div>
+                    </a>
 
-            @if ($pelatihan->judul != 'Pertemuan 1: Pengantar')
-            
-            <div class="d-flex justify-content-between align-items-center"> 
-            <a href="{{ route('user.training.show', $pelatihan->id) }}" class="mt-3 text-decoration-none d-flex align-items-end">
-                <h1 class="text-info m-0">
-                    <i class="fa fa-file-upload"></i>
-                </h1>
-                <div class="ml-2 text-dark">
-                    Upload Submission
-                </div>
-            </a>
+                    @foreach ($progresss as $progress)
+                        @if ($progress->pelatihan->id == $pelatihan->id)
+                        @if ($progress->status == 1)
+                        <div class="bg-green px-2 py-1 text-white rounded">
+                            <i class="fa fa-check"></i>
+                            Done
+                        </div>
+                        @break
+                        @endif
+                        @endif
+                    @endforeach
+                    </div>
 
-            @foreach ($progresss as $progress)
-                @if ($progress->pelatihan->id == $pelatihan->id)
-                @if ($progress->status == 1)
-                <div class="bg-green px-2 py-1 text-white rounded">
-                    <i class="fa fa-check"></i>
-                    Done
-                </div>
-                @break
-                @endif
-                @endif
-                @endforeach
-            </div>
-
-            @endif
+                @endif --}}
 
             @endif
             

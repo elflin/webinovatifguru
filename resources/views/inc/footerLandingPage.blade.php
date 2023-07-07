@@ -85,7 +85,7 @@
                 <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
                 <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p> --}}
                 <p>
-                    <a href="https://drive.google.com/file/d/1MdKT2yt_2cDvqISkHEXEYVDOW4a63nf-/view?usp=sharing" target="_blank" class="btn btn-info font-weight-bold"> <i class="fa fa-download mr-2"></i> Download Inovatif Guru</a>
+                    <a href="https://drive.google.com/file/d/1QDLprg8N2cQBmlTeonYlqIp8yMbqDwst/view?usp=sharing" target="_blank" class="btn btn-info font-weight-bold"> <i class="fa fa-download mr-2"></i> Download Inovatif Guru</a>
                 </p>
                 {{-- <p>
                     <a href="#!" class="text-reset">Lorem</a>

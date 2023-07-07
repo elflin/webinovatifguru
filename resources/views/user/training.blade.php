@@ -91,19 +91,19 @@
             </div>
 
             <div class=" mt-lg-3 mb-lg-5"> --}}
-                {{-- <p>
+            {{-- <p>
                 Ini adalah deskripsi dari informed consent.
             </p> --}}
-                {{-- consent --}}
-                {{-- <div class="d-flex align-items-end">
+            {{-- consent --}}
+            {{-- <div class="d-flex align-items-end">
                     <h1 class="text-info m-0">
                         <i class="fa fa-file"></i>
                     </h1>
                     <div class="ml-2"> --}}
-                        {{-- <div class="m-0">
+            {{-- <div class="m-0">
                         Sebuah template word yang bisa di download dan diupload ulang
                     </div> --}}
-                        {{-- <a href="https://zfrmz.com/g29AUq970kdTjiQHBdzu" target="_blank"
+            {{-- <a href="https://zfrmz.com/g29AUq970kdTjiQHBdzu" target="_blank"
                             class="m-0 text-decoration-none text-purple">
                             Informed Consent Peserta Training Inovatif Guru
                         </a>
@@ -162,12 +162,13 @@
                     </div>
 
                     <div class=" mt-lg-3 mb-lg-5">
-                        <p>
-                            {{ $pelatihan->deskripsi }}
-                        </p>
-                        {{-- test --}}
-                        {{-- @if ($pelatihan->type == 'tes') --}}
-                        {{-- <div class="d-flex justify-content-between align-items-center">
+                        @if ($pelatihan->judul != 'Latihan Individu (Homework)')
+                            <p>
+                                {{ $pelatihan->deskripsi }}
+                            </p>
+                            {{-- test --}}
+                            {{-- @if ($pelatihan->type == 'tes') --}}
+                            {{-- <div class="d-flex justify-content-between align-items-center">
                     <a href="" data-toggle="modal" data-target="#testModal{{ $pelatihan->id }}" class="text-decoration-none d-flex align-items-end">
                         <h1 class="text-info m-0">
                             <i class="fa fa-file-signature"></i>
@@ -176,8 +177,8 @@
                             Kerjakan {{ $pelatihan->judul }}
                         </div>
                     </a> --}}
-                        {{-- if udah selesai --}}
-                        {{-- @foreach ($progresss as $progress)
+                            {{-- if udah selesai --}}
+                            {{-- @foreach ($progresss as $progress)
                     @if ($progress->pelatihan->id == $pelatihan->id)
                     @if ($progress->status == 1)
                     <div class="bg-green px-2 py-1 text-white rounded">
@@ -191,45 +192,45 @@
                     
                 </div> --}}
 
-                        {{-- materi --}}
+                            {{-- materi --}}
 
-                        <div class="d-flex align-items-end">
-                            <h1 class="text-danger m-0">
-                                <i class="fa fa-file-pdf"></i>
-                            </h1>
-                            <div class="ml-2">
-                                {{-- <div class="m-0">
+                            <div class="d-flex align-items-end">
+                                <h1 class="text-danger m-0">
+                                    <i class="fa fa-file-pdf"></i>
+                                </h1>
+                                <div class="ml-2">
+                                    {{-- <div class="m-0">
                             Modul PDF Pelatihan MPIG Pertemuan 1
                         </div> --}}
-                                <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}"
-                                    class="m-0 text-decoration-none text-purple">
-                                    Download Modul
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="mt-3">
-                            <div class="d-flex align-items-end">
-                                <h1 class="text-indigo m-0">
-                                    <i class="fa fa-file-video"></i>
-                                </h1>
-                                <div class="ml-2 text-dark">
-                                    Video {{ $pelatihan->judul }}
-                                </div>
-                            </div>
-                            <div class="d-flex mt-3">
-                                <div class="ml-2"></div>
-                                <div class="ml-4">
-                                    <iframe width="560" height="315"
-                                        src="https://www.youtube.com/embed/{{ substr($pelatihan->link, -11) }}"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                    <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}"
+                                        class="m-0 text-decoration-none text-purple">
+                                        Download Modul
+                                    </a>
                                 </div>
                             </div>
 
-                        </div>
+                            <div class="mt-3">
+                                <div class="d-flex align-items-end">
+                                    <h1 class="text-indigo m-0">
+                                        <i class="fa fa-file-video"></i>
+                                    </h1>
+                                    <div class="ml-2 text-dark">
+                                        Video {{ $pelatihan->judul }}
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-3">
+                                    <div class="ml-2"></div>
+                                    <div class="ml-4">
+                                        <iframe width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{ substr($pelatihan->link, -11) }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
 
+                            </div>
+                        @endif
 
 
                         <div class="d-flex justify-content-between align-items-center">
@@ -255,7 +256,6 @@
                             @endif
                         @endforeach
                     </div>
-
                 </div>
             @endif
         @endforeach

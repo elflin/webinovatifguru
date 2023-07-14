@@ -82,7 +82,7 @@
                         <option value="Sekolah Kristen Tri Tunggal Semarang">Sekolah Kristen Tri Tunggal Semarang</option>
                         <option value="Sekolah Kristen Kalam Kudus Malang">Sekolah Kristen Kalam Kudus Malang</option>
                         <option value="Sekolah Kristen Kalam Kudus Surabaya">Sekolah Kristen Kalam Kudus Surabaya</option>
-                        <option value="Sekolah Lab Kristen Satya Wacana Salatiga">Sekolah Lab Kristen Satya Wacana Salatiga</option>
+                        <option value="Yayasan Santa Maria Abdi Kristus Ungaran">Yayasan Santa Maria Abdi Kristus Ungaran</option>
                     </select>
                     {{-- <input type="text" class="form-control" name="asal_sekolah" required> --}}
                 </div>
